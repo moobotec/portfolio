@@ -1,0 +1,2491 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ingénieur Logiciel Sénior</title>
+  <link rel="icon" type="image/png" href="assets/Clock.png" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Devicon (tech logos) -->
+  <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0: #0b1220;
+      --bg1: #0f1b33;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.88);
+      --muted: rgba(255,255,255,.65);
+      --accent: #6ee7ff;
+      --accent2: #a78bfa;
+    }
+
+    html {  margin: 0; padding: 0; scroll-behavior: smooth; }
+    body{
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(110,231,255,.20), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(167,139,250,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 60%, #0b1220 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .navbar{
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55) !important;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .btn-accent{
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.95));
+      border: 0;
+      color: #07101f;
+      font-weight: 700;
+    }
+    .btn-accent:hover{ filter: brightness(1.05); }
+
+    .btn-outline-glass{
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+    }
+    .btn-outline-glass:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.25);
+      color: var(--text);
+    }
+
+    .glass{
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+    }
+
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.4rem .75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .section-title{
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .lead-muted{ color: var(--muted); }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.35rem .6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.80);
+      font-size: .9rem;
+      margin: .2rem .2rem 0 0;
+      white-space: nowrap;
+    }
+    .chip .devicon{
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    /* Tech stack grid */
+    .skill-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .6rem;
+    }
+    .skill-chip{
+      --level: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: .75rem;
+      padding: .55rem .75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+    }
+    .skill-chip span:first-child{
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      flex-wrap: wrap;
+      line-height: 1.2;
+      white-space: normal;
+    }
+    .skill-chip .devicon{
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .skill-chip:hover{
+      border-color: rgba(255,255,255,.25);
+      background: rgba(255,255,255,.06);
+    }
+    .skill-chip[data-level="1"]{ --level: 1; }
+    .skill-chip[data-level="2"]{ --level: 2; }
+    .skill-chip[data-level="3"]{ --level: 3; }
+    .skill-chip[data-level="4"]{ --level: 4; }
+    .dots{
+      position: relative;
+      width: 72px;
+      height: 10px;
+      flex: 0 0 72px;
+      background-image: radial-gradient(circle, rgba(255,255,255,.25) 45%, transparent 46%);
+      background-size: 18px 10px;
+      background-repeat: repeat-x;
+      background-position: left center;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+    .dots::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: calc(var(--level) * 25%);
+      background-image: radial-gradient(circle, rgba(110,231,255,.9) 45%, transparent 46%);
+      background-size: 18px 10px;
+      background-repeat: repeat-x;
+      background-position: left center;
+    }
+    .legend .dot{
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+      background: rgba(255,255,255,.25);
+      vertical-align: middle;
+    }
+    .legend .dot-on{
+      background: rgba(110,231,255,.9);
+    }
+
+    .kpi{
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+    }
+    .kpi .value{
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .kpi .label{
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    /* Timeline */
+    .timeline{
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      left:.4rem;
+      top:.2rem;
+      bottom:.2rem;
+      width:2px;
+      background: rgba(255,255,255,.12);
+    }
+    .t-item{
+      position: relative;
+      padding: 0 0 1.25rem 1rem;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .t-item:last-child{ padding-bottom: 0; }
+    
+    .t-role{ font-weight: 800; }
+    .t-meta{ color: var(--muted); font-size: .95rem; }
+
+    .link-soft{
+      color: rgba(255,255,255,.80);
+      text-decoration: none;
+    }
+    .link-soft:hover{ color: rgba(255,255,255,.95); text-decoration: underline; }
+
+    .project-media{
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    footer{
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+    }
+
+    /* Scroll spy offset for fixed navbar */
+    section{ scroll-margin-top: 90px; }
+
+    /* Optional: small "top" button */
+    .to-top{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1030;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .2s ease;
+      pointer-events: none;
+    }
+    .to-top.show{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Theme toggle */
+    body.theme-light{
+      --bg0: #f2f5fb;
+      --bg1: #e7edf8;
+      --card: rgba(8,15,25,.06);
+      --border: rgba(8,15,25,.14);
+      --text: rgba(8,15,25,.88);
+      --muted: rgba(8,15,25,.65);
+      --accent: #1a9cff;
+      --accent2: #7c7cf5;
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(26,156,255,.14), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(124,124,245,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 60%, #f2f5fb 100%);
+      color: var(--text);
+    }
+    body.theme-light .navbar{
+      background: rgba(242,245,251,.75) !important;
+      border-bottom-color: rgba(8,15,25,.12);
+    }
+    body.theme-light .navbar .navbar-brand,
+    body.theme-light .navbar .nav-link{
+      color: rgba(8,15,25,.82) !important;
+    }
+    body.theme-light .navbar .nav-link.active,
+    body.theme-light .navbar .nav-link:hover{
+      color: rgba(8,15,25,.98) !important;
+    }
+    body.theme-light .navbar-toggler{
+      border-color: rgba(8,15,25,.25);
+    }
+    body.theme-light .navbar-toggler-icon{
+      filter: invert(1) brightness(.3);
+    }
+    body.theme-light .btn-outline-glass{
+      border-color: rgba(8,15,25,.18);
+      color: var(--text);
+    }
+    body.theme-light .chip{
+      border-color: rgba(8,15,25,.16);
+      background: rgba(8,15,25,.04);
+      color: rgba(8,15,25,.78);
+    }
+    body.theme-light .skill-chip{
+      border-color: rgba(8,15,25,.16);
+      background: rgba(8,15,25,.04);
+    }
+    body.theme-light .skill-chip:hover{
+      border-color: rgba(8,15,25,.28);
+      background: rgba(8,15,25,.08);
+    }
+    body.theme-light .dots{
+      background-image: radial-gradient(circle, rgba(8,15,25,.2) 45%, transparent 46%);
+    }
+    body.theme-light .dots::after{
+      background-image: radial-gradient(circle, rgba(26,156,255,.9) 45%, transparent 46%);
+    }
+    body.theme-light .legend .dot{
+      background: rgba(8,15,25,.2);
+    }
+    body.theme-light .legend .dot-on{
+      background: rgba(26,156,255,.9);
+    }
+    body.theme-light .link-soft{
+      color: rgba(8,15,25,.78);
+    }
+    body.theme-light .link-soft:hover{
+      color: rgba(8,15,25,.98);
+    }
+    body.theme-light .text-white-50{
+      color: rgba(8,15,25,.62) !important;
+    }
+    body.theme-light .kpi{
+      border-color: rgba(8,15,25,.14);
+      background: rgba(8,15,25,.04);
+    }
+    body.theme-light .kpi .label{
+      color: rgba(8,15,25,.65);
+    }
+
+    /* Logo carousel */
+    .logo-carousel{
+      position: relative;
+    }
+    .logo-carousel .logo-strip{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      min-height: 120px;
+    }
+    .logo-carousel .logo-tile{
+      width: 120px;
+      height: 72px;
+      padding: .5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-carousel .logo-tile img{
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
+    }
+    body.theme-light .logo-carousel .logo-tile{
+      border-color: rgba(8,15,25,.14);
+      background: rgba(8,15,25,.04);
+    }
+
+    /* Sport section */
+    .sport-kpi{
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -.01em;
+    }
+    .sport-row{
+      border-radius: 12px;
+    }
+    .sport-row:hover{
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Skills carousel */
+    .skills-carousel .carousel-item{
+      padding: .25rem 2.75rem;
+    }
+    .skills-carousel .carousel-control-prev,
+    .skills-carousel .carousel-control-next{
+      width: 3.25rem;
+    }
+    .skills-carousel .carousel-indicators [data-bs-target]{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,.45);
+    }
+    body.theme-light .skills-carousel .carousel-indicators [data-bs-target]{
+      background-color: rgba(8,15,25,.35);
+    }
+    .skills-carousel .logo-tile i{
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .t-logo{
+      width:44px;
+      height:44px;
+      flex:0 0 44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .t-logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:8px;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.25));
+      background:rgba(255,255,255,.25);
+    }
+    /* Contenu à droite */
+    .t-content{ flex:1; min-width:0; }
+    [id^="badge-styling-div"] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-smooth-scroll="true" tabindex="0">
+
+  <!-- NAV -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#top">
+        <img src="assets/logo-blanc.png" alt="Logo Moobotec" width="28" height="28" class="me-2">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tech-stack">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#posts">Posts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Parcours</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Formation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sport">Sport</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex ms-lg-3 gap-2">
+          <button class="btn btn-outline-glass btn-sm" type="button" id="themeToggle" aria-label="Basculer le thème">
+            <i class="bi bi-moon-stars me-1" id="themeIcon"></i><span id="themeLabel">Nuit</span>
+          </button>
+          <a class="btn btn-outline-glass btn-sm" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener">
+            <i class="bi bi-linkedin me-1"></i>LinkedIn
+          </a>
+          <a class="btn btn-accent btn-sm" href="#contact">
+            <i class="bi bi-send me-1"></i>Me contacter
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+ <section id="top" class="pt-5">
+  <div class="container pt-5">
+    <div class="row g-4 align-items-stretch mt-2">
+      <div class="col-lg-7">
+        <div class="glass p-4 p-md-5 h-100">
+          <div class="hero-badge mb-3">
+            <i class="bi bi-geo-alt"></i>
+            Basé près de Limoges (France)
+          </div>
+
+          <h1 class="display-5 fw-bold mb-3">
+            Hi, je suis David Daumand —
+            <span class="text-white-50">“simple codeur”.</span>
+            <a class="ms-1 link-soft" href="https://fr.wikipedia.org/wiki/Pinot_simple_flic" target="_blank" rel="noopener">
+              (la réf)
+            </a>
+          </h1>
+
+          <p class="lead lead-muted mb-4">
+            19 ans d’expérience entre <strong>systèmes critiques</strong> (défense, embarqué/temps réel),
+            <strong>applications industrielles</strong> (C/C++/.NET/PHP) et <strong>2D/3D</strong> (Unity).<br>
+            Mon truc en plus : <strong>architecture</strong>, <strong>qualité</strong> et <strong>livraison</strong> orientée résultats.
+          </p>
+
+          <div class="text-white-75 mb-4" style="line-height:1.65">
+            <p class="mb-2">
+              Je ne sauve pas le monde et je ne hacke pas la NASA.
+              Par contre, j’aide les équipes à livrer des applis qui tournent
+              <strong>proprement</strong>, <strong>efficacement</strong> — avec un peu d’humour (parce que le code est déjà assez sérieux).
+            </p>
+            <p class="mb-2">
+              Je développe, je corrige, j’optimise : je transforme des idées en fonctionnalités fiables,
+              des bugs en solutions, et des projets en outils qui tiennent la route.
+            </p>
+
+            <div class="mt-3">
+              <div class="fw-semibold mb-1">🎯 Ma méthode</div>
+              <ul class="mb-0 ps-3">
+                <li>Comprendre vite</li>
+                <li>Simplifier ce qui peut l’être</li>
+                <li>Livrer proprement</li>
+              </ul>
+            </div>
+
+            <div class="mt-3">
+              <div class="fw-semibold mb-1">🤝 Pourquoi travailler ensemble ?</div>
+              <ul class="mb-0 ps-3">
+                <li>Direct, autonome, efficace</li>
+                <li>Je fais ce que je promets (et je le documente)</li>
+                <li>Disponible, sans jargon ni chichi</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="chip"><i class="bi bi-award"></i>Application sur mesure</span>
+            <span class="chip"><i class="bi bi-cpu"></i>Embarqué & temps réel</span>
+            <span class="chip"><i class="bi bi-shield-check"></i>Qualité & validation</span>
+            <span class="chip"><i class="bi bi-boxes"></i>Architecture & intégration</span>
+            <span class="chip"><i class="bi bi-window"></i>2D/3D & IHM</span>
+            <span class="chip"><i class="bi bi-list-check"></i>Cybersécurité & IA</span>
+          </div>
+
+          <div class="text-center gap-2 ">
+            <a class="btn btn-accent btn-lg" href="#projects">
+              <i class="bi bi-stars me-1"></i>Voir les projets
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="glass p-4 p-md-5 h-100">
+          <h2 class="h4 section-title mb-3">Carte de visite</h2>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="rounded-circle border"
+                 style="width:64px;height:64px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)!important;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+              <img src="assets/daumand.jpg" alt="Portrait de David Daumand" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div>
+              <div class="text-white-50">Ingénieur logiciel sénior • Freelance</div>
+              <div class="fw-semibold">Disponible ASAP</div>
+            </div>
+          </div>
+
+          <div class="vstack gap-2">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope"></i>
+              <a class="link-soft" href="mailto:daumanddavid@hotmail.fr">daumanddavid@hotmail.fr</a>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-linkedin"></i>
+              <a class="link-soft" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener">
+                linkedin.com/in/david-daumand-93829612a
+              </a>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-instagram"></i>
+              <a class="link-soft" href="https://www.instagram.com/moobotec?igsh=NXdodG5jMWd4bGFm&utm_source=qr" target="_blank" rel="noopener">
+                instagram.com/moobotec
+              </a>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-github"></i>
+              <a class="link-soft" href="https://github.com/moobotec" target="_blank" rel="noopener">
+                github.com/moobotec
+              </a>
+            </div>
+          </div>
+
+          <hr class="my-4 border-opacity-25">
+
+          <!--<h3 class="h6 text-uppercase text-white-50 mb-2">Focus</h3>
+          <ul class="mb-0 text-white-75">
+            <li>Solutions industrielles sur mesure (web/API, .NET, SQL)</li>
+            <li>Logiciels critiques : exigences, intégration, tests, doc</li>
+            <li>Unity (Dév. 2D/3D), Systèmes multimédia, IHM</li>
+            <li>Anglais technique : lu, écrit</li>
+          </ul>-->
+          <h3 class="h6 text-uppercase text-white-50 mb-2">Focus</h3>
+
+<div class="row g-2">
+  <div class="col-12">
+    <div class="p-3 rounded-4"
+         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+      <div class="fw-bold mb-1">
+        <i class="bi bi-building-gear me-2"></i>Solutions industrielles sur mesure
+      </div>
+      <div class="text-white-50">
+        Web / API • .NET • SQL • intégration pragmatique en environnement existant
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="p-3 rounded-4"
+         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+      <div class="fw-bold mb-1">
+        <i class="bi bi-shield-check me-2"></i>Logiciels critiques & qualité
+      </div>
+      <div class="text-white-50">
+        Exigences • traçabilité • tests • documentation • CI/CD
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="p-3 rounded-4"
+         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+      <div class="fw-bold mb-1">
+        <i class="bi bi-controller me-2"></i>Unity & expériences 2D/3D
+      </div>
+      <div class="text-white-50">
+        Gameplay systems • outils • UI • cinématiques • optimisation
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="p-3 rounded-4"
+         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+      <div class="fw-bold mb-1">
+        <i class="bi bi-translate me-2"></i>Anglais technique
+      </div>
+      <div class="text-white-50">
+        Lu • écrit • documentation et échanges techniques
+      </div>
+    </div>
+  </div>
+</div>
+
+
+          <div class="mt-4">
+            <a class="btn btn-outline-glass w-100" href="#contact">
+              <i class="bi bi-calendar2-check me-1"></i>Planifier un échange
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- ABOUT -->
+  <section id="about" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="glass p-4 p-md-5 h-100">
+            <h2 class="h3 section-title mb-3">À propos</h2>
+            <p class="lead lead-muted mb-3">
+              Ingénieur logiciel sénior basé à Limoges, je travaille sur des projets
+              à forte contrainte (qualité, sécurité, intégration, performance) — de la
+              défense à l’industrie, jusqu’aux expériences 2D/3D.
+            </p>
+            <p class="mb-0 text-white-75">
+              Mon approche : cadrage clair, architecture propre, instrumentation/logs,
+              documentation utile, et un focus constant sur la maintenabilité.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="glass p-4 p-md-5 h-100">
+            <h3 class="h5 section-title mb-3">Domaines d’intervention</h3>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 rounded-4" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                  <div class="fw-bold mb-1"><i class="bi bi-diagram-3 me-2"></i>R&D & Ingénierie système</div>
+                  <div class="text-white-50">Architecture, intégration systèmes complexes, instrumentation.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 rounded-4" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                  <div class="fw-bold mb-1"><i class="bi bi-code-slash me-2"></i>Développement logiciel</div>
+                  <div class="text-white-50">Embarqué/temps réel, apps industrielles, web/API, 2D/3D.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 rounded-4" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                  <div class="fw-bold mb-1"><i class="bi bi-check2-square me-2"></i>Tests & Validation</div>
+                  <div class="text-white-50">Tests unitaires, intégration, fiches de tests, qualification.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 rounded-4" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                  <div class="fw-bold mb-1"><i class="bi bi-clipboard-data me-2"></i>Qualité & Projet</div>
+                  <div class="text-white-50">PMO, doc, exigences, CI/CD, méthodes Agile/Scrum.</div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4 border-opacity-25">
+
+            <div class="d-flex flex-wrap">
+              <span class="chip">Linux</span>
+              <span class="chip">Windows</span>
+              <span class="chip">VxWorks</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Git / SVN</span>
+              <span class="chip">REST API</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Unity</span>
+              <span class="chip">Qt</span>
+              <span class="chip">.NET</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="tech-stack" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Technos & Compétences</h2>
+          <div class="text-white-50">Synthèse des stacks et outils maîtrisés.</div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="glass p-4 p-md-5 h-100">
+            <h3 class="h6 text-uppercase text-white-50 mb-3">Langages</h3>
+            <div class="skill-grid">
+              <div class="skill-chip" data-level="4"><span><i class="devicon-c-plain colored"></i><i class="devicon-cplusplus-plain colored"></i>C / C++</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="4"><span><i class="devicon-csharp-plain colored"></i><i class="devicon-dotnetcore-plain colored"></i>C# (.NET 3.1/6/8)</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="4"><span><i class="devicon-php-plain colored"></i>PHP</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-javascript-plain colored"></i>JavaScript</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-python-plain colored"></i>Python</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-microsoftsqlserver-plain colored"></i>SQL</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-visualbasic-plain colored"></i>VB / VB .NET</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span>UML</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Assembleur (PIC/Atmel)</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span><i class="devicon-java-plain colored"></i>Java</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span><i class="devicon-typescript-plain colored"></i>TypeScript</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span><i class="devicon-matlab-plain colored"></i>Matlab / Simulink</span><span class="dots"></span></div>
+            </div>
+
+            <hr class="my-4 border-opacity-25">
+
+            <h3 class="h6 text-uppercase text-white-50 mb-3">Frameworks / UI / Web / 2D-3D</h3>
+            <div class="skill-grid">
+              <div class="skill-chip" data-level="4"><span><i class="devicon-qt-plain colored"></i>Qt4 / Qt5 / Qt6</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span>Boost</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-unity-plain colored"></i>Unity 2D/3D</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span>API REST</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-bootstrap-plain colored"></i>Bootstrap</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-html5-plain colored"></i><i class="devicon-css3-plain colored"></i>HTML5 / CSS3</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span><i class="devicon-angularjs-plain colored"></i>Angular</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-dotnetcore-plain colored"></i>ASP.NET Core</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Entity Framework Core</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>OpenAPI / Swagger</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>WebSockets</span><span class="dots"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass p-4 p-md-5 h-100">
+            <h3 class="h6 text-uppercase text-white-50 mb-3">Systèmes / DevOps / Outillage</h3>
+            <div class="skill-grid">
+              <div class="skill-chip" data-level="4"><span><i class="devicon-linux-plain colored"></i>Linux</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="4"><span><i class="devicon-windows8-original colored"></i>Windows</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-docker-plain colored"></i>Docker</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-git-plain colored"></i>Git</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-subversion-plain colored"></i>SVN</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>CI/CD (GitLab CI)</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-jira-plain colored"></i><i class="devicon-confluence-plain colored"></i>Jira / Confluence</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>DevOps</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Doxygen</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-raspberrypi-plain colored"></i>Raspbian</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>VxWorks</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-nginx-original colored"></i><i class="devicon-apache-plain colored"></i>Nginx / Apache</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Docker Compose</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>SSH</span><span class="dots"></span></div>
+            </div>
+
+            <hr class="my-4 border-opacity-25">
+
+            <h3 class="h6 text-uppercase text-white-50 mb-3">Réseaux / Protocoles / Qualité</h3>
+            <div class="skill-grid">
+              <div class="skill-chip" data-level="3"><span>UDP / TCP</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>SIP / SMTP / IMAP / FTP</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>SFTP</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>WebRTC</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Vonage (intégration)</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>MISRA C</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span>Tests unitaires & intégration</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Bancs de test / qualification</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Bus CAN</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Vector CANoe</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Win32</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Log4cxx</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span><i class="devicon-oracle-original colored"></i>Oracle</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-sqlite-plain colored"></i>SQLite</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-opencv-plain colored"></i>OpenCV</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span><i class="devicon-opengl-plain colored"></i>OpenGL</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Bullet Physics</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>VR (HTC Vive)</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Telerik</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>ASP / ASP.NET</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span>Aseprite</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span><i class="devicon-gimp-plain colored"></i>Gimp</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span><i class="devicon-blender-original colored"></i>Blender</span><span class="dots"></span></div>
+            </div>
+
+            <div class="mt-4 small text-white-50">
+              <span class="legend me-3"><span class="dot dot-on"></span> Débutant</span>
+              <span class="legend me-3"><span class="dot dot-on"></span><span class="dot dot-on"></span> Intermédiaire</span>
+              <span class="legend me-3"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span> Maîtrise</span>
+              <span class="legend"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span> Expert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS CAROUSEL -->
+  <section id="skills-focus" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Compétences en action</h2>
+          <div class="text-white-50">Outils et stacks que je pratique.</div>
+        </div>
+      </div>
+
+      <div id="skillsCarousel" class="carousel slide skills-carousel logo-carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="logo-strip">
+              <div class="logo-tile"><i class="devicon-c-plain colored" aria-label="C"></i></div>
+              <div class="logo-tile"><i class="devicon-cplusplus-plain colored" aria-label="C++"></i></div>
+              <div class="logo-tile"><i class="devicon-csharp-plain colored" aria-label="C#"></i></div>
+              <div class="logo-tile"><i class="devicon-dotnetcore-plain colored" aria-label=".NET"></i></div>
+              <div class="logo-tile"><i class="devicon-php-plain colored" aria-label="PHP"></i></div>
+              <div class="logo-tile"><i class="devicon-javascript-plain colored" aria-label="JavaScript"></i></div>
+              <div class="logo-tile"><i class="devicon-typescript-plain colored" aria-label="TypeScript"></i></div>
+              <div class="logo-tile"><i class="devicon-python-plain colored" aria-label="Python"></i></div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="logo-strip">
+              <div class="logo-tile"><i class="devicon-java-plain colored" aria-label="Java"></i></div>
+              <div class="logo-tile"><i class="devicon-html5-plain colored" aria-label="HTML5"></i></div>
+              <div class="logo-tile"><i class="devicon-css3-plain colored" aria-label="CSS3"></i></div>
+              <div class="logo-tile"><i class="devicon-bootstrap-plain colored" aria-label="Bootstrap"></i></div>
+              <div class="logo-tile"><i class="devicon-angularjs-plain colored" aria-label="Angular"></i></div>
+              <div class="logo-tile"><i class="devicon-microsoftsqlserver-plain colored" aria-label="SQL Server"></i></div>
+              <div class="logo-tile"><i class="devicon-oracle-original colored" aria-label="Oracle"></i></div>
+              <div class="logo-tile"><i class="devicon-sqlite-plain colored" aria-label="SQLite"></i></div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="logo-strip">
+              <div class="logo-tile"><i class="devicon-qt-plain colored" aria-label="Qt"></i></div>
+              <div class="logo-tile"><i class="devicon-unity-plain colored" aria-label="Unity"></i></div>
+              <div class="logo-tile"><i class="devicon-docker-plain colored" aria-label="Docker"></i></div>
+              <div class="logo-tile"><i class="devicon-git-plain colored" aria-label="Git"></i></div>
+              <div class="logo-tile"><i class="devicon-linux-plain colored" aria-label="Linux"></i></div>
+              <div class="logo-tile"><i class="devicon-windows8-original colored" aria-label="Windows"></i></div>
+              <div class="logo-tile"><i class="devicon-raspberrypi-plain colored" aria-label="Raspberry Pi"></i></div>
+              <div class="logo-tile"><i class="devicon-nginx-original colored" aria-label="Nginx"></i></div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="logo-strip">
+              <div class="logo-tile"><i class="devicon-apache-plain colored" aria-label="Apache"></i></div>
+              <div class="logo-tile"><i class="devicon-jira-plain colored" aria-label="Jira"></i></div>
+              <div class="logo-tile"><i class="devicon-confluence-plain colored" aria-label="Confluence"></i></div>
+              <div class="logo-tile"><i class="devicon-powershell-plain colored" aria-label="PowerShell"></i></div>
+              <div class="logo-tile"><i class="devicon-bash-plain colored" aria-label="Bash"></i></div>
+              <div class="logo-tile"><i class="devicon-visualbasic-plain colored" aria-label="Visual Basic"></i></div>
+              <div class="logo-tile"><i class="devicon-gimp-plain colored" aria-label="Gimp"></i></div>
+              <div class="logo-tile"><i class="devicon-blender-original colored" aria-label="Blender"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#skillsCarousel" data-bs-slide="prev" aria-label="Précédent">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#skillsCarousel" data-bs-slide="next" aria-label="Suivant">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Projets sélectionnés</h2>
+          <div class="text-white-50">Quelques réalisations représentatives (tech, produit, R&D).</div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Zelda-like 2D — Unity • C#</h3>
+                <div class="text-white-50">Gameplay top-down • IA • Inventaire • Quêtes • Cinématiques</div>
+              </div>
+              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                Moobotec • 2026 →
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Conception complète : mouvements, collisions, objets utilisables, dialogues interactifs,
+              combat, gestion de scènes, VFX, optimisation. Création d’assets pixel-art sous Aseprite.
+            </p>
+
+          <img 
+            src="assets/oot_mystery_forest_4.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="Mystery Forest"
+          />
+
+          <div class="text-center mb-3">
+            <a
+              href="https://github.com/moobotec/zelda-oot-2d-unity"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+              style="border-color: rgba(255,255,255,.25);"
+            >
+              <i class="bi bi-github"></i>
+              Voir le projet sur GitHub
+            </a>
+          </div>
+
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">C#</span>
+              <span class="chip">Unity</span>
+              <span class="chip">2D/Tools</span>
+              <span class="chip">Aseprite</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Checkmat.js — Javascript</h3>
+                <div class="text-white-50">Jeu d'échecs • Moteur de règles • UI web</div>
+              </div>
+              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                Moobotec • 2024 →
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Développement d'un jeu d'échecs en JavaScript : logique des coups, validation des règles,
+              séparation moteur/affichage et interface web simple pour la prise en main.
+            </p>
+
+          <img 
+            src="assets/checkmate.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="Checkmat.js"
+          />
+
+          <div class="text-center mb-3">
+            <a
+              href="https://github.com/moobotec/checkmate.js"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+              style="border-color: rgba(255,255,255,.25);"
+            >
+              <i class="bi bi-github"></i>
+              Voir le projet sur GitHub
+            </a>
+          </div>
+
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">JavaScript</span>
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">DOM</span>
+              <span class="chip">Algorithmique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Timecaps — Plateforme web</h3>
+                <div class="text-white-50">Produit web • Backend/Frontend • Déploiement • SEO</div>
+              </div>
+              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                timecaps.fr
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Plateforme de capsules temporelles géolocalisées, accessible à des dates/conditions définies, qui met l’accent sur des interactions rares et pertinentes. Le projet combine gestion complète des capsules (contenu, médias, temps différé), communauté maîtrisée, multilingue frontend, et une architecture modulaire orientée usages culturels/artistiques. Côté technique : backend/API/BDD, frontend web, WebSocket pour temps réel, messagerie persistante, et une conception axée sécurité et indépendance technologique.
+            </p>
+
+          <img 
+            src="assets/timecaps.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="Timecaps"
+          />
+
+          <div class="text-center mb-3">
+            <a
+              href="https://timecaps.fr"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+              style="border-color: rgba(255,255,255,.25);"
+            >
+              <i class="bi bi-globe"></i>
+              Voir le projet
+            </a>
+          </div>
+
+            <div class="d-flex flex-wrap">
+              <span class="chip">SQL Server</span>
+              <span class="chip">HTML</span>
+              <span class="chip">PHP</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Bootstrap</span>
+              <span class="chip">Docker</span>
+              <span class="chip">API</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">AsDuNumerique — Plateforme web</h3>
+                <div class="text-white-50">Mise en relation • Accessibilité • Chat • Visio</div>
+              </div>
+              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                asdunumerique.fr
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Plateforme numérique dédiée à la mise en relation entre aidants et personnes accompagnées, avec un fort accent sur l’accessibilité, l’inclusion numérique et l’accompagnement des publics fragiles.
+              Elle propose des outils de communication modernes et sécurisés, tels qu’un système de messagerie instantanée (chat) et l’intégration de solutions de visioconférence externes, afin de faciliter les échanges à distance, le suivi et l’assistance humaine.
+              Le projet vise à réduire la fracture numérique, simplifier l’accès aux services d’aide et offrir une expérience utilisateur ergonomique, rassurante et adaptée aux contraintes des utilisateurs peu à l’aise avec les outils numériques.
+            </p>
+
+          <img 
+            src="assets/asdunumerique.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="AsDuNumerique"
+          />
+
+          <div class="text-center mb-3">
+            <a
+              href="https://asdunumerique.fr"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+              style="border-color: rgba(255,255,255,.25);"
+            >
+              <i class="bi bi-globe"></i>
+              Voir le projet
+            </a>
+          </div>
+
+            <div class="d-flex flex-wrap">
+              <span class="chip">SQL Server</span>
+              <span class="chip">HTML</span>
+              <span class="chip">PHP</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Bootstrap</span>
+              <span class="chip">Docker</span>
+              <span class="chip">API</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <h3 class="h5 fw-bold mb-1">POC Terratis — Optimisation de planification</h3>
+            <div class="text-white-50">Répartition/itinéraires sur zone • Algo • Web/Backend</div>
+            <p class="mt-3 mb-3 text-white-75">
+              POC d’optimisation de répartition sur une zone donnée (logique de points/itinéraires),
+              conception et implémentation orientées performance.
+            </p>
+            <div class="d-flex flex-wrap">
+              <span class="chip">Python</span>
+              <span class="chip">PHP</span>
+              <span class="chip">SQL</span>
+              <span class="chip">API</span>
+            </div>
+          </div>
+        </div>
+
+         Project 4 
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <h3 class="h5 fw-bold mb-1">Pré-test WebRTC — MedinBox</h3>
+            <div class="text-white-50">Fiabilisation expérience utilisateur • Diagnostic avant session</div>
+            <p class="mt-3 mb-3 text-white-75">
+              Outil de pré-test de connexion WebRTC destiné aux utilisateurs avant entrée en salle virtuelle
+              (diagnostic et guidance). Intégrations API (ex. Vonage).
+            </p>
+            <div class="d-flex flex-wrap">
+              <span class="chip">WebRTC</span>
+              <span class="chip">C# .NET 8</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+
+         Project 5 
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <h3 class="h5 fw-bold mb-1">Simulateur 3D militaire — Unity</h3>
+            <div class="text-white-50">Scénarios de tests • Physique/balistique simplifiées</div>
+            <p class="mt-3 mb-3 text-white-75">
+              Génération de scénarios empiriques réalistes, environnement pseudo-réel,
+              contraintes extrêmes (vibrations, dispersion, etc.). Simulation CAN via Canoe (Vector).
+            </p>
+            <div class="d-flex flex-wrap">
+              <span class="chip">C#</span>
+              <span class="chip">Unity 3D</span>
+              <span class="chip">CAN (Canoe)</span>
+              <span class="chip">Windows</span>
+            </div>
+          </div>
+        </div>
+
+         Project 6
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <h3 class="h5 fw-bold mb-1">XLPro4 3D — Legrand</h3>
+            <div class="text-white-50">App 3D • IHM • DevOps • Agile/Scrum</div>
+            <p class="mt-3 mb-3 text-white-75">
+              Participation au développement d’une application 3D (cycle Agile),
+              intégration/industrialisation et collaboration multi-profils.
+            </p>
+            <div class="d-flex flex-wrap">
+              <span class="chip">Qt6</span>
+              <span class="chip">C++</span>
+              <span class="chip">DevOps</span>
+              <span class="chip">Scrum</span>
+            </div>
+          </div>
+        </div>-->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="posts" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Posts LinkedIn</h2>
+          <div class="text-white-50">Partages et mises en avant d'innovations.</div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Prototype Terratis — Lutte anti-moustiques</h3>
+                <div class="text-white-50">Innovation environnement & santé publique</div>
+              </div>
+              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                LinkedIn
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Présentation d'un prototype conçu chez Celios (Limoges) pour Terratis :
+              planification efficace des lâchers de moustiques stériles sur des zones ciblées.
+            </p>
+
+            <div class="text-center mb-3">
+              <a
+                href="https://www.linkedin.com/feed/update/urn:li:activity:7318621088245051395/"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+                style="border-color: rgba(255,255,255,.25);"
+              >
+                <i class="bi bi-linkedin"></i>
+                Voir le post
+              </a>
+            </div>
+
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">Prototype</span>
+              <span class="chip">Planification</span>
+              <span class="chip">Algorithmie</span>
+              <span class="chip">Santé Publique</span>
+              <span class="chip">Environnement</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Cube immersif VR — logement du futur</h3>
+                <div class="text-white-50">Expérience immersive & aménagement</div>
+              </div>
+              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                LinkedIn
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Article de presse sur un cube immersif pour visualiser un logement en VR à Guéret :
+              outil d'aide à la décision pour aménagement et rénovation.
+            </p>
+
+            <div class="text-center mb-3">
+              <a
+                href="https://www.linkedin.com/feed/update/urn:li:activity:6418095517271617536/"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+                style="border-color: rgba(255,255,255,.25);"
+              >
+                <i class="bi bi-linkedin"></i>
+                Voir le post
+              </a>
+            </div>
+
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">VR</span>
+              <span class="chip">Cube Immersif</span>
+              <span class="chip">Domotique</span>
+              <span class="chip">Silver Eco</span>
+              <span class="chip">Innovation</span>
+              <span class="chip">Maison Simulée</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Parcours professionnel</h2>
+          <div class="text-white-50">Une trajectoire orientée systèmes exigeants + industrie + produit + client grand compte.</div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="glass p-4 h-100">
+            <h3 class="h5 fw-bold mb-3">Ce que j’apporte</h3>
+            <ul class="mb-0 text-white-75">
+              <li><strong>Qualité</strong> : exigences, tests, fiches de tests, doc utile et exploitable.</li>
+              <li><strong>Robustesse</strong> : logs/diagnostic, stabilité, performance, maintenabilité.</li>
+              <li><strong>Intégration</strong> : CI/CD, environnements, protocoles (UDP/TCP), outillage.</li>
+              <li><strong>Polyvalence</strong> : embarqué/temps réel, web/API, 2D/3D, IHM.</li>
+            </ul>
+
+            <hr class="my-4 border-opacity-25">
+
+            <div class="row g-3">
+               <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Défense</div>
+                  <div class="label">Systèmes critiques</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Aéronautique</div>
+                  <div class="label">Systèmes temps réel</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Naval</div>
+                  <div class="label">Systèmes contraints </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Férovière</div>
+                  <div class="label">Application dédié</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Industrie</div>
+                  <div class="label">Process & traçabilité</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Web</div>
+                  <div class="label">API & Bootstrap</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">3D</div>
+                  <div class="label">Unity</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="glass p-4 p-md-5">
+            <div class="timeline">
+
+              <div class="t-item">
+                <div class="t-logo">
+                  <img
+                    src="nope"
+                    alt="Moobotec"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="t-content">
+                  <div class="t-role">Freelance — Moobotec</div>
+                  <div class="t-meta">Août 2025 → aujourd’hui • Limoges</div>
+                  <div class="text-white-75 mt-2">
+                    Dév. jeu 2D/3D (Unity) • Création & exploitation de <span class="text-white-50">timecaps.fr</span> & <span class="text-white-50">asdunumerique.fr</span> (plateforme web)
+                    • R&D continue • Construction d'une offre de solutions logicielles destinée aux entreprises de production industrielle • Construction d'une offre de solutions logicielles autour de la billetterie/événementiel
+                    • Prestations de service en tant que freelance.
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                  <img
+                    src="https://img.logo.dev/naval-group.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Naval Group"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+
+                <div class="t-content">
+                  <div class="t-role">Ingénieur Logiciel Expert — Naval Group (via Akkodis)</div>
+                  <div class="t-meta">Juin 2025 → Août 2025 • Angoulême</div>
+                  <div class="text-white-75 mt-2">
+                    Développement & intégration sur systèmes critiques : conception, modules, doc, amélioration continue.
+                    Stack : C++, Python, SQL, Qt, Boost, UDP/TCP, Linux/Windows, CI/CD, UML.
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                  <img
+                    src="https://img.logo.dev/celios.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&amp;size=128&amp;retina=false&amp;format=png&amp;theme=light"
+                    alt="Celios"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel Senior & Avant-Vente — Celios Labs</div>
+                  <div class="t-meta">Mars 2024 → Mai 2025 • Limoges • 95% remote</div>
+                  <div class="text-white-75 mt-2">
+                    Réponses à AO • Réalisation d'un POC de planification efficace des lâchers de moustiques stériles sur des zones ciblées (Terratis) • Outil pré-test WebRTC (MedinBox) •
+                    Docker / .NET 8 / API / Bootstrap / Angular.
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                  <img
+                    src="https://img.logo.dev/silab.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&amp;size=128&amp;retina=false&amp;format=png&amp;theme=light"
+                    alt="Silab"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="t-content">
+                  <div class="t-role">Ingénieur Logiciel Senior — Silab (via Celios)</div>
+                  <div class="t-meta">Jan 2024 → Fév 2024 • Brive • 100% remote</div>
+                  <div class="text-white-75 mt-2">
+                    Nouvelle application web de gestion de stocks (tissus/cellules). Stack : C# .NET, SQL, API, Bootstrap.
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/dekra-industrial.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&amp;size=128&amp;retina=false&amp;format=png&amp;theme=light"
+                    alt="DEKRA Industrial"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                  <div class="t-role">Ingénieur Logiciel Senior — Dekra Industriel (via Celios)</div>
+                  <div class="t-meta">Sep 2023 → Déc 2023 • Limoges</div>
+                  <div class="text-white-75 mt-2">
+                    Renfort sur pic de charge client. Stack : C# .NET, VB .NET, Telerik, SQL, ASP.
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/aircraftedbycollins.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Collins Aerospace"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel Senior — Collins Aerospace (via Celios)</div>
+                <div class="t-meta">Avr 2022 → Déc 2023 • Figeac • 95% remote</div>
+                <div class="text-white-75 mt-2">
+                  3 applications : rapports de contrôle, process industriel, gestion fichiers scannés.
+                  Stack : C# .NET, Oracle/SQL, API, Bootstrap, Doxygen.
+                </div>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/figeac-aero.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Figeac Aéro"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel Senior — Figeac Aéro (via Celios)</div>
+                <div class="t-meta">Jan 2022 → Mar 2022 • 100% remote</div>
+                <div class="text-white-75 mt-2">
+                  Application de gestion de stocks VMI + accompagnement collaborateur. Stack : C# .NET, SQL, API, Bootstrap.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/legrand.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Legrand"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel Senior — Legrand (via Celios)</div>
+                <div class="t-meta">Nov 2020 → Sep 2021 • Limoges • 80% remote</div>
+                <div class="text-white-75 mt-2">
+                  Dév. XLPro4 3D. Stack : Qt6, C++, DevOps, C#, Agile/Scrum.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/cta-international.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="DEKRA Industrial"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Indépendant — CTA International (via Audensiel)</div>
+                <div class="t-meta">Juil 2020 → Sep 2020 • Limoges</div>
+                <div class="text-white-75 mt-2">
+                  Simulateur 3D militaire : scénarios de test réalistes, balistique simplifiée, simulation CAN (Canoe).
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/nexeya.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Nexeya"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Expert Logiciel — Nexeya (via Abylsen Sigma)</div>
+                <div class="t-meta">Oct 2019 → Avr 2020 • Angoulême</div>
+                <div class="text-white-75 mt-2">
+                  Intégration/refonte Lyncea (surveillance/défense maritime). Stack : C, Qt, Linux/Windows, SVN.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="nope"
+                    alt="Agglo du Grand Guéret"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Responsable Technique Logiciel — Agglo du Grand Guéret</div>
+                <div class="t-meta">Avr 2018 → Sep 2019 • Guéret</div>
+                <div class="text-white-75 mt-2">
+                  Espace VR (cube immersif 5 faces, HTC Vive) • ERP de préparation de simulations • encadrement stagiaires.
+                  Stack : C#, .NET, Unity3D, Web (HTML/CSS/JS), Git.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/cta-international.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="CTA International"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Expert Logiciel Embarqué — CTA International (via SII)</div>
+                <div class="t-meta">Mar 2017 → Mar 2018 • Bourges</div>
+                <div class="text-white-75 mt-2">
+                  Programme JAGUAR : refonte librairies OS temps réel, portage Linux/Windows, doc exigences, tests.
+                  Stack : C, Qt, MISRA C, VxWorks, Jira/Confluence, Git.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/nexters.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Nexter System"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel — Nexter System (via SII)</div>
+                <div class="t-meta">Oct 2016 → Fév 2017 • Bourges</div>
+                <div class="text-white-75 mt-2">
+                  3 logiciels de simulation banc de test ARX25 : instrumentation, tests unitaires & intégration.
+                  Stack : C/C++, Win32, Log4Cxx, Visual Studio.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/transdev.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="CFTA/Transdev"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel — CFTA/Transdev (via SII)</div>
+                <div class="t-meta">Sep 2015 → Sep 2016 • Bourges</div>
+                <div class="text-white-75 mt-2">
+                  Librairie métier billettique (Linux/Windows/Android) avec Qt Creator. Stack : C/C++, SQLite, SFTP, Git.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/mbda-systems.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="MBDA"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel — MBDA (via SII)</div>
+                <div class="t-meta">Déc 2012 → Août 2015 • Le Subdray</div>
+                <div class="text-white-75 mt-2">
+                  Maintenance logiciels d’installation de tir (FREMM) + logiciel LOCMA (tests matériels automatisés).
+                  Stack : C/C++, Qt, VxWorks/Linux/Windows.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/bombardier.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Bombardier"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel indépendant — Bombardier (via Bull)</div>
+                <div class="t-meta">Juin 2012 → Sep 2012 • Toulouse</div>
+                <div class="text-white-75 mt-2">
+                  Intervention sur un programme écrit en C destiné à la mesure temps réel de la pression des pneus, écriture des tests unitaires au format RTRT.
+                  Stack : C, RTRT, Windows.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="nope"
+                    alt="R-BOT CONCEPT"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Fondateur — R-BOT CONCEPT</div>
+                <div class="t-meta">Jan 2010 → Mai 2014 • Limoges</div>
+                <div class="text-white-75 mt-2">
+                  Logiciel de streaming vidéo • simulation robotique • expertise en tests temps réel avioniques.
+                  Stack : C/C++, Qt, OpenCV, OpenGL, Bullet, Linux/Windows.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/safran-navigation-timing.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Sagem Défense & Sécurité"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel — Sagem Défense & Sécurité (via INCKA)</div>
+                <div class="t-meta">Mai 2008 → Déc 2009 • Éragny</div>
+                <div class="text-white-75 mt-2">
+                  Bancs de tests militaires (AASM/MICA) : C/C++, SQL, bus/protocoles, NI (Daq/Rio/FPGA), Labview RT.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/thalesgroup.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Thales Communication"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Ingénieur Logiciel — Thales Communication (via INCKA)</div>
+                <div class="t-meta">Nov 2006 → Avr 2008 • Colombes</div>
+                <div class="text-white-75 mt-2">
+                  Prototypage interception communications satellitaires : lots C/C++/Qt, conversion doc→PDF, protocoles (SIP, SMTP, IMAP, FTP) sur UDP/TCP.
+                </div>
+              </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-logo">
+                <img
+                    src="https://img.logo.dev/thalesgroup.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Thales Robotique"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                  </div>
+                <div class="t-content">
+                <div class="t-role">Stage — Thales Robotique & Mini UAV</div>
+                <div class="t-meta">Avr 2006 → Sep 2006 • Guyancourt</div>
+                <div class="text-white-75 mt-2">
+                  Logiciel démonstrateur de visualisation & préparation de mission (C/C++). Démo Eurosatory 2006.
+                </div>
+              </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO CAROUSEL -->
+  <section id="entreprises" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Entreprises</h2>
+          <div class="text-white-50"></div>
+        </div>
+      </div>
+
+      <div class="glass p-4 p-md-5">
+        <div id="logoCarousel" class="carousel slide logo-carousel" data-bs-ride="carousel" data-bs-interval="2500">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="logo-strip">
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/naval-group.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Naval Group"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/celios.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Celios"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/silab.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Silab"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/dekra-industrial.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Dekra Industrial"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/aircraftedbycollins.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Collins Aerospace"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="logo-strip">
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/figeac-aero.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Figeac Aéro"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/legrand.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Legrand"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/cta-international.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="CTA International"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/nexeya.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Nexeya"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/nexters.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Nexter System"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="logo-strip">
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/transdev.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Transdev"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/mbda-systems.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="MBDA"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/bombardier.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Bombardier"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/safran-navigation-timing.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Safran Navigation & Timing"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+                <div class="logo-tile">
+                  <img
+                    src="https://img.logo.dev/thalesgroup.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
+                    alt="Thales"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.onerror=null;this.src=window.DEFAULT_LOGO_DATAURI;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#logoCarousel" data-bs-slide="prev" aria-label="Logo précédent">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#logoCarousel" data-bs-slide="next" aria-label="Logo suivant">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Formation</h2>
+          <div class="text-white-50">Socle électronique/temps réel + télécom & instrumentation.</div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-3">
+              <div class="rounded-4 p-3"
+                  style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <i class="bi bi-mortarboard fs-4"></i>
+              </div>
+              <div>
+                <div class="fw-bold">
+                  Diplôme d’ingénieur —
+                  <a href="https://www.ensil-ensci.unilim.fr"
+                    target="_blank"
+                    rel="noopener"
+                    class="link-soft">
+                    ENSIL-ENSCI (Limoges)
+                  </a>
+                </div>
+                <div class="text-white-50">
+                  Spécialité électronique, télécommunication, instrumentation • Option temps réel
+                </div>
+                <div class="text-white-75 mt-2">
+                  <i class="bi bi-calendar3 me-2"></i>2006
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-3">
+              <div class="rounded-4 p-3"
+                  style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <i class="bi bi-award fs-4"></i>
+              </div>
+              <div>
+                <div class="fw-bold">
+                  DUT —
+                  <a href="https://iut-angouleme.univ-poitiers.fr"
+                    target="_blank"
+                    rel="noopener"
+                    class="link-soft">
+                    IUT d’Angoulême
+                  </a>
+                </div>
+                <div class="text-white-50">
+                  Électronique & informatique industrielle • Option télécommunication
+                </div>
+                <div class="text-white-75 mt-2">
+                  <i class="bi bi-calendar3 me-2"></i>2003
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <div class="col-lg-6">
+        <div class="glass p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="rounded-4 p-3"
+                style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <i class="bi bi-book fs-4"></i>
+            </div>
+            <div>
+              <div class="fw-bold">
+                Baccalauréat Scientifique —
+                <a href="https://palissy.fr"
+                  target="_blank"
+                  rel="noopener"
+                  class="link-soft">
+                  Lycée Bernard Palissy (Saintes)
+                </a>
+              </div>
+              <div class="text-white-50">
+                Filière scientifique
+              </div>
+              <div class="text-white-75 mt-2">
+                <i class="bi bi-calendar3 me-2"></i>2000
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="glass p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="rounded-4 p-3"
+                style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <i class="bi bi-tools fs-4"></i>
+            </div>
+            <div>
+              <div class="fw-bold">
+                BEP Électronique —
+                <a href="https://palissy.fr"
+                  target="_blank"
+                  rel="noopener"
+                  class="link-soft">
+                  Lycée Bernard Palissy (Saintes)
+                </a>
+              </div>
+              <div class="text-white-50">
+                Électronique & systèmes
+              </div>
+              <div class="text-white-75 mt-2">
+                <i class="bi bi-calendar3 me-2"></i>1998
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================
+       SPORT & LOISIRS
+  ======================== -->
+  <section id="sport" class="py-5">
+    <div class="container py-2 py-md-4">
+
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Sport & Loisirs</h2>
+          <div class="text-white-50">Course à pied • Trail • Babyfoot • Objectifs long terme</div>
+        </div>
+
+      </div>
+
+      <div class="row g-4">
+        <!-- Records -->
+        <div class="col-lg-7">
+
+          <div class="glass p-4 p-md-5 h-100">
+
+            <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
+              <div>
+                
+                <h3 class="h5 fw-bold mb-1"><i class="bi bi-cpu me-2"></i>Running (course à pied)</h3>
+                <div class="text-white-50">Performances officielles (FFA)</div>
+              </div>
+              <span class="badge rounded-pill"
+                    style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);">
+                Verneuil Oxygène • Masters
+              </span>
+            </div>
+
+            <div class="table-responsive mt-4">
+              <table class="table table-dark table-borderless align-middle mb-0"
+                     style="--bs-table-bg: transparent; --bs-table-color: rgba(255,255,255,.85);">
+                <thead style="color:rgba(255,255,255,.55);">
+                  <tr>
+                    <th>Épreuve</th>
+                    <th>Record</th>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr class="sport-row">
+                    <td class="fw-semibold">
+                      <i class="bi bi-stopwatch me-2"></i>5 km route (Non homologué)
+                    </td>
+                    <td>
+                      <span class="sport-kpi">22’14’’</span>
+                    </td>
+                    <td>06/04/2025</td>
+                    <td>Limoges</td>
+                  </tr>
+
+                  <tr class="sport-row">
+                    <td class="fw-semibold">
+                      <i class="bi bi-stopwatch me-2"></i>10 km route
+                    </td>
+                    <td>
+                      <span class="sport-kpi">45’46’’</span>
+                    </td>
+                    <td>02/04/2023</td>
+                    <td>Limoges</td>
+                  </tr>
+
+                  <tr class="sport-row">
+                    <td class="fw-semibold">
+                      <i class="bi bi-activity me-2"></i>Semi-marathon
+                    </td>
+                    <td>
+                      <span class="sport-kpi">1h51’10’’</span>
+                    </td>
+                    <td>19/03/2023</td>
+                    <td>Tulle</td>
+                  </tr>
+
+                  <tr class="sport-row">
+                    <td class="fw-semibold">
+                      <i class="bi bi-map me-2"></i>Marathon
+                    </td>
+                    <td>
+                      <span class="sport-kpi">3h51’15’’</span>
+                    </td>
+                    <td>26/11/2023</td>
+                    <td>La Rochelle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="text-white-50 small mt-3">
+              Source : Fédération Française d’Athlétisme (FFA). Données issues de mon profil.
+            </div>
+          </div>
+        </div>
+
+        <!-- Loisirs / mindset -->
+        <div class="col-lg-5">
+          <div class="glass p-4 p-md-5 h-100">
+            <figure class="mb-3">
+              <blockquote class="blockquote mb-2">
+                <p class="h5 fw-bold mb-0">Une tête bien faite dans un corps sain!</p>
+              </blockquote>
+              <figcaption class="blockquote-footer text-white-50 text-end pt-2">
+                David Daumand — 01/2026
+              </figcaption>
+            </figure>
+
+            <div class="vstack gap-3">
+              <div class="p-3 rounded-4"
+                   style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1"><i class="bi bi-compass me-2"></i>Endurance & régularité</div>
+                <div class="text-white-50">
+                  Construction sur la durée : volume, progression, constance.
+                </div>
+              </div>
+
+              <div class="p-3 rounded-4"
+                   style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1"><i class="bi bi-bar-chart me-2"></i>Mesure & itération</div>
+                <div class="text-white-50">
+                  Objectifs clairs, suivi des performances, amélioration continue (comme en dev).
+                </div>
+              </div>
+
+              <div class="p-3 rounded-4"
+                   style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1"><i class="bi bi-tree me-2"></i>Trail & nature</div>
+                <div class="text-white-50">
+                  Sorties trail / rando pour déconnecter, garder la tête froide et l’énergie.
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4 border-opacity-25">
+
+            <div class="d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-lightning-charge"></i>10 km</span>
+              <span class="chip"><i class="bi bi-heart-pulse"></i>Semi</span>
+              <span class="chip"><i class="bi bi-signpost-2"></i>Marathon</span>
+              <span class="chip"><i class="bi bi-cloud-haze2"></i>Trail</span>
+            </div>
+            <hr class="my-4 border-opacity-25">
+              <div class="text-center">
+                <a class="btn btn-outline-glass btn-sm "
+                  href="https://www.athle.fr/athletes/2768383/niveau"
+                  target="_blank" rel="noopener">
+                  <i class="bi bi-trophy me-1"></i>Voir mon profil FFA
+                </a>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BABYFOOT -->
+      <div class="row g-4 mt-1">
+        <div class="col-12">
+          <div class="glass p-4 p-md-5 h-100">
+            <h3 class="h5 fw-bold mb-3">
+              <i class="bi bi-controller me-2"></i>Babyfoot (football de table)
+            </h3>
+
+            <p class="text-white-75 mb-3">
+              Passionné de <strong>babyfoot de compétition</strong>, pratiqué en club avec une approche
+              orientée précision, stratégie et maîtrise du jeu.
+            </p>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <div class="p-3 rounded-4"
+                     style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                  <div class="fw-bold mb-1">
+                    <i class="bi bi-people me-2"></i>Club d’affiliation
+                  </div>
+                  <div class="text-white-50">
+                    <strong>Bourges Football de Table</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 rounded-4"
+                     style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                  <div class="fw-bold mb-1">
+                    <i class="bi bi-calendar-range me-2"></i>Années de compétition
+                  </div>
+                  <div class="text-white-50">
+                    <strong>2014 → 2017</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-4 mb-3"
+                 style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-1">
+                <i class="bi bi-lightning-charge me-2"></i>Compétences développées
+              </div>
+              <ul class="mb-0 text-white-50">
+                <li>Coordination œil-main et précision gestuelle</li>
+                <li>Lecture du jeu, anticipation et stratégie</li>
+                <li>Gestion du stress et concentration en compétition</li>
+                <li>Esprit d’équipe et confrontation saine</li>
+              </ul>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-bullseye"></i>Précision</span>
+              <span class="chip"><i class="bi bi-diagram-3"></i>Stratégie</span>
+              <span class="chip"><i class="bi bi-activity"></i>Réactivité</span>
+              <span class="chip"><i class="bi bi-trophy"></i>Compétition</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="glass p-4 p-md-5 h-100">
+            <h2 class="h3 section-title mb-2">Contact</h2>
+            <p class="lead lead-muted mb-4">
+              Tu veux échanger sur un besoin (industrie, défense, web/API, 2D/3D) ?
+              Le plus simple : un mail avec contexte + objectifs + contraintes.
+            </p>
+
+            <div class="vstack gap-2 fs-5">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-envelope"></i>
+                <a class="link-soft" href="mailto:daumanddavid@hotmail.fr">daumanddavid@hotmail.fr</a>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-linkedin"></i>
+                <a class="link-soft" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener">LinkedIn</a>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-instagram"></i>
+                <a class="link-soft" href="https://www.instagram.com/moobotec?igsh=NXdodG5jMWd4bGFm&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-github"></i>
+                <a class="link-soft" href="https://github.com/moobotec" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+
+            <hr class="my-4 border-opacity-25">
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-accent" href="mailto:daumanddavid@hotmail.fr?subject=Contact%20-%20Projet%20logiciel&body=Bonjour%20David%2C%0A%0AContexte%20%3A%20...%0AObjectifs%20%3A%20...%0AContraintes%20%3A%20...%0A%C3%89ch%C3%A9ance%20%3A%20...%0A%0AMerci%2C">
+                <i class="bi bi-envelope-paper me-1"></i>Envoyer un email
+              </a>
+              <a class="btn btn-outline-glass" href="https://buymeacoffee.com/moobotec" target="_blank" rel="noopener">
+                <i class="bi bi-cup-hot me-1"></i>Buy Me a Coffee
+              </a>
+              <a class="btn btn-outline-glass" href="#projects">
+                <i class="bi bi-grid me-1"></i>Revoir les projets
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass p-4 p-md-5 h-100">
+            <h3 class="h5 fw-bold mb-3">Message rapide (formulaire)</h3>
+            <form onsubmit="return handleSubmit(event)" class="needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-white-50">Nom</label>
+                  <input class="form-control form-control-lg" required placeholder="Ton nom">
+                  <div class="invalid-feedback">Indique ton nom.</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-white-50">Email</label>
+                  <input type="email" class="form-control form-control-lg" required placeholder="ton@email.com">
+                  <div class="invalid-feedback">Indique un email valide.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-white-50">Sujet</label>
+                  <input class="form-control form-control-lg" required placeholder="Ex. Besoin d’un renfort .NET / C++ / Qt…">
+                  <div class="invalid-feedback">Indique un sujet.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-white-50">Message</label>
+                  <textarea class="form-control form-control-lg" rows="5" required
+                    placeholder="Contexte, objectifs, contraintes, délai…"></textarea>
+                  <div class="invalid-feedback">Indique un message.</div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-accent btn-lg w-100" type="submit">
+                    <i class="bi bi-send me-1"></i>Générer un email
+                  </button>
+                  <div class="text-white-50 small mt-2">
+                    Le bouton génère un email pré-rempli dans ton client mail (aucun envoi automatique).
+                  </div>
+                </div>
+              </div>
+            </form>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <div class="small">
+        © <span id="year"></span> David Daumand — Portfolio
+      </div>
+      <div class="small">
+        <span class="me-3">Mise à jour : <span id="lastUpdated"></span></span>
+        <a class="link-soft me-3" href="#top"><i class="bi bi-arrow-up"></i> Retour haut</a>
+        <a class="link-soft" href="mailto:daumanddavid@hotmail.fr">daumanddavid@hotmail.fr</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TO TOP -->
+  <button class="btn btn-accent to-top" id="toTopBtn" type="button" aria-label="Retour en haut">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Year and last update
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("lastUpdated").textContent = "26/01/2026";
+
+    // Show/hide "to top"
+    const toTopBtn = document.getElementById("toTopBtn");
+    const onScroll = () => {
+      if (window.scrollY > 600) toTopBtn.classList.add("show");
+      else toTopBtn.classList.remove("show");
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+
+    toTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Bootstrap form validation + generate mailto
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      if (!form.checkValidity()) {
+        event.stopPropagation();
+        form.classList.add("was-validated");
+        return false;
+      }
+
+      const name = form.querySelectorAll("input")[0].value.trim();
+      const email = form.querySelector('input[type="email"]').value.trim();
+      const subject = form.querySelectorAll("input")[2].value.trim();
+      const message = form.querySelector("textarea").value.trim();
+
+      const mailSubject = encodeURIComponent(`Contact - ${subject}`);
+      const body = encodeURIComponent(
+`Bonjour David,
+
+Nom : ${name}
+Email : ${email}
+
+${message}
+
+Bonne journée,`
+      );
+
+      // Open user's mail client with prefilled content
+      window.location.href = `mailto:daumanddavid@hotmail.fr?subject=${mailSubject}&body=${body}`;
+      return false;
+    }
+
+    // Make function global (used inline in form onsubmit)
+    window.handleSubmit = handleSubmit;
+
+    // Theme toggle (day/night)
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
+    const applyTheme = (mode) => {
+      const isLight = mode === "light";
+      document.body.classList.toggle("theme-light", isLight);
+      themeIcon.className = isLight ? "bi bi-brightness-high me-1" : "bi bi-moon-stars me-1";
+      themeLabel.textContent = isLight ? "Jour" : "Nuit";
+      localStorage.setItem("theme", mode);
+    };
+    const savedTheme = localStorage.getItem("theme");
+    applyTheme(savedTheme === "light" ? "light" : "dark");
+    themeToggle.addEventListener("click", () => {
+      const next = document.body.classList.contains("theme-light") ? "dark" : "light";
+      applyTheme(next);
+    });
+  </script>
+
+  <script>
+  // Logo par défaut (SVG minimal en data URI)
+  window.DEFAULT_LOGO_DATAURI =
+    "data:image/svg+xml;utf8," +
+    encodeURIComponent(`
+      <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>
+        <rect x='1' y='1' width='62' height='62' rx='16' fill='rgba(255,255,255,.06)' stroke='rgba(255,255,255,.18)'/>
+        <g fill='rgba(255,255,255,.65)' transform='translate(16,16) scale(1.4)'>
+          <path d='M3 21V3h14v18H3Zm2-2h10V5H5v14Zm14 2v-8h2v8h-2Zm-9-2h2v-2H10v2Zm0-4h2v-2H10v2Zm0-4h2V9H10v2ZM7 19h2v-2H7v2Zm0-4h2v-2H7v2Zm0-4h2V9H7v2Z'/>
+        </g>
+      </svg>
+    `);
+</script>
+</body>
+</html>
