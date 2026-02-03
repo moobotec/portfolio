@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "updated_at": "2026-02-03T08:28:26+00:00",
+    "use_tracking": true,
+    "traffic_window_days": 30,
+    "fallback_pageviews_month": 0,
+    "avg_page_mb": 1.5,
+    "factor_kg_per_gb": 0.06,
+    "hosting_kg_year": 15,
+    "ai_prompts_count": 1000,
+    "ai_wh_per_prompt": 3,
+    "grid_gco2_per_kwh": 21.7,
+    "km_bike_year": 0,
+    "km_walk_year": 0,
+    "factor_car_kg_km": 0.218,
+    "factors_source": "À compléter (sources des facteurs).",
+    "factors_date": "2026-02-03"
+}

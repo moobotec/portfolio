@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /logs/
+Disallow: /cache/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://daumand.timecaps.fr/sitemap.xml

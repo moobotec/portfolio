@@ -3,15 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ingénieur Logiciel Sénior</title>
+  <title>David Daumand — Ingénieur Logiciel Sénior | Portfolio</title>
+  <link rel="canonical" href="https://daumand.timecaps.fr/" />
   <link rel="icon" type="image/png" href="assets/Clock.png" />
-
+  <meta name="description"
+      content="Ingénieur logiciel sénior spécialisé en développement web, jeux 2D Unity, architectures applicatives et projets en production. Portfolio et réalisations." />
+  <meta name="author" content="David Daumand" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="David Daumand — Portfolio" />
+  <meta property="og:title" content="David Daumand — Ingénieur Logiciel Sénior | Portfolio" />
+  <meta property="og:description" content="Ingénieur logiciel sénior spécialisé en développement web, jeux 2D Unity, architectures applicatives et projets en production. Portfolio et réalisations." />
+  <meta property="og:url" content="https://daumand.timecaps.fr/" />
+  <meta property="og:image" content="https://daumand.timecaps.fr/assets/preview.png" />
+  <meta property="og:image:width" content="1272" />
+  <meta property="og:image:height" content="1058" />
+  <meta property="og:image:alt" content="Aperçu du portfolio de David Daumand" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="David Daumand — Ingénieur Logiciel Sénior | Portfolio" />
+  <meta name="twitter:description" content="Ingénieur logiciel sénior spécialisé en développement web, jeux 2D Unity, architectures applicatives et projets en production. Portfolio et réalisations." />
+  <meta name="twitter:image" content="https://daumand.timecaps.fr/assets/preview.png" />
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Devicon (tech logos) -->
   <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
+  <!-- Cal-Heatmap -->
+  <link href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css" rel="stylesheet">
+
+  <link href="js/codeinputbuilder.css" rel="stylesheet">
 
   <style>
     :root{
@@ -39,6 +60,28 @@
       backdrop-filter: blur(10px);
       background: rgba(11,18,32,.55) !important;
       border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .navbar .dropdown-menu{
+      background: rgba(11,18,32,.98);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.45);
+      padding: .5rem;
+      min-width: 220px;
+    }
+    .navbar .dropdown-item{
+      color: rgba(255,255,255,.85);
+      border-radius: 8px;
+      padding: .5rem .75rem;
+    }
+    .navbar .dropdown-item:hover,
+    .navbar .dropdown-item:focus{
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .navbar .dropdown-divider{
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin: .35rem 0;
     }
 
     .btn-accent{
@@ -194,15 +237,82 @@
       font-size: .92rem;
     }
 
+    #runningHeatmap{
+      min-height: 170px;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    #runningHeatmap svg{
+      display: block;
+      max-width: none;
+      height: auto;
+      margin: 0 auto;
+    }
+    #runningHeatmap .ch-domain-text,
+    #runningHeatmap .ch-subdomain-text{
+      fill: #b6c2cf;
+      font-size: 12px;
+    }
+    #runningHeatmap .ch-domain{
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .heatmap-toolbar{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      margin: 6px 0 14px;
+      color: #b6c2cf;
+    }
+    .heatmap-year{
+      min-width: 9ch;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--text);
+      color-scheme: dark;
+    }
+    .heatmap-year:focus{
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(110,231,255,.25);
+    }
+    .heatmap-year option{
+      background: #1f232a;
+      color: #e9fbff;
+    }
+    .heatmap-loading{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      color: #b6c2cf;
+      font-weight: 600;
+    }
+    .heatmap-center{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      min-height: 220px;
+    }
+
     /* Timeline */
     .timeline{
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 2.6rem;
     }
     .timeline:before{
       content:"";
       position:absolute;
-      left:.4rem;
+      left:1.2rem;
       top:.2rem;
       bottom:.2rem;
       width:2px;
@@ -215,10 +325,287 @@
       gap:14px;
       align-items:flex-start;
     }
+    .t-item::before{
+      content:"";
+      position:absolute;
+      left:-1.3rem;
+      top:.65rem;
+      width:1.2rem;
+      height:2px;
+      background: rgba(255,255,255,.18);
+      transform: translateX(-.6rem);
+      border-radius: 999px;
+    }
     .t-item:last-child{ padding-bottom: 0; }
     
     .t-role{ font-weight: 800; }
     .t-meta{ color: var(--muted); font-size: .95rem; }
+    .t-year{
+      position: absolute;
+      left: -5.2rem;
+      top: 2px;
+      width: 2.8rem;
+      text-align: right;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .timeline-filter-card{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+    }
+    .timeline-filter{
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      align-items: end;
+    }
+    .timeline-filter-group{
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .timeline-filter .form-control{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--text);
+    }
+    .timeline-filter .form-control::placeholder{
+      color: rgba(255,255,255,.55);
+    }
+    .timeline-filter .form-label{
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    @media (max-width: 768px){
+      .timeline{
+        padding-left: 0;
+      }
+      .timeline:before,
+      .t-item::before,
+      .t-year{
+        display: none;
+      }
+      .t-item{
+        padding-left: 0;
+      }
+    }
+    @media (max-width: 768px){
+      #advancedFilters .timeline-filter{
+        display: none;
+      }
+    }
+    .codeinput-compact{
+      display: inline-flex;
+      width: fit-content;
+      font-size: .9em;
+      zoom: 1;
+    }
+    .codeinput-compact .cla-h2-like{
+      font-size: 1.2rem;
+    }
+    .codeinput-compact .form-control-lg{
+      font-size: 1.05rem;
+      padding: .4rem .6rem;
+    }
+    .codeinput-compact .cla-input-container{
+      gap: 6px !important;
+    }
+
+    @media (max-width: 1400px) and (min-width: 1200px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .82em;
+        zoom: 0.88;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: 1.05rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .95rem;
+        padding: .32rem .5rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 5px !important;
+      }
+    }
+
+    @media (max-width: 1200px) and (min-width: 1025px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .82em;
+        zoom: 0.75;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: 1.05rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .95rem;
+        padding: .32rem .5rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 5px !important;
+      }
+    }
+    @media (max-width: 1026px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .86em;
+        zoom: 0.75;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: 1.05rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .95rem;
+        padding: .32rem .5rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 6px !important;
+      }
+    }
+
+    @media (max-width: 990px) and (min-width: 768px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .86em;
+        zoom: 0.9;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: 1.05rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .95rem;
+        padding: .32rem .5rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 6px !important;
+      }
+    }
+
+    @media (max-width: 768px) and (min-width: 538px) {
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .86em;
+        zoom: 0.70;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: 1.05rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .95rem;
+        padding: .32rem .5rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 6px !important;
+      }
+    }
+    @media (max-width: 538px) and (min-width: 480px) {
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .78em;
+        zoom: 0.60;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: .95rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .9rem;
+        padding: .3rem .45rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 4px !important;
+      }
+    }
+
+    @media (max-width: 480px) and (min-width: 402px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .78em;
+        zoom: 0.50;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: .95rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .9rem;
+        padding: .3rem .45rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 4px !important;
+      }
+    }
+
+     @media (max-width: 402px) and (min-width: 340px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .78em;
+        zoom: 0.40;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: .95rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .9rem;
+        padding: .3rem .45rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 4px !important;
+      }
+    }
+
+     @media (max-width: 340px){
+      .codeinput-compact{
+        display: inline-flex;
+        width: fit-content;
+        font-size: .78em;
+        zoom: 0.30;
+      }
+      .codeinput-compact .cla-h2-like{
+        font-size: .95rem;
+      }
+      .codeinput-compact .form-control-lg{
+        font-size: .9rem;
+        padding: .3rem .45rem;
+      }
+      .codeinput-compact .cla-input-container{
+        gap: 4px !important;
+      }
+    }
+
+    .filter-chip{
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.82);
+      border-radius: 999px;
+      padding: .35rem .7rem;
+      font-size: .9rem;
+      line-height: 1.2;
+    }
+    .filter-chip.active{
+      border-color: rgba(110,231,255,.65);
+      background: rgba(110,231,255,.14);
+      color: #eafaff;
+    }
+    #advancedFilters{
+      transition: opacity .2s ease, max-height .2s ease;
+      overflow: hidden;
+    }
+    #advancedFilters.is-collapsed{
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      margin: 0;
+    }
 
     .link-soft{
       color: rgba(255,255,255,.80);
@@ -231,6 +618,33 @@
       max-width: 100%;
       height: auto;
       display: block;
+    }
+    .project-filter{
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .project-filter .btn.active{
+      background: rgba(110,231,255,.18);
+      border-color: rgba(110,231,255,.45);
+      color: #e9fbff;
+    }
+    .project-filter input{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+    }
+    .project-filter input::placeholder{
+      color: rgba(255,255,255,.55);
+    }
+    .project-badges{
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .35rem;
+    }
+    .project-badges .badge-date{
+      display: inline-flex;
+      align-self: flex-end;
     }
 
     footer{
@@ -256,6 +670,169 @@
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
+    }
+
+    /* Meteo modal */
+    #meteoModal .modal-body{
+      padding: 0;
+    }
+    #meteoModal #demo{
+      max-width: none;
+      margin: 0;
+    }
+    #meteoModal .ow-widget{
+      border-radius: 16px;
+    }
+    #meteoModal .ow-row{
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 4%;
+    }
+    #meteoModal .ow-row:last-child{
+      margin-bottom: 0;
+    }
+    #meteoModal .ow-ico{
+      line-height: 1.1em;
+    }
+    #meteoModal .ow-widget{
+      background-color: var(--bg1);
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      padding: 2.5%;
+      border: 1px solid var(--border);
+    }
+    #meteoModal .ow-widget .pull-left{
+      float: left;
+    }
+    #meteoModal .ow-widget .pull-right{
+      float: right;
+    }
+    #meteoModal .ow-city-name{
+      letter-spacing: 1px;
+      line-height: 1.111em;
+      font-weight: bold;
+      font-size: 24px;
+      display: block;
+      text-align: center;
+    }
+    #meteoModal .ow-ico-current{
+      font-size: 80px;
+      width: 1.1em;
+      padding-top: 13px;
+    }
+    #meteoModal .ow-temp-current{
+      font-size: 60px;
+      margin: 0 6%;
+    }
+    #meteoModal .ow-current-desc{
+      line-height: 1.5em;
+    }
+    #meteoModal .ow-row:first-child{
+      text-align: center;
+    }
+    #meteoModal .ow-row:nth-child(2){
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    #meteoModal .ow-current-desc{
+      text-align: center;
+      min-width: 180px;
+    }
+    #meteoModal .ow-widget .pull-left,
+    #meteoModal .ow-widget .pull-right{
+      float: none;
+    }
+    #meteoModal .ow-forecast-item{
+      float: left;
+      width: calc(25% - 1px);
+      text-align: center;
+      border-right: 1px solid white;
+    }
+    #meteoModal .ow-forecast-item:last-child{
+      border-right: 0;
+    }
+    #meteoModal .ow-forecast-item .ow-ico-forecast{
+      font-size: 30px;
+      position: relative;
+      margin: 10px 0;
+    }
+    #meteoModal .ow-forecast-item .ow-forecast-temp span{
+      display: inline-block;
+      margin: 0 5px;
+    }
+    #meteoModal .meteo-error{
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding: 48px 16px;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #meteoModal .meteo-loading{
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 32px 16px;
+      font-weight: 600;
+    }
+    #meteoModal .meteo-spinner{
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,.2);
+      border-top-color: var(--accent);
+      animation: meteo-spin 0.9s linear infinite;
+    }
+    @keyframes meteo-spin{
+      to{ transform: rotate(360deg); }
+    }
+    .modal-close-center{
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.12);
+      color: #ffffff;
+      font-size: 30px;
+      line-height: 40px;
+      text-align: center;
+      padding: 0;
+      z-index: 2;
+    }
+    .modal-close-center:hover{
+      background: rgba(255,255,255,.2);
+    }
+    .modal-close-right{
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      font-size: 26px;
+      line-height: 36px;
+      text-align: center;
+      padding: 0;
+      z-index: 2;
+    }
+    .modal-close-right:hover{
+      background: rgba(255,255,255,.16);
     }
 
     /* Theme toggle */
@@ -337,10 +914,39 @@
     body.theme-light .kpi .label{
       color: rgba(8,15,25,.65);
     }
+    body.theme-light .timeline-filter-card{
+      border-color: rgba(8,15,25,.14);
+      background: rgba(8,15,25,.04);
+    }
+    body.theme-light .timeline-filter .form-control{
+      background: rgba(8,15,25,.06);
+      border-color: rgba(8,15,25,.18);
+      color: var(--text);
+    }
+    body.theme-light .filter-chip{
+      border-color: rgba(8,15,25,.18);
+      background: rgba(8,15,25,.04);
+      color: rgba(8,15,25,.78);
+    }
+    body.theme-light .filter-chip.active{
+      border-color: rgba(26,156,255,.6);
+      background: rgba(26,156,255,.14);
+      color: rgba(8,15,25,.95);
+    }
 
     /* Logo carousel */
     .logo-carousel{
       position: relative;
+    }
+    .logo-carousel .carousel-control-prev,
+    .logo-carousel .carousel-control-next{
+      width: 3.25rem;
+    }
+    .logo-carousel .carousel-control-prev{
+      left: -10px;
+    }
+    .logo-carousel .carousel-control-next{
+      right: -10px;
     }
     .logo-carousel .logo-strip{
       display: flex;
@@ -380,29 +986,95 @@
     }
     .sport-row{
       border-radius: 12px;
+      color: var(--text);
     }
     .sport-row:hover{
       background: rgba(255,255,255,.04);
     }
+    #sport table{
+      --bs-table-color: var(--text);
+    }
+    #sport thead{
+      color: var(--muted);
+    }
+    .sport-kpi{
+      color: var(--text);
+    }
+    body.theme-light #sport .table-dark{
+      --bs-table-bg: transparent;
+      --bs-table-color: var(--text);
+      color: var(--text);
+    }
+    body.theme-light #sport .table-dark th,
+    body.theme-light #sport .table-dark td{
+      color: var(--text);
+    }
+    body.theme-light #sport .table-dark thead th{
+      color: var(--muted);
+    }
+    body.theme-light .sport-row:hover{
+      background: rgba(15,23,42,.05);
+    }
 
-    /* Skills carousel */
-    .skills-carousel .carousel-item{
-      padding: .25rem 2.75rem;
+    /* Carbon section */
+    .carbon-kpis{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:10px;
     }
-    .skills-carousel .carousel-control-prev,
-    .skills-carousel .carousel-control-next{
-      width: 3.25rem;
+    .carbon-kpi{
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
     }
-    .skills-carousel .carousel-indicators [data-bs-target]{
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,.45);
+    .carbon-kpi .value{
+      font-size:1.2rem;
+      font-weight:800;
     }
-    body.theme-light .skills-carousel .carousel-indicators [data-bs-target]{
-      background-color: rgba(8,15,25,.35);
+    .carbon-kpi .label{
+      font-size:.82rem;
+      color:rgba(255,255,255,.65);
     }
-    .skills-carousel .logo-tile i{
+    .carbon-bars{
+      display:grid;
+      gap:8px;
+      margin-top:12px;
+    }
+    .carbon-bar{
+      display:grid;
+      grid-template-columns:140px 1fr 80px;
+      gap:10px;
+      align-items:center;
+      font-size:.9rem;
+    }
+    .carbon-bar .track{
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .carbon-bar .fill{
+      height:100%;
+      background:linear-gradient(135deg, rgba(34,211,238,.9), rgba(245,158,11,.9));
+      width:0%;
+      transition:width .6s ease;
+    }
+    .carbon-note{
+      font-size:.88rem;
+      color:rgba(255,255,255,.65);
+    }
+    .carbon-sim input{
+      width:100%;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+    }
+
+    /* Skills carousel (icons only) */
+    .skills-icon-carousel .logo-tile i{
       font-size: 2rem;
       line-height: 1;
     }
@@ -431,6 +1103,116 @@
     [id^="badge-styling-div"] {
       display: none !important;
     }
+    .section-interlude {
+      pointer-events: none; /* évite toute gêne de scroll */
+    }
+    .section-interlude a {
+      pointer-events: auto; /* le lien reste cliquable */
+    }
+    .section-interlude i {
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px){
+      .section-interlude .d-inline-flex{
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: .35rem;
+        column-gap: .5rem;
+      }
+      .section-interlude a{
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+    }
+    .nav-logo {
+      opacity: 0;
+    }
+    .nav-logo.loaded {
+      opacity: 1;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(900px 400px at 10% 10%, rgba(110,231,183,.16), transparent 55%),
+        radial-gradient(900px 420px at 90% 20%, rgba(59,130,246,.16), transparent 55%),
+        radial-gradient(1000px 500px at 60% 90%, rgba(167,139,250,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 60%, #0b1220 100%);
+      transform:  translate3d(0,0,0);
+      will-change: transform;
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
+    section{
+      content-visibility: auto;
+      contain-intrinsic-size: 900px;
+    }
+
+    /* Mobile-first reading improvements */
+    @media (max-width: 768px){
+      body{
+        font-size: 1.03rem;
+        line-height: 1.75;
+        text-rendering: optimizeLegibility;
+      }
+      .container{
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+      }
+      .navbar{
+        backdrop-filter: blur(8px);
+      }
+      .navbar .navbar-brand{
+        padding-top: .35rem;
+        padding-bottom: .35rem;
+      }
+      .navbar .nav-link{
+        padding-top: .6rem;
+        padding-bottom: .6rem;
+      }
+      .display-5{
+        font-size: 2.05rem;
+        line-height: 1.2;
+      }
+      .section-title{
+        font-size: 1.5rem;
+      }
+      .lead{
+        font-size: 1.08rem;
+      }
+      .glass{
+        border-radius: 16px;
+      }
+      .hero-badge{
+        font-size: .9rem;
+      }
+      .chip{
+        white-space: normal;
+        line-height: 1.2;
+        font-size: .92rem;
+      }
+      .skill-grid{
+        grid-template-columns: 1fr;
+      }
+      .skill-chip{
+        border-radius: 14px;
+      }
+      .kpi .value{
+        font-size: 1.2rem;
+      }
+      .table{
+        font-size: .95rem;
+      }
+      .to-top{
+        right: 14px;
+        bottom: 14px;
+      }
+      p, li{
+        letter-spacing: .01em;
+      }
+    }
   </style>
 </head>
 
@@ -439,8 +1221,8 @@
   <!-- NAV -->
   <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#top">
-        <img src="assets/logo-blanc.png" alt="Logo Moobotec" width="28" height="28" class="me-2">
+      <a class="navbar-brand fw-bold" href="#top" data-track="global-top">
+        <img src="assets/logo-blanc.png" alt="Logo Moobotec" width="28" height="28" class="me-2 nav-logo" decoding="async" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -448,23 +1230,54 @@
 
       <div class="collapse navbar-collapse" id="navCollapse">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#tech-stack">Compétences</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
-          <li class="nav-item"><a class="nav-link" href="#posts">Posts</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Parcours</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Formation</a></li>
-          <li class="nav-item"><a class="nav-link" href="#sport">Sport</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profil
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#about" data-track="global-a-propos">À propos</a></li>
+              <li><a class="dropdown-item" href="#experience" data-track="global-parcours">Parcours</a></li>
+              <li><a class="dropdown-item" href="#education" data-track="global-formation">Formation</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Expertise
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#tech-stack" data-track="global-competences">Compétences</a></li>
+              <li><a class="dropdown-item" href="#projects" data-track="global-projets">Projets</a></li>
+              <li><a class="dropdown-item" href="#posts" data-track="global-posts">Posts</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Offres
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#services" data-track="global-offres">Services</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#sport" data-track="global-sport">Sport</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ai-compliance" data-track="global-conformite-ia">Conformité IA</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-track="global-contact">Contact</a></li>
         </ul>
         <div class="d-flex ms-lg-3 gap-2">
-          <button class="btn btn-outline-glass btn-sm" type="button" id="themeToggle" aria-label="Basculer le thème">
+          <button class="btn btn-outline-glass btn-sm" type="button" id="themeToggle" aria-label="Basculer le thème" data-track="global-theme-toggle">
             <i class="bi bi-moon-stars me-1" id="themeIcon"></i><span id="themeLabel">Nuit</span>
           </button>
-          <a class="btn btn-outline-glass btn-sm" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener">
+          <button class="btn btn-outline-glass btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#meteoModal" data-track="global-meteo">
+            <i class="bi bi-cloud-sun me-1"></i>Météo
+          </button>
+          <button class="btn btn-outline-glass btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#carbonModal" data-track="global-carbone">
+            <i class="bi bi-globe me-1"></i>Bilan Carbone
+          </button>
+          <a class="btn btn-outline-glass btn-sm" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener" data-track="global-linkedin">
             <i class="bi bi-linkedin me-1"></i>LinkedIn
           </a>
-          <a class="btn btn-accent btn-sm" href="#contact">
+          <a class="btn btn-accent btn-sm" href="#contact" data-track="global-me-contacter">
             <i class="bi bi-send me-1"></i>Me contacter
           </a>
         </div>
@@ -486,7 +1299,7 @@
           <h1 class="display-5 fw-bold mb-3">
             Hi, je suis David Daumand —
             <span class="text-white-50">“simple codeur”.</span>
-            <a class="ms-1 link-soft" href="https://fr.wikipedia.org/wiki/Pinot_simple_flic" target="_blank" rel="noopener">
+            <a class="ms-1 link-soft" href="https://fr.wikipedia.org/wiki/Pinot_simple_flic" target="_blank" rel="noopener" data-track="top-la-ref">
               (la réf)
             </a>
           </h1>
@@ -530,6 +1343,7 @@
           <div class="d-flex flex-wrap gap-2 mb-4">
             <span class="chip"><i class="bi bi-award"></i>Application sur mesure</span>
             <span class="chip"><i class="bi bi-cpu"></i>Embarqué & temps réel</span>
+            <span class="chip"><i class="bi bi-plug"></i>Instrumentation & Test</span>
             <span class="chip"><i class="bi bi-shield-check"></i>Qualité & validation</span>
             <span class="chip"><i class="bi bi-boxes"></i>Architecture & intégration</span>
             <span class="chip"><i class="bi bi-window"></i>2D/3D & IHM</span>
@@ -537,7 +1351,7 @@
           </div>
 
           <div class="text-center gap-2 ">
-            <a class="btn btn-accent btn-lg" href="#projects">
+            <a class="btn btn-accent btn-lg" href="#projects" data-track="top-voir-les-projets">
               <i class="bi bi-stars me-1"></i>Voir les projets
             </a>
           </div>
@@ -556,29 +1370,33 @@
             <div>
               <div class="text-white-50">Ingénieur logiciel sénior • Freelance</div>
               <div class="fw-semibold">Disponible ASAP</div>
+              <div class="text-white-50 small d-flex align-items-center gap-2">
+                <i class="bi bi-cash-coin"></i>
+                <a class="link-soft" href="#services" data-track="top-sur-devis-offres">sur devis uniquement</a>
+              </div>
             </div>
           </div>
 
           <div class="vstack gap-2">
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope"></i>
-              <a class="link-soft" href="mailto:daumanddavid@hotmail.fr">daumanddavid@hotmail.fr</a>
+              <a class="link-soft" href="mailto:daumanddavid@hotmail.fr" data-track="top-daumanddavid-hotmail-fr">daumanddavid@hotmail.fr</a>
             </div>
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-linkedin"></i>
-              <a class="link-soft" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener">
+              <a class="link-soft" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener" data-track="top-linkedin-com-in-david-daumand-93829612a">
                 linkedin.com/in/david-daumand-93829612a
               </a>
             </div>
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-instagram"></i>
-              <a class="link-soft" href="https://www.instagram.com/moobotec?igsh=NXdodG5jMWd4bGFm&utm_source=qr" target="_blank" rel="noopener">
+              <a class="link-soft" href="https://www.instagram.com/moobotec?igsh=NXdodG5jMWd4bGFm&utm_source=qr" target="_blank" rel="noopener" data-track="top-instagram-com-moobotec">
                 instagram.com/moobotec
               </a>
             </div>
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-github"></i>
-              <a class="link-soft" href="https://github.com/moobotec" target="_blank" rel="noopener">
+              <a class="link-soft" href="https://github.com/moobotec" target="_blank" rel="noopener" data-track="top-github-com-moobotec">
                 github.com/moobotec
               </a>
             </div>
@@ -586,68 +1404,68 @@
 
           <hr class="my-4 border-opacity-25">
 
-          <!--<h3 class="h6 text-uppercase text-white-50 mb-2">Focus</h3>
-          <ul class="mb-0 text-white-75">
-            <li>Solutions industrielles sur mesure (web/API, .NET, SQL)</li>
-            <li>Logiciels critiques : exigences, intégration, tests, doc</li>
-            <li>Unity (Dév. 2D/3D), Systèmes multimédia, IHM</li>
-            <li>Anglais technique : lu, écrit</li>
-          </ul>-->
           <h3 class="h6 text-uppercase text-white-50 mb-2">Focus</h3>
 
-<div class="row g-2">
-  <div class="col-12">
-    <div class="p-3 rounded-4"
-         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
-      <div class="fw-bold mb-1">
-        <i class="bi bi-building-gear me-2"></i>Solutions industrielles sur mesure
-      </div>
-      <div class="text-white-50">
-        Web / API • .NET • SQL • intégration pragmatique en environnement existant
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12">
-    <div class="p-3 rounded-4"
-         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
-      <div class="fw-bold mb-1">
-        <i class="bi bi-shield-check me-2"></i>Logiciels critiques & qualité
-      </div>
-      <div class="text-white-50">
-        Exigences • traçabilité • tests • documentation • CI/CD
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12">
-    <div class="p-3 rounded-4"
-         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
-      <div class="fw-bold mb-1">
-        <i class="bi bi-controller me-2"></i>Unity & expériences 2D/3D
-      </div>
-      <div class="text-white-50">
-        Gameplay systems • outils • UI • cinématiques • optimisation
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12">
-    <div class="p-3 rounded-4"
-         style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
-      <div class="fw-bold mb-1">
-        <i class="bi bi-translate me-2"></i>Anglais technique
-      </div>
-      <div class="text-white-50">
-        Lu • écrit • documentation et échanges techniques
-      </div>
-    </div>
-  </div>
-</div>
-
+          <div class="row g-2">
+            <div class="col-12">
+              <div class="p-3 rounded-4"
+                  style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1">
+                  <i class="bi bi-building-gear me-2"></i>Solutions industrielles sur mesure
+                </div>
+                <div class="text-white-50">
+                  C/C++ • Web / API • .NET • SQL • intégration pragmatique en environnement existant
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+            <div class="p-3 rounded-4"
+                style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-1">
+                <i class="bi bi-speedometer2 me-2"></i>Bancs de test & instrumentation
+              </div>
+              <div class="text-white-50">
+                Pilotage d’instruments • NI-DAQ • C/C++ • acquisition temps réel • validation matériel
+              </div>
+            </div>
+            </div>
+            <div class="col-12">
+              <div class="p-3 rounded-4"
+                  style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1">
+                  <i class="bi bi-shield-check me-2"></i>Logiciels critiques & qualité
+                </div>
+                <div class="text-white-50">
+                  Exigences • traçabilité • tests • documentation • CI/CD
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-3 rounded-4"
+                  style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1">
+                  <i class="bi bi-controller me-2"></i>Unity & expériences 2D/3D
+                </div>
+                <div class="text-white-50">
+                  Gameplay systems • outils • UI • cinématiques • optimisation
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-3 rounded-4"
+                  style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1">
+                  <i class="bi bi-translate me-2"></i>Anglais technique
+                </div>
+                <div class="text-white-50">
+                  Lu • écrit • documentation et échanges techniques
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="mt-4">
-            <a class="btn btn-outline-glass w-100" href="#contact">
+            <a class="btn btn-outline-glass w-100" href="#contact" data-track="top-planifier-un-echange">
               <i class="bi bi-calendar2-check me-1"></i>Planifier un échange
             </a>
           </div>
@@ -663,9 +1481,12 @@
   <section id="about" class="py-5">
     <div class="container py-2 py-md-4">
       <div class="row g-4">
+
         <div class="col-lg-5">
+
           <div class="glass p-4 p-md-5 h-100">
             <h2 class="h3 section-title mb-3">À propos</h2>
+
             <p class="lead lead-muted mb-3">
               Ingénieur logiciel sénior basé à Limoges, je travaille sur des projets
               à forte contrainte (qualité, sécurité, intégration, performance) — de la
@@ -727,6 +1548,14 @@
     </div>
   </section>
 
+<div class="section-interlude text-center my-1">
+  <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+    <i class="bi bi-film"></i>
+    <a href="https://fr.wikipedia.org/wiki/Pinot_simple_flic" target="_blank" rel="noopener"
+       class="text-white-50 text-decoration-none opacity-75" title="Quizz film" data-track="global-quizz-film"><span>Simple en apparence. Sérieux dans le fond.</span></a>
+  </div>
+</div>
+
   <!-- TECH STACK -->
   <section id="tech-stack" class="py-5">
     <div class="container py-2 py-md-4">
@@ -754,6 +1583,7 @@
               <div class="skill-chip" data-level="1"><span><i class="devicon-java-plain colored"></i>Java</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="1"><span><i class="devicon-typescript-plain colored"></i>TypeScript</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="1"><span><i class="devicon-matlab-plain colored"></i>Matlab / Simulink</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="1"><span>VHDL</span><span class="dots"></span></div>
             </div>
 
             <hr class="my-4 border-opacity-25">
@@ -793,6 +1623,8 @@
               <div class="skill-chip" data-level="2"><span><i class="devicon-nginx-original colored"></i><i class="devicon-apache-plain colored"></i>Nginx / Apache</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>Docker Compose</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>SSH</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>IBM Rational ClearCase</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Reqtify (traçabilité exigences)</span><span class="dots"></span></div>
             </div>
 
             <hr class="my-4 border-opacity-25">
@@ -806,8 +1638,11 @@
               <div class="skill-chip" data-level="2"><span>Vonage (intégration)</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>MISRA C</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="3"><span>Tests unitaires & intégration</span><span class="dots"></span></div>
-              <div class="skill-chip" data-level="2"><span>Bancs de test / qualification</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Bancs de test / qualification<small class="text-white-50">(HW/SW)</small></span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="3"><span>National Instruments (NI)<small class="text-white-50">DAQ • instrumentation</small></span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>Bus CAN</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>Bus MIL-STD-1553</span><span class="dots"></span></div>
+              <div class="skill-chip" data-level="2"><span>RS232 / RS485 / ETH</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>Vector CANoe</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>Win32</span><span class="dots"></span></div>
               <div class="skill-chip" data-level="2"><span>Log4cxx</span><span class="dots"></span></div>
@@ -840,83 +1675,82 @@
   <section id="skills-focus" class="py-5">
     <div class="container py-2 py-md-4">
       <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
-        <div>
-          <h2 class="h3 section-title mb-1">Compétences en action</h2>
-          <div class="text-white-50">Outils et stacks que je pratique.</div>
-        </div>
       </div>
 
-      <div id="skillsCarousel" class="carousel slide skills-carousel logo-carousel" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#skillsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <div class="glass p-4 p-md-5">
+        <div id="skillsCarousel" class="carousel slide logo-carousel skills-icon-carousel" data-bs-ride="carousel" data-bs-interval="2500">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="logo-strip">
+                <div class="logo-tile"><i class="devicon-c-plain colored" aria-label="C"></i></div>
+                <div class="logo-tile"><i class="devicon-cplusplus-plain colored" aria-label="C++"></i></div>
+                <div class="logo-tile"><i class="devicon-csharp-plain colored" aria-label="C#"></i></div>
+                <div class="logo-tile"><i class="devicon-dotnetcore-plain colored" aria-label=".NET"></i></div>
+                <div class="logo-tile"><i class="devicon-php-plain colored" aria-label="PHP"></i></div>
+                <div class="logo-tile"><i class="devicon-javascript-plain colored" aria-label="JavaScript"></i></div>
+                <div class="logo-tile"><i class="devicon-typescript-plain colored" aria-label="TypeScript"></i></div>
+                <div class="logo-tile"><i class="devicon-python-plain colored" aria-label="Python"></i></div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="logo-strip">
+                <div class="logo-tile"><i class="devicon-java-plain colored" aria-label="Java"></i></div>
+                <div class="logo-tile"><i class="devicon-html5-plain colored" aria-label="HTML5"></i></div>
+                <div class="logo-tile"><i class="devicon-css3-plain colored" aria-label="CSS3"></i></div>
+                <div class="logo-tile"><i class="devicon-bootstrap-plain colored" aria-label="Bootstrap"></i></div>
+                <div class="logo-tile"><i class="devicon-angularjs-plain colored" aria-label="Angular"></i></div>
+                <div class="logo-tile"><i class="devicon-microsoftsqlserver-plain colored" aria-label="SQL Server"></i></div>
+                <div class="logo-tile"><i class="devicon-oracle-original colored" aria-label="Oracle"></i></div>
+                <div class="logo-tile"><i class="devicon-sqlite-plain colored" aria-label="SQLite"></i></div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="logo-strip">
+                <div class="logo-tile"><i class="devicon-qt-plain colored" aria-label="Qt"></i></div>
+                <div class="logo-tile"><i class="devicon-unity-plain colored" aria-label="Unity"></i></div>
+                <div class="logo-tile"><i class="devicon-docker-plain colored" aria-label="Docker"></i></div>
+                <div class="logo-tile"><i class="devicon-git-plain colored" aria-label="Git"></i></div>
+                <div class="logo-tile"><i class="devicon-linux-plain colored" aria-label="Linux"></i></div>
+                <div class="logo-tile"><i class="devicon-windows8-original colored" aria-label="Windows"></i></div>
+                <div class="logo-tile"><i class="devicon-raspberrypi-plain colored" aria-label="Raspberry Pi"></i></div>
+                <div class="logo-tile"><i class="devicon-nginx-original colored" aria-label="Nginx"></i></div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="logo-strip">
+                <div class="logo-tile"><i class="devicon-apache-plain colored" aria-label="Apache"></i></div>
+                <div class="logo-tile"><i class="devicon-jira-plain colored" aria-label="Jira"></i></div>
+                <div class="logo-tile"><i class="devicon-confluence-plain colored" aria-label="Confluence"></i></div>
+                <div class="logo-tile"><i class="devicon-powershell-plain colored" aria-label="PowerShell"></i></div>
+                <div class="logo-tile"><i class="bi bi-terminal-fill" aria-label="Bash"></i></div>
+                <div class="logo-tile"><i class="devicon-visualbasic-plain colored" aria-label="Visual Basic"></i></div>
+                <div class="logo-tile"><i class="devicon-gimp-plain colored" aria-label="Gimp"></i></div>
+                <div class="logo-tile"><i class="devicon-blender-original colored" aria-label="Blender"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#skillsCarousel" data-bs-slide="prev" aria-label="Précédent">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#skillsCarousel" data-bs-slide="next" aria-label="Suivant">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
         </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="logo-strip">
-              <div class="logo-tile"><i class="devicon-c-plain colored" aria-label="C"></i></div>
-              <div class="logo-tile"><i class="devicon-cplusplus-plain colored" aria-label="C++"></i></div>
-              <div class="logo-tile"><i class="devicon-csharp-plain colored" aria-label="C#"></i></div>
-              <div class="logo-tile"><i class="devicon-dotnetcore-plain colored" aria-label=".NET"></i></div>
-              <div class="logo-tile"><i class="devicon-php-plain colored" aria-label="PHP"></i></div>
-              <div class="logo-tile"><i class="devicon-javascript-plain colored" aria-label="JavaScript"></i></div>
-              <div class="logo-tile"><i class="devicon-typescript-plain colored" aria-label="TypeScript"></i></div>
-              <div class="logo-tile"><i class="devicon-python-plain colored" aria-label="Python"></i></div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="logo-strip">
-              <div class="logo-tile"><i class="devicon-java-plain colored" aria-label="Java"></i></div>
-              <div class="logo-tile"><i class="devicon-html5-plain colored" aria-label="HTML5"></i></div>
-              <div class="logo-tile"><i class="devicon-css3-plain colored" aria-label="CSS3"></i></div>
-              <div class="logo-tile"><i class="devicon-bootstrap-plain colored" aria-label="Bootstrap"></i></div>
-              <div class="logo-tile"><i class="devicon-angularjs-plain colored" aria-label="Angular"></i></div>
-              <div class="logo-tile"><i class="devicon-microsoftsqlserver-plain colored" aria-label="SQL Server"></i></div>
-              <div class="logo-tile"><i class="devicon-oracle-original colored" aria-label="Oracle"></i></div>
-              <div class="logo-tile"><i class="devicon-sqlite-plain colored" aria-label="SQLite"></i></div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="logo-strip">
-              <div class="logo-tile"><i class="devicon-qt-plain colored" aria-label="Qt"></i></div>
-              <div class="logo-tile"><i class="devicon-unity-plain colored" aria-label="Unity"></i></div>
-              <div class="logo-tile"><i class="devicon-docker-plain colored" aria-label="Docker"></i></div>
-              <div class="logo-tile"><i class="devicon-git-plain colored" aria-label="Git"></i></div>
-              <div class="logo-tile"><i class="devicon-linux-plain colored" aria-label="Linux"></i></div>
-              <div class="logo-tile"><i class="devicon-windows8-original colored" aria-label="Windows"></i></div>
-              <div class="logo-tile"><i class="devicon-raspberrypi-plain colored" aria-label="Raspberry Pi"></i></div>
-              <div class="logo-tile"><i class="devicon-nginx-original colored" aria-label="Nginx"></i></div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="logo-strip">
-              <div class="logo-tile"><i class="devicon-apache-plain colored" aria-label="Apache"></i></div>
-              <div class="logo-tile"><i class="devicon-jira-plain colored" aria-label="Jira"></i></div>
-              <div class="logo-tile"><i class="devicon-confluence-plain colored" aria-label="Confluence"></i></div>
-              <div class="logo-tile"><i class="devicon-powershell-plain colored" aria-label="PowerShell"></i></div>
-              <div class="logo-tile"><i class="devicon-bash-plain colored" aria-label="Bash"></i></div>
-              <div class="logo-tile"><i class="devicon-visualbasic-plain colored" aria-label="Visual Basic"></i></div>
-              <div class="logo-tile"><i class="devicon-gimp-plain colored" aria-label="Gimp"></i></div>
-              <div class="logo-tile"><i class="devicon-blender-original colored" aria-label="Blender"></i></div>
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#skillsCarousel" data-bs-slide="prev" aria-label="Précédent">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#skillsCarousel" data-bs-slide="next" aria-label="Suivant">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
       </div>
     </div>
   </section>
+
+  <div class="section-interlude text-center my-1">
+    <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+      <i class="bi bi-film"></i>
+      <a href="https://fr.wikipedia.org/wiki/Le_Professionnel" target="_blank" rel="noopener"
+        class="text-white-50 text-decoration-none opacity-75" title="Quizz film" data-track="global-quizz-film"><span>Un professionnel, tout simplement.</span></a>
+    </div>
+  </div>
 
   <!-- PROJECTS -->
   <section id="projects" class="py-5">
@@ -928,18 +1762,86 @@
         </div>
       </div>
 
+      <div class="glass p-3 p-md-3 mb-4 project-filter">
+        <div class="d-flex flex-column flex-md-row gap-3 align-items-md-center justify-content-between">
+          <div class="d-flex flex-wrap gap-2 align-items-center">
+            <span class="text-white-50 small">Filtrer :</span>
+            <button class="btn btn-outline-glass btn-sm active" type="button" data-filter="all">Tous</button>
+            <button class="btn btn-outline-glass btn-sm" type="button" data-filter="public">Public</button>
+            <button class="btn btn-outline-glass btn-sm" type="button" data-filter="private">Privé</button>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-search text-white-50"></i>
+            <input id="projectFilterInput" class="form-control form-control-sm" type="text" data-track="projects-filter-input"
+                   placeholder="Mots-clés (ex: C++ temps réel, Docker)" />
+          </div>
+        </div>
+      </div>
+
       <div class="row g-4">
+
         <!-- Project 1 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <div class="d-flex justify-content-between align-items-start gap-2">
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Life.js — Javascript</h3>
+                <div class="text-white-50">Timeline interactive • Partage d’état</div>
+              </div>
+              <div class="project-badges">
+                <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  Moobotec • 2026 →
+                </span>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Librairie JavaScript front-end pour générer des timelines biographiques (ou de projets)
+              depuis un fichier Markdown. Plusieurs modes de vue (horizontal, cartes alternées, vertical),
+              zoom fluide, filtres par catégories et fenêtres style Win98 pour bio, configuration et partage.
+              Export PNG/PDF, partage d’état via URL, dates flexibles et styles personnalisables via CSS externe.
+            </p>
+
+          <img 
+            src="assets/life.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="Life.js"
+          />
+
+            <div class="d-flex flex-wrap pt-2">
+               <span class="chip">JavaScript</span>
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">DOM</span>
+              <span class="chip">Algorithmique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-2">
               <div>
                 <h3 class="h5 fw-bold mb-1">Zelda-like 2D — Unity • C#</h3>
                 <div class="text-white-50">Gameplay top-down • IA • Inventaire • Quêtes • Cinématiques</div>
               </div>
-              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
-                Moobotec • 2026 →
-              </span>
+              <div class="project-badges">
+                <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  Moobotec • 2025 →
+                </span>
+                <span class="badge rounded-pill"
+                  style="background:rgba(40, 167, 69, .35)!important;
+                        color:#eafff0!important;
+                        border:1px solid rgba(40, 167, 69, .55);">
+                  Public
+                </span>
+              </div>
             </div>
 
             <p class="mt-3 mb-3 text-white-75">
@@ -960,7 +1862,7 @@
               rel="noopener"
               class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
               style="border-color: rgba(255,255,255,.25);"
-            >
+             data-track="projects-voir-le-projet-sur-github">
               <i class="bi bi-github"></i>
               Voir le projet sur GitHub
             </a>
@@ -975,17 +1877,25 @@
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 3 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <div class="d-flex justify-content-between align-items-start gap-2">
+            <div class="d-flex align-items-start gap-2">
               <div>
                 <h3 class="h5 fw-bold mb-1">Checkmat.js — Javascript</h3>
                 <div class="text-white-50">Jeu d'échecs • Moteur de règles • UI web</div>
               </div>
-              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
-                Moobotec • 2024 →
-              </span>
+              <div class="project-badges">
+                <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  Moobotec • 2024 →
+                </span>
+                <span class="badge rounded-pill"
+                  style="background:rgba(40, 167, 69, .35)!important;
+                        color:#eafff0!important;
+                        border:1px solid rgba(40, 167, 69, .55);">
+                  Public
+                </span>
+              </div>
             </div>
 
             <p class="mt-3 mb-3 text-white-75">
@@ -1006,7 +1916,7 @@
               rel="noopener"
               class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
               style="border-color: rgba(255,255,255,.25);"
-            >
+             data-track="projects-voir-le-projet-sur-github">
               <i class="bi bi-github"></i>
               Voir le projet sur GitHub
             </a>
@@ -1021,23 +1931,82 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
+        <!-- Project 4 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <div class="d-flex justify-content-between align-items-start gap-2">
+            <div class="d-flex align-items-start gap-2">
               <div>
-                <h3 class="h5 fw-bold mb-1">Timecaps — Plateforme web</h3>
-                <div class="text-white-50">Produit web • Backend/Frontend • Déploiement • SEO</div>
+                <h3 class="h5 fw-bold mb-1">CodeInputBuilder.js — Javascript</h3>
+                <div class="text-white-50"></div>
               </div>
-              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
-                timecaps.fr
-              </span>
+              <div class="project-badges">
+                <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  Moobotec • 2024 →
+                </span>
+                <span class="badge rounded-pill"
+                  style="background:rgba(40, 167, 69, .35)!important;
+                        color:#eafff0!important;
+                        border:1px solid rgba(40, 167, 69, .55);">
+                  Public
+                </span>
+              </div>
             </div>
 
             <p class="mt-3 mb-3 text-white-75">
-              Plateforme de capsules temporelles géolocalisées, accessible à des dates/conditions définies, qui met l’accent sur des interactions rares et pertinentes. Le projet combine gestion complète des capsules (contenu, médias, temps différé), communauté maîtrisée, multilingue frontend, et une architecture modulaire orientée usages culturels/artistiques. Côté technique : backend/API/BDD, frontend web, WebSocket pour temps réel, messagerie persistante, et une conception axée sécurité et indépendance technologique.
+              CodeInputBuilder.js est un plugin JavaScript basé sur jQuery permettant de créer des champs de saisie numérique personnalisés. Il supporte plusieurs options de configuration pour gérer les entiers, les nombres flottants, les textes et des interactions avancées.
             </p>
 
+          <img 
+            src="assets/codeinputbuilder.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="codeinputbuilder.js"
+          />
+
+          <div class="text-center mb-3">
+            <a
+              href="https://github.com/moobotec/codeinputbuilder"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
+              style="border-color: rgba(255,255,255,.25);"
+             data-track="projects-voir-le-projet-sur-github">
+              <i class="bi bi-github"></i>
+              Voir le projet sur GitHub
+            </a>
+          </div>
+
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">JavaScript</span>
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">DOM</span>
+              <span class="chip">Algorithmique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Timecaps — Plateforme web</h3>
+                <div class="text-white-50">Plateforme web • Application full-stack • Backend & Frontend • Architecture complète</div>
+              </div>
+              <div class="project-badges">
+                <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  timecaps.fr
+                </span>
+                <span class="badge rounded-pill"
+                  style="background:rgba(40, 167, 69, .35)!important;
+                        color:#eafff0!important;
+                        border:1px solid rgba(40, 167, 69, .55);">
+                  Public
+                </span>
+              </div>
+            </div>
+            <p class="mt-3 mb-3 text-white-75">
+              Plateforme de capsules temporelles géolocalisées, accessible à des dates/conditions définies, qui met l’accent sur des interactions rares et pertinentes. Le projet combine gestion complète des capsules (contenu, médias, temps différé), communauté maîtrisée, multilingue frontend, et une architecture modulaire orientée usages culturels/artistiques. Côté technique : backend/API/BDD, frontend web, WebSocket pour temps réel, messagerie persistante, et une conception axée sécurité et indépendance technologique.
+            </p>
           <img 
             src="assets/timecaps.png"
             class="project-media img-fluid rounded-4 shadow mx-auto my-4"
@@ -1051,7 +2020,7 @@
               rel="noopener"
               class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
               style="border-color: rgba(255,255,255,.25);"
-            >
+             data-track="projects-voir-le-projet">
               <i class="bi bi-globe"></i>
               Voir le projet
             </a>
@@ -1070,17 +2039,25 @@
           </div>
         </div>
 
-        <!-- Project 4 -->
+        <!-- Project 6 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <div class="d-flex justify-content-between align-items-start gap-2">
+            <div class="d-flex align-items-start gap-2">
               <div>
                 <h3 class="h5 fw-bold mb-1">AsDuNumerique — Plateforme web</h3>
                 <div class="text-white-50">Mise en relation • Accessibilité • Chat • Visio</div>
               </div>
-              <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
-                asdunumerique.fr
-              </span>
+              <div class="project-badges">
+                <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  asdunumerique.fr
+                </span>
+                <span class="badge rounded-pill"
+                  style="background:rgba(40, 167, 69, .35)!important;
+                        color:#eafff0!important;
+                        border:1px solid rgba(40, 167, 69, .55);">
+                  Public
+                </span>
+              </div>
             </div>
 
             <p class="mt-3 mb-3 text-white-75">
@@ -1102,7 +2079,7 @@
               rel="noopener"
               class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
               style="border-color: rgba(255,255,255,.25);"
-            >
+             data-track="projects-voir-le-projet">
               <i class="bi bi-globe"></i>
               Voir le projet
             </a>
@@ -1121,89 +2098,284 @@
           </div>
         </div>
 
-        <!-- Project 3 
+
+         <!-- Project 7 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <h3 class="h5 fw-bold mb-1">POC Terratis — Optimisation de planification</h3>
-            <div class="text-white-50">Répartition/itinéraires sur zone • Algo • Web/Backend</div>
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Participation / Intéressement — Plateforme web</h3>
+                <div class="text-white-50">RH • Calculs réglementaires • Suivi individuel</div>
+              </div>
+              <div class="project-badges">
+                <div class="badge rounded-pill badge-date"
+                  style="background:rgba(25, 135, 84, .25)!important;
+                        color:#d8f5e6!important;
+                        border:1px solid rgba(25, 135, 84, .6);">
+                  Personnel • 2022
+                </div>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
             <p class="mt-3 mb-3 text-white-75">
-              POC d’optimisation de répartition sur une zone donnée (logique de points/itinéraires),
-              conception et implémentation orientées performance.
+              Outil interne pour piloter les plans de participation et d’intéressement : import des données,
+              règles de calcul paramétrables, simulation des enveloppes, répartition individuelle et exports
+              sécurisés pour la paie. Suivi des campagnes, historique, et traçabilité complète des décisions.
             </p>
+          <div class="text-center mb-3">
+          </div>
             <div class="d-flex flex-wrap">
-              <span class="chip">Python</span>
+              <span class="chip">SQL Server</span>
+              <span class="chip">HTML</span>
               <span class="chip">PHP</span>
-              <span class="chip">SQL</span>
-              <span class="chip">API</span>
-            </div>
-          </div>
-        </div>
-
-         Project 4 
-        <div class="col-lg-6">
-          <div class="glass p-4 h-100">
-            <h3 class="h5 fw-bold mb-1">Pré-test WebRTC — MedinBox</h3>
-            <div class="text-white-50">Fiabilisation expérience utilisateur • Diagnostic avant session</div>
-            <p class="mt-3 mb-3 text-white-75">
-              Outil de pré-test de connexion WebRTC destiné aux utilisateurs avant entrée en salle virtuelle
-              (diagnostic et guidance). Intégrations API (ex. Vonage).
-            </p>
-            <div class="d-flex flex-wrap">
-              <span class="chip">WebRTC</span>
-              <span class="chip">C# .NET 8</span>
-              <span class="chip">Docker</span>
+              <span class="chip">JavaScript</span>
               <span class="chip">Bootstrap</span>
+              <span class="chip">Docker</span>
+              <span class="chip">API</span>
+              <span class="chip">Linux</span>
             </div>
           </div>
         </div>
 
-         Project 5 
+        <!-- Project 8 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <h3 class="h5 fw-bold mb-1">Simulateur 3D militaire — Unity</h3>
-            <div class="text-white-50">Scénarios de tests • Physique/balistique simplifiées</div>
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Environnement d’entreprise & administration</h3>
+                <div class="text-white-50">NAS • TrueNAS • Dockerisation • Intranet</div>
+              </div>
+              <div class="project-badges">
+                <div class="badge rounded-pill badge-date"
+                  style="background:rgba(25, 135, 84, .25)!important;
+                        color:#d8f5e6!important;
+                        border:1px solid rgba(25, 135, 84, .6);">
+                  Moobotec • 2020–2026
+                </div>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
             <p class="mt-3 mb-3 text-white-75">
-              Génération de scénarios empiriques réalistes, environnement pseudo-réel,
-              contraintes extrêmes (vibrations, dispersion, etc.). Simulation CAN via Canoe (Vector).
+              Mise en place et administration d’un environnement d’entreprise : NAS TrueNAS, services
+              internes dockerisés, sauvegardes automatisées et intranet documentaire. Standardisation des
+              postes, gestion des accès, monitoring et procédures de reprise.
             </p>
-            <div class="d-flex flex-wrap">
-              <span class="chip">C#</span>
-              <span class="chip">Unity 3D</span>
-              <span class="chip">CAN (Canoe)</span>
-              <span class="chip">Windows</span>
+          <div class="text-center mb-3">
+          </div>
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">TrueNAS</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Nextcloud</span>
+              <span class="chip">GitLab</span>
+              <span class="chip">MS SQL Server</span>
+              <span class="chip">Nginx Proxy Manager</span>
+              <span class="chip">Portainer</span>
+              <span class="chip">Uptime Kuma</span>
+              <span class="chip">Draw.io</span>
+              <span class="chip">Dozzle</span>
             </div>
           </div>
         </div>
 
-         Project 6
+
+        <!-- Project 9 -->
         <div class="col-lg-6">
           <div class="glass p-4 h-100">
-            <h3 class="h5 fw-bold mb-1">XLPro4 3D — Legrand</h3>
-            <div class="text-white-50">App 3D • IHM • DevOps • Agile/Scrum</div>
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">LibKLV — Bibliothèque C++</h3>
+                <div class="text-white-50">KLV/TLV SMPTE • Métadonnées capteurs • Flux temps réel</div>
+              </div>
+              <div class="project-badges">
+                <div class="badge rounded-pill badge-date"
+                  style="background:rgba(25, 135, 84, .25)!important;
+                        color:#d8f5e6!important;
+                        border:1px solid rgba(25, 135, 84, .6);">
+                  Personnel • 2020
+                </div>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
             <p class="mt-3 mb-3 text-white-75">
-              Participation au développement d’une application 3D (cycle Agile),
-              intégration/industrialisation et collaboration multi-profils.
+              Bibliothèque C++ pour générer, parser et valider des trames SMPTE KLV conformes MISB (ST 0601).
+              De la conversion de métadonnées capteurs en TLV à l’encapsulation KLV 16 octets, elle assure l’émission et la réception de flux en environnements temps réel.
             </p>
-            <div class="d-flex flex-wrap">
-              <span class="chip">Qt6</span>
+          <div class="text-center mb-3">
+          </div>
+            <div class="d-flex flex-wrap pt-2">
               <span class="chip">C++</span>
-              <span class="chip">DevOps</span>
-              <span class="chip">Scrum</span>
+              <span class="chip">SMPTE KLV</span>
+              <span class="chip">MISB ST 0601</span>
             </div>
           </div>
-        </div>-->
+        </div>
 
+        <!-- Project 10 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">LibSysOS — Bibliothèque C/C++</h3>
+                <div class="text-white-50">Temps réel • Windows • Linux • VxWorks</div>
+              </div>
+              <div class="project-badges">
+                <div class="badge rounded-pill badge-date"
+                  style="background:rgba(25, 135, 84, .25)!important;
+                        color:#d8f5e6!important;
+                        border:1px solid rgba(25, 135, 84, .6);">
+                  Personnel • 2007–2017
+                </div>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
+            <p class="mt-3 mb-3 text-white-75">
+              Couche d’abstraction système pour applications temps réel : threads, timers haute précision,
+              files de messages et primitives de synchro portables. Même API déployée sur Windows, Linux
+              et VxWorks avec un focus sur la latence et la stabilité.
+            </p>
+          <div class="text-center mb-3">
+          </div>
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">C/C++</span>
+              <span class="chip">Temps réel</span>
+              <span class="chip">Threads & sync</span>
+              <span class="chip">Timers HP</span>
+              <span class="chip">IPC</span>
+              <span class="chip">Windows</span>
+              <span class="chip">Linux</span>
+              <span class="chip">VxWorks</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Project 11 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Montage vidéo — Logiciel C++</h3>
+                <div class="text-white-50">Overlay • Webcam • Audio • Effets temps réel</div>
+              </div>
+              <div class="project-badges">
+                <div class="badge rounded-pill badge-date"
+                  style="background:rgba(25, 135, 84, .25)!important;
+                        color:#d8f5e6!important;
+                        border:1px solid rgba(25, 135, 84, .6);">
+                  R-BOT CONCEPT • 2010–2012
+                </div>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
+            <p class="mt-3 mb-3 text-white-75">
+              Suite vidéo temps réel avec overlay caméra et texte en surimpression, gestion de l’audio,
+              ajout d’images et effets vidéo. Création d’une webcam virtuelle via driver dédié pour
+              diffuser le rendu vers une autre machine (OBS). Lecteurs intégrés pour vidéo et webcam.
+            </p>
+          <div class="text-center mb-3">
+          </div>
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">C++</span>
+              <span class="chip">IHM • 100% win32 natif</span>
+              <span class="chip">Overlay</span>
+              <span class="chip">Caméra</span>
+              <span class="chip">Texte</span>
+              <span class="chip">Webcam virtuelle</span>
+              <span class="chip">Audio</span>
+              <span class="chip">Effets vidéo</span>
+              <span class="chip">Lecteur vidéo</span>
+              <span class="chip">Lecteur webcam</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 12 -->
+        <div class="col-lg-6">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start gap-2">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Simulation robotique — Logiciel C++</h3>
+                <div class="text-white-50">Stratégie • Capteurs • Concours</div>
+              </div>
+              <div class="project-badges">
+                <div class="badge rounded-pill badge-date"
+                  style="background:rgba(25, 135, 84, .25)!important;
+                        color:#d8f5e6!important;
+                        border:1px solid rgba(25, 135, 84, .6);">
+                  Club • 2013–2015
+                </div>
+                <span class="badge rounded-pill"
+                  style="background:rgba(220, 53, 69, .35)!important;
+                        color:#ffecec!important;
+                        border:1px solid rgba(220, 53, 69, .6);">
+                  Privé
+                </span>
+              </div>
+            </div>
+            <p class="mt-3 mb-3 text-white-75">
+              Simulateur pour concours robotiques avec rendu OpenGL et physique Bullet :
+              modélisation du terrain, collisions et cinématique. Intégration bus CAN et RS232,
+              capteurs infrarouges et asservissement PID pour valider les stratégies et la performance.
+            </p>
+          <div class="text-center mb-3">
+          </div>
+            <div class="d-flex flex-wrap pt-2">
+              <span class="chip">C++</span>
+              <span class="chip">Robotique</span>
+              <span class="chip">Simulation</span>
+              <span class="chip">OpenGL</span>
+              <span class="chip">Bullet</span>
+              <span class="chip">Bus CAN</span>
+              <span class="chip">RS232</span>
+              <span class="chip">Capteurs IR</span>
+              <span class="chip">PID</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="section-interlude text-center my-1">
+  <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+    <i class="bi bi-film"></i>
+    <a href="https://fr.wikipedia.org/wiki/La_Ch%C3%A8vre" target="_blank" rel="noopener"
+       class="text-white-50 text-decoration-none opacity-75" title="Quizz film" data-track="global-quizz-film"><span>Quand tout semble mal parti… on finit par y arriver.</span></a>
+  </div>
+  </div>
 
   <!-- POSTS -->
   <section id="posts" class="py-5">
     <div class="container py-2 py-md-4">
       <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
         <div>
-          <h2 class="h3 section-title mb-1">Posts LinkedIn</h2>
-          <div class="text-white-50">Partages et mises en avant d'innovations.</div>
+          <h2 class="h3 section-title mb-1">Posts</h2>
+          <div class="text-white-50">Du code, des idées, et des solutions concrètes.</div>
         </div>
       </div>
 
@@ -1225,6 +2397,12 @@
               planification efficace des lâchers de moustiques stériles sur des zones ciblées.
             </p>
 
+            <img 
+            src="assets/terratis.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="Terratis"
+            />
+        
             <div class="text-center mb-3">
               <a
                 href="https://www.linkedin.com/feed/update/urn:li:activity:7318621088245051395/"
@@ -1232,7 +2410,7 @@
                 rel="noopener"
                 class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
                 style="border-color: rgba(255,255,255,.25);"
-              >
+               data-track="posts-voir-le-post">
                 <i class="bi bi-linkedin"></i>
                 Voir le post
               </a>
@@ -1252,7 +2430,7 @@
           <div class="glass p-4 h-100">
             <div class="d-flex justify-content-between align-items-start gap-2">
               <div>
-                <h3 class="h5 fw-bold mb-1">Cube immersif VR — logement du futur</h3>
+                <h3 class="h5 fw-bold mb-1">Cube immersif VR — Logement adapté virtuel</h3>
                 <div class="text-white-50">Expérience immersive & aménagement</div>
               </div>
               <span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
@@ -1261,9 +2439,31 @@
             </div>
 
             <p class="mt-3 mb-3 text-white-75">
-              Article de presse sur un cube immersif pour visualiser un logement en VR à Guéret :
-              outil d'aide à la décision pour aménagement et rénovation.
+              Présentation d’un cube immersif VR permettant de se projeter dans un
+              logement adapté avant travaux. L’expérience aide à valider des choix
+              d’aménagement (accessibilité, circulation, mobilier, domotique) et à
+              sécuriser les décisions côté usagers, familles et professionnels.
             </p>
+
+            <ul class="text-white-50 mb-3">
+              <li>Parcours guidé et scénarios d’usage réalistes (quotidien, autonomie).</li>
+              <li>Visualisation des adaptations : volumes, passages, équipements.</li>
+              <li>Support d’échange entre ergothérapeutes, artisans et bénéficiaires.</li>
+            </ul>
+
+            <div class="text-white-50 small mb-3">
+              Pôle domotique & santé de Guéret —
+              <a class="link-soft" href="https://www.odyssee2023.com" target="_blank" rel="noopener" data-track="posts-odyssee-2023">
+                odyssee2023.com
+              </a>
+              — démonstrateur pour sensibilisation et aide à la décision.
+            </div>
+
+            <img 
+            src="assets/salon_ergotherapeute.png"
+            class="project-media img-fluid rounded-4 shadow mx-auto my-4"
+            alt="Salon Ergotherapeute"
+          />
 
             <div class="text-center mb-3">
               <a
@@ -1272,7 +2472,7 @@
                 rel="noopener"
                 class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2"
                 style="border-color: rgba(255,255,255,.25);"
-              >
+               data-track="posts-voir-le-post">
                 <i class="bi bi-linkedin"></i>
                 Voir le post
               </a>
@@ -1292,6 +2492,248 @@
     </div>
   </section>
 
+<div class="section-interlude text-center my-1">
+  <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+    <i class="bi bi-film"></i>
+    <a href="https://fr.wikipedia.org/wiki/Le_Magnifique_(film,_1973)" target="_blank" rel="noopener"
+       class="text-white-50 text-decoration-none opacity-75" title="Quizz film" data-track="global-quizz-film"><span>Des idées, parfois sérieuses, parfois moins.</span></a>
+  </div>
+</div>
+
+  <!-- SERVICES / OFFRES -->
+  <section id="services" class="py-5">
+    <div class="container py-2 py-md-4">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+          <h2 class="h3 section-title mb-1">Offres de services</h2>
+          <div class="text-white-50">
+            Des logiciels sur mesure, installés chez vous — sans lock-in, avec un cadre clair.
+          </div>
+        </div>
+        <a class="btn btn-outline-glass btn-sm" href="#contact" data-track="services-demander-un-echange">
+          <i class="bi bi-send me-1"></i>Demander un échange
+        </a>
+      </div>
+
+      <div class="row g-4">
+        <!-- Offre 1 -->
+        <div class="col-lg-4">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start justify-content-between gap-2">
+              <div>
+                <div class="text-white-50 text-uppercase small">Offre 1</div>
+                <h3 class="h5 fw-bold mb-1">Découverte</h3>
+                <div class="text-white-50">1 logiciel sur mesure</div>
+              </div>
+              <span
+                class="badge rounded-pill"
+                style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);color:rgba(255,255,255,.88);"
+              >
+                Gratuit
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Pour tester concrètement une approche “logiciel interne” : simple, utile, maîtrisé.
+              Développement complet + installation sur votre environnement.
+            </p>
+
+            <div class="p-3 rounded-4 mb-3" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-check2-circle me-2"></i>Inclus</div>
+              <ul class="mb-0 text-white-50">
+                <li>Analyse rapide du besoin</li>
+                <li>Développement complet</li>
+                <li>Installation chez le client (poste/serveur/VM)</li>
+                <li>Livraison code source + doc minimale</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-4 mb-3" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-shield-exclamation me-2"></i>Limites</div>
+              <ul class="mb-0 text-white-50">
+                <li>Durée max : <strong>2 semaines</strong></li>
+                <li>Périmètre simple validé avant démarrage</li>
+                <li>Évolutions & support long terme : non inclus</li>
+              </ul>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-box-seam"></i>Livraison complète</span>
+              <span class="chip"><i class="bi bi-house-gear"></i>Installé chez vous</span>
+              <span class="chip"><i class="bi bi-code-slash"></i>Code fourni</span>
+            </div>
+
+            <div class="mt-4">
+              <a class="btn btn-accent w-100" href="#contact" data-track="services-lancer-l-offre">
+                <i class="bi bi-lightning-charge me-1"></i>Lancer l’offre
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offre 2 -->
+        <div class="col-lg-4">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start justify-content-between gap-2">
+              <div>
+                <div class="text-white-50 text-uppercase small">Offre 2</div>
+                <h3 class="h5 fw-bold mb-1">Pack Croissance</h3>
+                <div class="text-white-50">Jusqu’à 5 logiciels</div>
+              </div>
+              <span
+                class="badge rounded-pill"
+                style="background:rgba(110,231,255,.12);border:1px solid rgba(110,231,255,.25);color:rgba(255,255,255,.88);"
+              >
+                2 500 €
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Construire une première suite d’outils internes cohérente : back-office, automatisations,
+              mini-apps métiers, reporting simple.
+            </p>
+
+            <div class="p-3 rounded-4 mb-3" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-check2-circle me-2"></i>Inclus</div>
+              <ul class="mb-0 text-white-50">
+                <li>Cadrage léger pour chaque outil</li>
+                <li>Dév + tests + installation</li>
+                <li>Code source + documentation</li>
+                <li>Accompagnement à la prise en main</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-4 mb-3" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-shield-exclamation me-2"></i>Limites</div>
+              <ul class="mb-0 text-white-50">
+                <li>Durée max par logiciel : <strong>2 à 3 semaines</strong></li>
+                <li>Durée totale du pack : <strong>3 mois</strong></li>
+                <li>Périmètre validé avant démarrage</li>
+                <li>Maintenance/support : option</li>
+              </ul>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-diagram-3"></i>Suite d’outils</span>
+              <span class="chip"><i class="bi bi-kanban"></i>Périmètre cadré</span>
+              <span class="chip"><i class="bi bi-gear"></i>Déploiement inclus</span>
+            </div>
+
+            <div class="mt-4">
+              <a class="btn btn-outline-glass w-100" href="#contact" data-track="services-discuter-du-pack">
+                <i class="bi bi-chat-dots me-1"></i>Discuter du pack
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offre 3 -->
+        <div class="col-lg-4">
+          <div class="glass p-4 h-100">
+            <div class="d-flex align-items-start justify-content-between gap-2">
+              <div>
+                <div class="text-white-50 text-uppercase small">Offre 3</div>
+                <h3 class="h5 fw-bold mb-1">Pack Industrialisation</h3>
+                <div class="text-white-50">Jusqu’à 10 logiciels</div>
+              </div>
+              <span
+                class="badge rounded-pill"
+                style="background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);color:rgba(255,255,255,.88);"
+              >
+                5 000 €
+              </span>
+            </div>
+
+            <p class="mt-3 mb-3 text-white-75">
+              Mettre en place une vraie boîte à outils interne : robuste, maintenable, structurée.
+              Parfait pour PME / industrie / multi-équipes.
+            </p>
+
+            <div class="p-3 rounded-4 mb-3" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-check2-circle me-2"></i>Inclus</div>
+              <ul class="mb-0 text-white-50">
+                <li>Jusqu’à 10 outils métiers</li>
+                <li>Architecture cohérente si nécessaire</li>
+                <li>Dév + intégration + installation</li>
+                <li>Doc utilisateur + doc technique</li>
+                <li>Conseils d’industrialisation (déploiement, sauvegardes, évolutions)</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-4 mb-3" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-shield-exclamation me-2"></i>Limites</div>
+              <ul class="mb-0 text-white-50">
+                <li>Durée max par logiciel : <strong>2 à 3 semaines</strong></li>
+                <li>Durée totale du pack : <strong>6 mois</strong></li>
+                <li>Périmètre validé contractuellement</li>
+                <li>Maintenance/support : contrat séparé</li>
+              </ul>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-buildings"></i>Organisation</span>
+              <span class="chip"><i class="bi bi-graph-up-arrow"></i>Industrialisation</span>
+              <span class="chip"><i class="bi bi-shield-check"></i>Maintenable</span>
+            </div>
+
+            <div class="mt-4">
+              <a class="btn btn-outline-glass w-100" href="#contact" data-track="services-planifier-un-echange">
+                <i class="bi bi-rocket-takeoff me-1"></i>Planifier un échange
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cadre contractuel -->
+      <div class="glass p-4 p-md-5 mt-4">
+        <div class="row g-3 align-items-start">
+          <div class="col-lg-8">
+            <h3 class="h5 fw-bold mb-2"><i class="bi bi-file-earmark-text me-2"></i>Cadre & transparence</h3>
+            <div class="text-white-75" style="line-height:1.7">
+              Les offres sont <strong>bornées</strong> (périmètre + durée) pour garantir une livraison propre.
+              Toute demande hors périmètre fait l’objet d’un avenant.
+              Les logiciels sont livrés avec leur <strong>code source</strong> et installés sur votre environnement.
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <span class="chip"><i class="bi bi-lock"></i>Pas de lock-in</span>
+              <span class="chip"><i class="bi bi-clipboard-check"></i>Périmètre cadré</span>
+              <span class="chip"><i class="bi bi-journal-text"></i>Doc utile</span>
+              <span class="chip"><i class="bi bi-wrench-adjustable"></i>Maintenable</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="p-3 rounded-4 h-100" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+              <div class="fw-bold mb-2"><i class="bi bi-chat-quote me-2"></i>Message</div>
+              <div class="text-white-50">
+                Un logiciel métier n’a pas besoin d’être complexe pour être efficace :
+                il doit être <strong>adapté</strong>, <strong>compris</strong> et <strong>maîtrisé en interne</strong>.
+              </div>
+              <hr class="my-3 border-opacity-25" />
+              <a class="btn btn-accent w-100" href="#contact" data-track="services-me-contacter">
+                <i class="bi bi-send me-1"></i>Me contacter
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-white-50 small mt-3">
+          *Tarifs indiqués à titre de pack. Un cadrage express permet de valider l’adéquation du besoin avant lancement.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-interlude text-center my-1">
+    <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+      <i class="bi bi-film"></i>
+      <a href="https://fr.wikipedia.org/wiki/Les_Comp%C3%A8res" target="_blank" rel="noopener"
+        class="text-white-50 text-decoration-none opacity-75" title="Quizz film" data-track="global-quizz-film"><span>On part d’un problème. On trouve une solution.</span></a>
+    </div>
+  </div>
+
   <!-- EXPERIENCE -->
   <section id="experience" class="py-5">
     <div class="container py-2 py-md-4">
@@ -1307,10 +2749,10 @@
           <div class="glass p-4 h-100">
             <h3 class="h5 fw-bold mb-3">Ce que j’apporte</h3>
             <ul class="mb-0 text-white-75">
-              <li><strong>Qualité</strong> : exigences, tests, fiches de tests, doc utile et exploitable.</li>
-              <li><strong>Robustesse</strong> : logs/diagnostic, stabilité, performance, maintenabilité.</li>
-              <li><strong>Intégration</strong> : CI/CD, environnements, protocoles (UDP/TCP), outillage.</li>
-              <li><strong>Polyvalence</strong> : embarqué/temps réel, web/API, 2D/3D, IHM.</li>
+              <li><strong>Qualité</strong> : exigences claires, plans de tests, doc utile et transmissible.</li>
+              <li><strong>Robustesse</strong> : diagnostics, stabilité, perf, maintenance long terme.</li>
+              <li><strong>Intégration</strong> : CI/CD, environnements, protocoles réseau, outillage.</li>
+              <li><strong>Polyvalence</strong> : embarqué/temps réel, apps lourdes, web/API, 2D/3D, IHM.</li>
             </ul>
 
             <hr class="my-4 border-opacity-25">
@@ -1331,31 +2773,43 @@
               <div class="col-6">
                 <div class="kpi">
                   <div class="value">Naval</div>
-                  <div class="label">Systèmes contraints </div>
+                  <div class="label">Systèmes contraints</div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="kpi">
-                  <div class="value">Férovière</div>
-                  <div class="label">Application dédié</div>
+                  <div class="value">Ferroviaire</div>
+                  <div class="label">Applications dédiées</div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="kpi">
                   <div class="value">Industrie</div>
-                  <div class="label">Process & traçabilité</div>
+                  <div class="label">Applications sur mesure</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Cosmétique</div>
+                  <div class="label">Applications dédiées</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="kpi">
+                  <div class="value">Robotique</div>
+                  <div class="label">Simulation & contrôle</div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="kpi">
                   <div class="value">Web</div>
-                  <div class="label">API & Bootstrap</div>
+                  <div class="label">API & UI</div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="kpi">
-                  <div class="value">3D</div>
-                  <div class="label">Unity</div>
+                  <div class="value">2D/3D</div>
+                  <div class="label">Unity & OpenGL</div>
                 </div>
               </div>
             </div>
@@ -1363,10 +2817,63 @@
         </div>
 
         <div class="col-lg-7">
+          <div class="timeline-filter-card p-3 p-md-4 mb-3">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+              <div class="fw-semibold">Filtres avancés</div>
+              <div class="d-flex align-items-center gap-2 ms-auto">
+                <div id="expCount" class="text-white-50 small"></div>
+                <button class="btn btn-outline-glass btn-sm" type="button" id="expClear" data-track="experience-filters-clear">
+                  <i class="bi bi-x-circle me-1"></i>Réinitialiser
+                </button>
+                <button class="btn btn-outline-glass btn-sm" type="button" id="toggleFilters" aria-expanded="true">
+                  <i class="bi bi-chevron-up me-1" id="toggleFiltersIcon"></i>Masquer
+                </button>
+              </div>
+            </div>
+
+            <div id="advancedFilters">
+              <div class="timeline-filter mb-3">
+                <div>
+                  <label class="form-label mb-1" for="expMin">Date min</label>
+                  <div id="codeInputMin" class="codeinput-compact"></div>
+                </div>
+                <div>
+                  <label class="form-label mb-1" for="expMax">Date max</label>
+                  <div id="codeInputMax" class="codeinput-compact"></div>
+                </div>
+              </div>
+
+              <hr class="my-3 border-opacity-25">
+
+              <div class="mb-2 text-white-50 small">Thèmes</div>
+              <div class="timeline-filter-group mb-3" id="themeFilters" aria-label="Filtres par thème">
+                <button class="filter-chip" type="button" data-filter-group="theme" data-clear-group="theme">Tout</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="defense">Défense</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="naval">Naval</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="aeronautique">Aéronautique</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="industrie">Industrie</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="web">Web / API</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="2d3d">2D/3D</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="sante">Santé / Biotech</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="transport">Transport</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="public">Public</button>
+                <button class="filter-chip" type="button" data-filter-group="theme" data-filter-value="rd">R&D</button>
+              </div>
+
+              <div class="mb-2 text-white-50 small">Type de client</div>
+              <div class="timeline-filter-group" id="clientFilters" aria-label="Filtres par type de client">
+                <button class="filter-chip" type="button" data-filter-group="client" data-clear-group="client">Tout</button>
+                <button class="filter-chip" type="button" data-filter-group="client" data-filter-value="grand-compte">Grand compte</button>
+                <button class="filter-chip" type="button" data-filter-group="client" data-filter-value="pme-eti">PME / ETI</button>
+                <button class="filter-chip" type="button" data-filter-group="client" data-filter-value="public">Public</button>
+                <button class="filter-chip" type="button" data-filter-group="client" data-filter-value="startup">Startup / Perso</button>
+              </div>
+            </div>
+          </div>
           <div class="glass p-4 p-md-5">
             <div class="timeline">
 
-              <div class="t-item">
+              <div class="t-item" data-themes="web,2d3d,industrie,rd" data-client="startup">
                 <div class="t-logo">
                   <img
                     src="nope"
@@ -1387,7 +2894,7 @@
                 </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,naval,industrie" data-client="grand-compte">
                 <div class="t-logo">
                   <img
                     src="https://img.logo.dev/naval-group.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1408,7 +2915,7 @@
                 </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="web,industrie" data-client="pme-eti">
                 <div class="t-logo">
                   <img
                     src="https://img.logo.dev/celios.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&amp;size=128&amp;retina=false&amp;format=png&amp;theme=light"
@@ -1428,7 +2935,7 @@
                 </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="sante,web" data-client="pme-eti">
                 <div class="t-logo">
                   <img
                     src="https://img.logo.dev/silab.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&amp;size=128&amp;retina=false&amp;format=png&amp;theme=light"
@@ -1447,7 +2954,7 @@
                 </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="industrie,web" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/dekra-industrial.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&amp;size=128&amp;retina=false&amp;format=png&amp;theme=light"
@@ -1466,7 +2973,7 @@
                 </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="aeronautique,industrie,web" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/aircraftedbycollins.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1486,7 +2993,7 @@
                 </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="aeronautique,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/figeac-aero.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1505,7 +3012,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="industrie,2d3d" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/legrand.fr?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1524,7 +3031,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,2d3d" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/cta-international.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1543,7 +3050,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/nexeya.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1562,7 +3069,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="public,2d3d,web" data-client="public">
                 <div class="t-logo">
                 <img
                     src="nope"
@@ -1582,7 +3089,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/cta-international.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1597,12 +3104,13 @@
                 <div class="t-meta">Mar 2017 → Mar 2018 • Bourges</div>
                 <div class="text-white-75 mt-2">
                   Programme JAGUAR : refonte librairies OS temps réel, portage Linux/Windows, doc exigences, tests.
+                  Simulation et tests systèmes avec intégration de bus de communication (CAN, MIL-STD-1553).
                   Stack : C, Qt, MISRA C, VxWorks, Jira/Confluence, Git.
                 </div>
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/nexters.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1616,13 +3124,13 @@
                 <div class="t-role">Ingénieur Logiciel — Nexter System (via SII)</div>
                 <div class="t-meta">Oct 2016 → Fév 2017 • Bourges</div>
                 <div class="text-white-75 mt-2">
-                  3 logiciels de simulation banc de test ARX25 : instrumentation, tests unitaires & intégration.
-                  Stack : C/C++, Win32, Log4Cxx, Visual Studio.
+                  3 logiciels de simulation de bancs de test ARX25 : instrumentation, pilotage d’équipements de mesure,tests unitaires & intégration.
+                  Stack : C/C++, Win32, Log4Cxx, NiDaq, Visual Studio.
                 </div>
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="transport,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/transdev.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1641,7 +3149,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/mbda-systems.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1656,12 +3164,12 @@
                 <div class="t-meta">Déc 2012 → Août 2015 • Le Subdray</div>
                 <div class="text-white-75 mt-2">
                   Maintenance logiciels d’installation de tir (FREMM) + logiciel LOCMA (tests matériels automatisés).
-                  Stack : C/C++, Qt, VxWorks/Linux/Windows.
+                  Stack : C/C++, Qt, VxWorks/Linux/Windows, IBM Rational ClearCase.
                 </div>
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="aeronautique,transport,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/bombardier.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1681,7 +3189,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="rd,2d3d,industrie" data-client="startup">
                 <div class="t-logo">
                 <img
                     src="nope"
@@ -1701,7 +3209,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/safran-navigation-timing.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1715,12 +3223,13 @@
                 <div class="t-role">Ingénieur Logiciel — Sagem Défense & Sécurité (via INCKA)</div>
                 <div class="t-meta">Mai 2008 → Déc 2009 • Éragny</div>
                 <div class="text-white-75 mt-2">
-                  Bancs de tests militaires (AASM/MICA) : C/C++, SQL, bus/protocoles, NI (Daq/Rio/FPGA), Labview RT.
+                  Bancs de tests militaires (AASM/MICA)
+                  Stack : C/C++, SQL, bus/protocoles, bus militaires (MIL-STD-1553) , NI (Daq/Rio/FPGA), Labview RT.
                 </div>
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,industrie" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/thalesgroup.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1739,7 +3248,7 @@
               </div>
               </div>
 
-              <div class="t-item">
+              <div class="t-item" data-themes="defense,rd,2d3d" data-client="grand-compte">
                 <div class="t-logo">
                 <img
                     src="https://img.logo.dev/thalesgroup.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=128&retina=false&format=png&theme=light"
@@ -1766,16 +3275,8 @@
     </div>
   </section>
 
-  <!-- LOGO CAROUSEL -->
   <section id="entreprises" class="py-5">
     <div class="container py-2 py-md-4">
-      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
-        <div>
-          <h2 class="h3 section-title mb-1">Entreprises</h2>
-          <div class="text-white-50"></div>
-        </div>
-      </div>
-
       <div class="glass p-4 p-md-5">
         <div id="logoCarousel" class="carousel slide logo-carousel" data-bs-ride="carousel" data-bs-interval="2500">
           <div class="carousel-inner">
@@ -1941,6 +3442,14 @@
     </div>
   </section>
 
+  <div class="section-interlude text-center my-1">
+    <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+      <i class="bi bi-film"></i>
+      <a href="https://fr.wikipedia.org/wiki/L%27As_des_as" target="_blank" rel="noopener"
+        class="text-white-50 text-decoration-none opacity-75" title="Quizz film" data-track="global-quizz-film"><span>Un parcours, des détours, et quelques figures imposées.</span></a>
+    </div>
+  </div>
+
   <!-- EDUCATION -->
   <section id="education" class="py-5">
     <div class="container py-2 py-md-4">
@@ -1965,12 +3474,13 @@
                   <a href="https://www.ensil-ensci.unilim.fr"
                     target="_blank"
                     rel="noopener"
-                    class="link-soft">
+                    class="link-soft" data-track="education-ensil-ensci-limoges">
                     ENSIL-ENSCI (Limoges)
                   </a>
                 </div>
                 <div class="text-white-50">
-                  Spécialité électronique, télécommunication, instrumentation • Option temps réel
+                  Spécialité électronique, télécommunication, instrumentation • Option temps réel<br>
+                  → VHDL, initiation FPGA (Xilinx), systèmes embarqués, bus et protocoles industriels.
                 </div>
                 <div class="text-white-75 mt-2">
                   <i class="bi bi-calendar3 me-2"></i>2006
@@ -1993,7 +3503,7 @@
                   <a href="https://iut-angouleme.univ-poitiers.fr"
                     target="_blank"
                     rel="noopener"
-                    class="link-soft">
+                    class="link-soft" data-track="education-iut-d-angouleme">
                     IUT d’Angoulême
                   </a>
                 </div>
@@ -2021,7 +3531,7 @@
                 <a href="https://palissy.fr"
                   target="_blank"
                   rel="noopener"
-                  class="link-soft">
+                  class="link-soft" data-track="education-lycee-bernard-palissy-saintes">
                   Lycée Bernard Palissy (Saintes)
                 </a>
               </div>
@@ -2049,12 +3559,9 @@
                 <a href="https://palissy.fr"
                   target="_blank"
                   rel="noopener"
-                  class="link-soft">
+                  class="link-soft" data-track="education-lycee-bernard-palissy-saintes">
                   Lycée Bernard Palissy (Saintes)
                 </a>
-              </div>
-              <div class="text-white-50">
-                Électronique & systèmes
               </div>
               <div class="text-white-75 mt-2">
                 <i class="bi bi-calendar3 me-2"></i>1998
@@ -2063,56 +3570,55 @@
           </div>
         </div>
       </div>
-
-
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       SPORT & LOISIRS
-  ======================== -->
+  <div class="section-interlude text-center my-1">
+    <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+      <i class="bi bi-film"></i>
+      <a href="https://fr.wikipedia.org/wiki/Le_Jouet" target="_blank" rel="noopener"
+        class="text-white-50 text-decoration-none opacity-75" title="Voir le film" data-track="global-voir-le-film"><span>Apprendre, observer, comprendre.</span></a>
+    </div>
+  </div>
+
   <section id="sport" class="py-5">
     <div class="container py-2 py-md-4">
-
       <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
         <div>
           <h2 class="h3 section-title mb-1">Sport & Loisirs</h2>
           <div class="text-white-50">Course à pied • Trail • Babyfoot • Objectifs long terme</div>
         </div>
-
       </div>
-
       <div class="row g-4">
         <!-- Records -->
         <div class="col-lg-7">
-
           <div class="glass p-4 p-md-5 h-100">
-
-            <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
-              <div>
-                
-                <h3 class="h5 fw-bold mb-1"><i class="bi bi-cpu me-2"></i>Running (course à pied)</h3>
-                <div class="text-white-50">Performances officielles (FFA)</div>
-              </div>
-              <span class="badge rounded-pill"
-                    style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);">
-                Verneuil Oxygène • Masters
-              </span>
-            </div>
-
-            <div class="table-responsive mt-4">
-              <table class="table table-dark table-borderless align-middle mb-0"
-                     style="--bs-table-bg: transparent; --bs-table-color: rgba(255,255,255,.85);">
-                <thead style="color:rgba(255,255,255,.55);">
-                  <tr>
-                    <th>Épreuve</th>
-                    <th>Record</th>
-                    <th>Date</th>
-                    <th>Lieu</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <div class="vstack gap-3">
+              <div class="p-3 rounded-4"
+                   style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
+                  <div>
+                    <h3 class="h5 fw-bold mb-1"><i class="bi bi-cpu me-2"></i>Running (course à pied)</h3>
+                    <div class="text-white-50">Performances officielles (FFA)</div>
+                  </div>
+                  <span class="badge rounded-pill"
+                        style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);">
+                    Verneuil Oxygène • Masters
+                  </span>
+                </div>
+                <div class="table-responsive mt-4">
+                  <table class="table table-dark table-borderless align-middle mb-0"
+                         style="--bs-table-bg: transparent; --bs-table-color: rgba(255,255,255,.85);">
+                    <thead style="color:rgba(255,255,255,.55);">
+                      <tr>
+                        <th>Épreuve</th>
+                        <th>Record</th>
+                        <th>Date</th>
+                        <th>Lieu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
                   <tr class="sport-row">
                     <td class="fw-semibold">
@@ -2157,12 +3663,30 @@
                     <td>26/11/2023</td>
                     <td>La Rochelle</td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
+                    </tbody>
+                  </table>
+                </div>
 
-            <div class="text-white-50 small mt-3">
-              Source : Fédération Française d’Athlétisme (FFA). Données issues de mon profil.
+                <div class="text-white-50 small mt-3">
+                  Source : Fédération Française d’Athlétisme (FFA). Données issues de mon profil.
+                </div>
+              </div>
+
+              <div class="p-3 rounded-4"
+                   style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><i class="bi bi-compass me-2"></i>Randonnées</h3>
+                    <div class="text-white-50 small">GR92 — Rosas → Cadaqués (juillet 2025)</div>
+                  </div>
+                </div>
+                <p class="text-white-50 small mb-2 mt-2">
+                  Distance : <strong class="text-white">31.66 km</strong> •
+                  Temps de marche : <strong class="text-white">7:31:11</strong>.
+                </p>
+                <img src="assets/gr92.png" alt="Parcours GR92 Rosas à Cadaqués"
+                     class="img-fluid rounded-4 border border-white border-opacity-10">
+              </div>
             </div>
           </div>
         </div>
@@ -2200,7 +3724,15 @@
                    style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
                 <div class="fw-bold mb-1"><i class="bi bi-tree me-2"></i>Trail & nature</div>
                 <div class="text-white-50">
-                  Sorties trail / rando pour déconnecter, garder la tête froide et l’énergie.
+                  Sorties trail / ultra-trail pour déconnecter, garder la tête froide et l’énergie.
+                </div>
+              </div>
+
+              <div class="p-3 rounded-4"
+                   style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);">
+                <div class="fw-bold mb-1"><i class="bi bi-compass me-2"></i>Randonnées</div>
+                <div class="text-white-50">
+                  Randos régulières pour l’endurance, le dénivelé et la découverte des paysages.
                 </div>
               </div>
             </div>
@@ -2217,10 +3749,39 @@
               <div class="text-center">
                 <a class="btn btn-outline-glass btn-sm "
                   href="https://www.athle.fr/athletes/2768383/niveau"
-                  target="_blank" rel="noopener">
+                  target="_blank" rel="noopener" data-track="sport-voir-mon-profil-ffa">
                   <i class="bi bi-trophy me-1"></i>Voir mon profil FFA
                 </a>
               </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEATMAP ACTIVITY -->
+      <div class="row g-4 mt-1">
+        <div class="col-12">
+          <div class="glass p-4 p-md-5 h-100">
+
+            <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
+              <div>
+                <h3 class="h5 fw-bold mb-1"><i class="bi bi-graph-up-arrow me-2"></i>Suivi des entraînements & courses</h3>
+                <div class="text-white-50">Heatmap des sorties running, mois par mois</div>
+              </div>
+            </div>
+
+            <p class="text-white-50 mb-3">
+              Synthèse des entraînements et des courses sur plusieurs années : régularité, pics d’intensité,
+              phases de récupération et progression globale.
+            </p>
+            <div class="heatmap-toolbar" aria-label="Navigation des années">
+              <select class="heatmap-year" id="heatmapYear" aria-label="Sélection de l'année"></select>
+              <div class="text-white-50 small">Astuce : CTRL + molette pour changer d’année.</div>
+            </div>
+            <div class="heatmap-center">
+              <div id="runningHeatmap">
+                <div class="heatmap-loading">Chargement de l’activité…</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2247,6 +3808,9 @@
                   </div>
                   <div class="text-white-50">
                     <strong>Bourges Football de Table</strong>
+                    <a class="link-soft ms-2" href="https://www.facebook.com/Bourges.football.de.table/?locale=fr_FR" target="_blank" rel="noopener" aria-label="Facebook Bourges Football de Table" data-track="sport-facebook-bourges-football-de-table">
+                      <i class="bi bi-facebook"></i>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -2258,7 +3822,7 @@
                     <i class="bi bi-calendar-range me-2"></i>Années de compétition
                   </div>
                   <div class="text-white-50">
-                    <strong>2014 → 2017</strong>
+                    <strong>2014 → 2018</strong>
                   </div>
                 </div>
               </div>
@@ -2289,6 +3853,14 @@
     </div>
   </section>
 
+  <div class="section-interlude text-center my-1">
+    <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+      <i class="bi bi-film"></i>
+      <a href="https://fr.wikipedia.org/wiki/Un_singe_en_hiver_(film)" target="_blank" rel="noopener"
+        class="text-white-50 text-decoration-none opacity-75" title="Voir le film" data-track="global-voir-le-film"><span>Tenir la distance.</span></a>
+    </div>
+  </div>
+
   <!-- CONTACT -->
   <section id="contact" class="py-5">
     <div class="container py-2 py-md-4">
@@ -2304,32 +3876,32 @@
             <div class="vstack gap-2 fs-5">
               <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-envelope"></i>
-                <a class="link-soft" href="mailto:daumanddavid@hotmail.fr">daumanddavid@hotmail.fr</a>
+                <a class="link-soft" href="mailto:daumanddavid@hotmail.fr" data-track="contact-daumanddavid-hotmail-fr">daumanddavid@hotmail.fr</a>
               </div>
               <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-linkedin"></i>
-                <a class="link-soft" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="link-soft" href="https://fr.linkedin.com/in/david-daumand-93829612a" target="_blank" rel="noopener" data-track="contact-linkedin">LinkedIn</a>
               </div>
               <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-instagram"></i>
-                <a class="link-soft" href="https://www.instagram.com/moobotec?igsh=NXdodG5jMWd4bGFm&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+                <a class="link-soft" href="https://www.instagram.com/moobotec?igsh=NXdodG5jMWd4bGFm&utm_source=qr" target="_blank" rel="noopener" data-track="contact-instagram">Instagram</a>
               </div>
               <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-github"></i>
-                <a class="link-soft" href="https://github.com/moobotec" target="_blank" rel="noopener">GitHub</a>
+                <a class="link-soft" href="https://github.com/moobotec" target="_blank" rel="noopener" data-track="contact-github">GitHub</a>
               </div>
             </div>
 
             <hr class="my-4 border-opacity-25">
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-accent" href="mailto:daumanddavid@hotmail.fr?subject=Contact%20-%20Projet%20logiciel&body=Bonjour%20David%2C%0A%0AContexte%20%3A%20...%0AObjectifs%20%3A%20...%0AContraintes%20%3A%20...%0A%C3%89ch%C3%A9ance%20%3A%20...%0A%0AMerci%2C">
+              <a class="btn btn-accent" href="mailto:daumanddavid@hotmail.fr?subject=Contact%20-%20Projet%20logiciel&body=Bonjour%20David%2C%0A%0AContexte%20%3A%20...%0AObjectifs%20%3A%20...%0AContraintes%20%3A%20...%0A%C3%89ch%C3%A9ance%20%3A%20...%0A%0AMerci%2C" data-track="contact-envoyer-un-email">
                 <i class="bi bi-envelope-paper me-1"></i>Envoyer un email
               </a>
-              <a class="btn btn-outline-glass" href="https://buymeacoffee.com/moobotec" target="_blank" rel="noopener">
+              <a class="btn btn-outline-glass" href="https://buymeacoffee.com/moobotec" target="_blank" rel="noopener" data-track="contact-buy-me-a-coffee">
                 <i class="bi bi-cup-hot me-1"></i>Buy Me a Coffee
               </a>
-              <a class="btn btn-outline-glass" href="#projects">
+              <a class="btn btn-outline-glass" href="#projects" data-track="contact-revoir-les-projets">
                 <i class="bi bi-grid me-1"></i>Revoir les projets
               </a>
             </div>
@@ -2339,7 +3911,7 @@
         <div class="col-lg-6">
           <div class="glass p-4 p-md-5 h-100">
             <h3 class="h5 fw-bold mb-3">Message rapide (formulaire)</h3>
-            <form onsubmit="return handleSubmit(event)" class="needs-validation" novalidate>
+            <form onsubmit="return handleSubmit(event)" class="needs-validation" novalidate data-track="contact-form-submit">
               <div class="row g-3">
                 <div class="col-md-6">
                   <label class="form-label text-white-50">Nom</label>
@@ -2379,113 +3951,308 @@
     </div>
   </section>
 
+  <div class="section-interlude text-center my-1">
+  <div class="d-inline-flex align-items-center gap-2 text-white-50 small fst-italic">
+    <i class="bi bi-film"></i>
+    <a href="https://fr.wikipedia.org/wiki/Minority_Report_(film)"
+       target="_blank"
+       rel="noopener"
+       class="text-white-50 text-decoration-none opacity-75"
+       title="Voir le film" data-track="global-voir-le-film">
+      <span>Le futur est déjà là… il faut juste éviter qu’il décide à notre place.</span>
+    </a>
+  </div>
+</div>
+
+<section id="ai-compliance" class="py-5">
+  <div class="container py-2 py-md-4">
+    <h3 class="h6 fw-bold mb-2">
+      🤖 Conformité IA & usage responsable
+    </h3>
+
+    <!-- Version courte -->
+    <p class="text-white-75 mb-2">
+      Certains projets présentés sur ce portfolio intègrent des mécanismes
+      d’automatisation ou d’assistance par intelligence artificielle.
+      Leur conception respecte les principes du
+      <strong>Règlement européen sur l’IA (AI Act)</strong> :
+      transparence, supervision humaine et respect des droits fondamentaux.
+    </p>
+
+    <!-- Détails masqués -->
+    <details class="mt-2">
+      <summary class="text-primary" style="cursor:pointer;">
+        Voir le détail de conformité
+      </summary>
+
+      <div class="mt-3 text-white-75 small">
+
+      <p>
+        Ce portfolio peut présenter des projets intégrant des mécanismes d’automatisation
+        ou d’assistance par intelligence artificielle. Dans ce cadre, j’applique une
+        démarche alignée avec l’approche de l’Union européenne et les principes du
+        <strong>Règlement européen sur l’IA (AI Act)</strong> : transparence, supervision humaine
+        et respect des droits fondamentaux.
+      </p>
+
+      <p class="mb-2">
+        Concrètement, les systèmes et démonstrateurs présentés :
+      </p>
+
+        <ul>
+          <li>
+            ne relèvent pas de catégories à <strong>haut risque</strong>
+            (santé, justice, surveillance biométrique, notation sociale, etc.) ;
+          </li>
+          <li>
+            n’effectuent aucune prise de décision critique sans
+            <strong>contrôle humain</strong> ;
+          </li>
+          <li>
+            sont utilisés à des fins <strong>expérimentales, informatives ou d’assistance</strong>.
+          </li>
+        </ul>
+
+        <p>
+          Les données personnelles, lorsqu’elles existent, sont traitées
+          conformément au <strong>RGPD</strong> :
+          minimisation, finalité explicite, sécurité et confidentialité.
+          Aucun profilage abusif ou traitement opaque n’est mis en œuvre.
+        </p>
+
+        <p>
+          Les projets sont conçus selon une approche
+          <strong>éthique et responsable</strong>,
+          intégrant robustesse, traçabilité et explicabilité lorsque cela est pertinent.
+        </p>
+
+        <p class="mt-2">
+          <strong>Références officielles :</strong><br>
+          • Approche européenne de l’IA :
+          <a href="https://digital-strategy.ec.europa.eu/fr/policies/european-approach-artificial-intelligence"
+             target="_blank" rel="noopener" data-track="ai-compliance-commission-europeenne">
+            Commission européenne
+          </a><br>
+          • Texte officiel AI Act :
+          <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52021PC0206"
+             target="_blank" rel="noopener" data-track="ai-compliance-eur-lex">
+            EUR-Lex
+          </a><br>
+          • RGPD :
+          <a href="https://commission.europa.eu/law/law-topic/data-protection/data-protection-eu_fr"
+             target="_blank" rel="noopener" data-track="ai-compliance-protection-des-donnees-ue">
+            Protection des données – UE
+          </a>
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
   <!-- FOOTER -->
   <footer class="py-4">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <div class="small">
-        © <span id="year"></span> David Daumand — Portfolio
+        © <span id="year"></span> David Daumand — Moobotec — Portfolio
       </div>
       <div class="small">
         <span class="me-3">Mise à jour : <span id="lastUpdated"></span></span>
-        <a class="link-soft me-3" href="#top"><i class="bi bi-arrow-up"></i> Retour haut</a>
-        <a class="link-soft" href="mailto:daumanddavid@hotmail.fr">daumanddavid@hotmail.fr</a>
       </div>
     </div>
   </footer>
 
   <!-- TO TOP -->
-  <button class="btn btn-accent to-top" id="toTopBtn" type="button" aria-label="Retour en haut">
+  <button class="btn btn-accent to-top" id="toTopBtn" type="button" aria-label="Retour en haut" data-track="global-to-top">
     <i class="bi bi-arrow-up"></i>
   </button>
+
+  <!-- Consent modal (RGPD) -->
+  <div class="modal fade" id="consentModal" tabindex="-1" aria-labelledby="consentTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass">
+        <button type="button" class="modal-close-right" data-bs-dismiss="modal" aria-label="Fermer">×</button>
+        <div class="modal-header">
+          <h5 class="modal-title" id="consentTitle">Informations & consentement</h5>
+        </div>
+        <div class="modal-body">
+          <p class="mb-2">
+            Nous collectons des données de navigation (pages vues, clics, sections consultées) à des
+            fins statistiques et d’amélioration du site, conformément au RGPD.
+          </p>
+          <p class="text-white-50 mb-0">
+            Vous pouvez accepter ou refuser la mesure d’audience. Votre choix est mémorisé.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-glass" id="consentDecline" data-track="consent-decline">Refuser</button>
+          <button type="button" class="btn btn-accent" id="consentAccept" data-track="consent-accept">J’accepte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meteo modal -->
+  <div class="modal fade" id="meteoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content glass position-relative">
+        <button type="button" class="modal-close-right" data-bs-dismiss="modal" aria-label="Fermer">×</button>
+        <div class="modal-body">
+          <section id="demo">
+            <div class="meteo-loading d-none text-center">
+              <div class="meteo-spinner" aria-hidden="true"></div>
+              <div>Chargement de la météo…</div>
+            </div>
+            <div class="meteo-error d-none text-center">Météo indisponible</div>
+            <div class="ow-widget">
+              <div class="ow-row">
+                <span class="ow-city-name"></span>
+              </div>
+              <div class="ow-row">
+                <div class="wi ow-ico ow-ico-current pull-left"></div>
+                <div class="ow-temp-current pull-left"></div>
+                <div class="ow-current-desc pull-left">
+                  <div>Pression: <span class="ow-pressure"></span></div>
+                  <div>Humidité: <span class="ow-humidity"></span></div>
+                  <div>Vent: <span class="ow-wind"></span></div>
+                </div>
+              </div>
+              <div class="ow-row ow-forecast">
+                <div class="ow-forecast-item">
+                  <div class="ow-day"></div>
+                  <div class="wi ow-ico ow-ico-forecast"></div>
+                  <div class="ow-forecast-temp">
+                    <span class="max"></span>
+                    <span class="min"></span>
+                  </div>
+                </div>
+
+                <div class="ow-forecast-item">
+                  <div class="ow-day"></div>
+                  <div class="wi ow-ico ow-ico-forecast"></div>
+                  <div class="ow-forecast-temp">
+                    <span class="max"></span>
+                    <span class="min"></span>
+                  </div>
+                </div>
+
+                <div class="ow-forecast-item">
+                  <div class="ow-day"></div>
+                  <div class="wi ow-ico ow-ico-forecast"></div>
+                  <div class="ow-forecast-temp">
+                    <span class="max"></span>
+                    <span class="min"></span>
+                  </div>
+                </div>
+
+                <div class="ow-forecast-item">
+                  <div class="ow-day"></div>
+                  <div class="wi ow-ico ow-ico-forecast"></div>
+                  <div class="ow-forecast-temp">
+                    <span class="max"></span>
+                    <span class="min"></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carbon modal -->
+  <div class="modal fade" id="carbonModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass position-relative">
+        <button type="button" class="modal-close-right" data-bs-dismiss="modal" aria-label="Fermer">×</button>
+        <div class="modal-body">
+          <section id="carbon">
+            <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+              <div>
+                <h2 class="h3 section-title mb-1">Bilan Carbone</h2>
+                <div class="text-white-50">Estimation annuelle basée sur le trafic et l’infrastructure.</div>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="glass p-4 p-md-5 h-100">
+                  <div class="carbon-kpis">
+                    <div class="carbon-kpi">
+                      <div class="value" id="carbonImpact">—</div>
+                      <div class="label">Impact portfolio (kgCO2e/an)</div>
+                    </div>
+                    <div class="carbon-kpi">
+                      <div class="value" id="carbonAvoided">—</div>
+                      <div class="label">Émissions évitées (kgCO2e/an)</div>
+                    </div>
+                    <div class="carbon-kpi">
+                      <div class="value" id="carbonNet">—</div>
+                      <div class="label">Net (kgCO2e/an)</div>
+                      <div class="carbon-note" id="carbonNetStatus">—</div>
+                    </div>
+                    <div class="carbon-kpi">
+                      <div class="value" id="carbonAiImpact">—</div>
+                      <div class="label">Impact IA (estimation)</div>
+                    </div>
+                  </div>
+
+                  <div class="carbon-bars" aria-label="Graphique synthétique">
+                    <div class="carbon-bar">
+                      <div>Impact</div>
+                      <div class="track"><div class="fill" id="carbonBarImpact"></div></div>
+                      <div class="text-white-50" id="carbonBarImpactValue">—</div>
+                    </div>
+                    <div class="carbon-bar">
+                      <div>Évité</div>
+                      <div class="track"><div class="fill" id="carbonBarAvoided"></div></div>
+                      <div class="text-white-50" id="carbonBarAvoidedValue">—</div>
+                    </div>
+                    <div class="carbon-bar">
+                      <div>Net</div>
+                      <div class="track"><div class="fill" id="carbonBarNet"></div></div>
+                      <div class="text-white-50" id="carbonBarNetValue">—</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-3 carbon-note">
+                    Trafic annuel estimé : <strong class="text-white" id="carbonTraffic">—</strong> GB
+                    (<span id="carbonTrafficSource">source —</span>).
+                  </div>
+                  <div class="carbon-note">Hébergement : <strong class="text-white" id="carbonHosting">—</strong> kgCO2e/an.</div>
+                  <div class="carbon-note">Évité mobilité douce : <strong class="text-white" id="carbonAvoidedDetail">—</strong> kgCO2e/an.</div>
+                  <div class="carbon-note">
+                    Impact IA (estimation) : <strong class="text-white" id="carbonAiImpactDetail">—</strong> kgCO2e/an.
+                  </div>
+                  <hr>
+                  <div class="carbon-note">Dernière mise à jour : <span id="carbonUpdatedAt">—</span>.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // Year and last update
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("lastUpdated").textContent = "26/01/2026";
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
 
-    // Show/hide "to top"
-    const toTopBtn = document.getElementById("toTopBtn");
-    const onScroll = () => {
-      if (window.scrollY > 600) toTopBtn.classList.add("show");
-      else toTopBtn.classList.remove("show");
-    };
-    window.addEventListener("scroll", onScroll);
-    onScroll();
+  <script src="js/codeinputbuilder.js"></script>
 
-    toTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    // Bootstrap form validation + generate mailto
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      const form = event.target;
-      if (!form.checkValidity()) {
-        event.stopPropagation();
-        form.classList.add("was-validated");
-        return false;
-      }
-
-      const name = form.querySelectorAll("input")[0].value.trim();
-      const email = form.querySelector('input[type="email"]').value.trim();
-      const subject = form.querySelectorAll("input")[2].value.trim();
-      const message = form.querySelector("textarea").value.trim();
-
-      const mailSubject = encodeURIComponent(`Contact - ${subject}`);
-      const body = encodeURIComponent(
-`Bonjour David,
-
-Nom : ${name}
-Email : ${email}
-
-${message}
-
-Bonne journée,`
-      );
-
-      // Open user's mail client with prefilled content
-      window.location.href = `mailto:daumanddavid@hotmail.fr?subject=${mailSubject}&body=${body}`;
-      return false;
-    }
-
-    // Make function global (used inline in form onsubmit)
-    window.handleSubmit = handleSubmit;
-
-    // Theme toggle (day/night)
-    const themeToggle = document.getElementById("themeToggle");
-    const themeIcon = document.getElementById("themeIcon");
-    const themeLabel = document.getElementById("themeLabel");
-    const applyTheme = (mode) => {
-      const isLight = mode === "light";
-      document.body.classList.toggle("theme-light", isLight);
-      themeIcon.className = isLight ? "bi bi-brightness-high me-1" : "bi bi-moon-stars me-1";
-      themeLabel.textContent = isLight ? "Jour" : "Nuit";
-      localStorage.setItem("theme", mode);
-    };
-    const savedTheme = localStorage.getItem("theme");
-    applyTheme(savedTheme === "light" ? "light" : "dark");
-    themeToggle.addEventListener("click", () => {
-      const next = document.body.classList.contains("theme-light") ? "dark" : "light";
-      applyTheme(next);
-    });
-  </script>
-
-  <script>
-  // Logo par défaut (SVG minimal en data URI)
-  window.DEFAULT_LOGO_DATAURI =
-    "data:image/svg+xml;utf8," +
-    encodeURIComponent(`
-      <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>
-        <rect x='1' y='1' width='62' height='62' rx='16' fill='rgba(255,255,255,.06)' stroke='rgba(255,255,255,.18)'/>
-        <g fill='rgba(255,255,255,.65)' transform='translate(16,16) scale(1.4)'>
-          <path d='M3 21V3h14v18H3Zm2-2h10V5H5v14Zm14 2v-8h2v8h-2Zm-9-2h2v-2H10v2Zm0-4h2v-2H10v2Zm0-4h2V9H10v2ZM7 19h2v-2H7v2Zm0-4h2v-2H7v2Zm0-4h2V9H7v2Z'/>
-        </g>
-      </svg>
-    `);
-</script>
+  <script src="js/analytics.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/default-logo.js"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script src="js/carbon.js"></script>
+  <script src="js/index-page.js"></script>
+  <script src="js/heatmap.js"></script>
+  <script src="js/meteo.js"></script>
 </body>
 </html>

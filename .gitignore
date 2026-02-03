@@ -1,0 +1,15 @@
+# Sensitive / local
+admin/.htpasswd
+.env
+.env.*
+
+# Logs
+logs/*.log
+
+# Cache
+cache/*
+!cache/
+!cache/.htaccess
+
+# Backups
+*.bak

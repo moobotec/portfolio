@@ -1,0 +1,11 @@
+# Deny by default, allow public API endpoints explicitly
+<Files "carbon.php">
+  Require all granted
+</Files>
+
+<IfModule mod_access_compat.c>
+  Deny from all
+  <Files "carbon.php">
+    Allow from all
+  </Files>
+</IfModule>
