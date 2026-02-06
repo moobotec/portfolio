@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+<category><pattern>QUI EST DAVID DAUMAND</pattern><template>David Daumand est ingénieur logiciel sénior freelance chez Moobotec.</template></category>
+<category><pattern>QUI EST DAVID</pattern><template>David Daumand est ingénieur logiciel sénior freelance chez Moobotec.</template></category>
+<category><pattern>QUI EST DAVID DAUMAND *</pattern><template><srai>QUI EST DAVID DAUMAND</srai></template></category>
+<category><pattern>QUI EST DAVID *</pattern><template><srai>QUI EST DAVID</srai></template></category>
+<category><pattern>QUI EST IL</pattern><template><srai>QUI EST DAVID DAUMAND</srai></template></category>
+<category><pattern>QUI EST IL *</pattern><template><srai>QUI EST DAVID DAUMAND</srai></template></category>
+<category><pattern>PRESENTE DAVID DAUMAND</pattern><template>David Daumand est ingénieur logiciel sénior freelance. Il intervient sur des projets critiques, industriels et 2D/3D.</template></category>
+<category><pattern>PARLE MOI DE DAVID</pattern><template>David Daumand est ingénieur logiciel sénior freelance avec 19 ans d’expérience entre systèmes critiques, apps industrielles et 2D/3D.</template></category>
+<category><pattern>PARLE MOI DE DAVID DAUMAND</pattern><template>David Daumand est ingénieur logiciel sénior freelance avec 19 ans d’expérience entre systèmes critiques, apps industrielles et 2D/3D.</template></category>
+<category><pattern>PRESENTE DAVID DAUMAND *</pattern><template><srai>PRESENTE DAVID DAUMAND</srai></template></category>
+<category><pattern>PARLE MOI DE DAVID *</pattern><template><srai>PARLE MOI DE DAVID</srai></template></category>
+<category><pattern>PARLE MOI DE DAVID DAUMAND *</pattern><template><srai>PARLE MOI DE DAVID DAUMAND</srai></template></category>
+
+<category><pattern>QUEL EST SON METIER</pattern><template>Il est ingénieur logiciel sénior freelance.</template></category>
+<category><pattern>IL FAIT QUOI</pattern><template>Il conçoit, développe et optimise des logiciels : systèmes critiques, applications industrielles, web/API et 2D/3D.</template></category>
+<category><pattern>SON METIER</pattern><template>Ingénieur logiciel sénior freelance.</template></category>
+<category><pattern>INGENIEUR LOGICIEL</pattern><template>David Daumand est ingénieur logiciel sénior freelance.</template></category>
+<category><pattern>QUEL METIER FAIT IL</pattern><template><srai>QUEL EST SON METIER</srai></template></category>
+<category><pattern>QUE FAIT IL</pattern><template><srai>IL FAIT QUOI</srai></template></category>
+<category><pattern>QUEL EST LE METIER DE DAVID DAUMAND</pattern><template><srai>QUEL EST SON METIER</srai></template></category>
+<category><pattern>QUEL EST LE METIER DE DAVID DAUMAND *</pattern><template><srai>QUEL EST SON METIER</srai></template></category>
+
+<category><pattern>COMBIEN D EXPERIENCE</pattern><template>Il a 19 ans d’expérience entre systèmes critiques, embarqué/temps réel, applications industrielles et 2D/3D.</template></category>
+<category><pattern>COMBIEN D ANNEES D EXPERIENCE</pattern><template>Il a 19 ans d’expérience.</template></category>
+<category><pattern>IL A COMBIEN D EXPERIENCE</pattern><template>Il a 19 ans d’expérience.</template></category>
+<category><pattern>COMBIEN D ANNEES D EXPERIENCE A T IL</pattern><template><srai>COMBIEN D ANNEES D EXPERIENCE</srai></template></category>
+<category><pattern>COMBIEN D EXPERIENCE A DAVID DAUMAND</pattern><template><srai>COMBIEN D EXPERIENCE</srai></template></category>
+<category><pattern>COMBIEN D EXPERIENCE A DAVID DAUMAND *</pattern><template><srai>COMBIEN D EXPERIENCE</srai></template></category>
+
+<category><pattern>OU EST IL NE</pattern><template>Il est né à Royan (Charente-Maritime, France).</template></category>
+<category><pattern>OU EST IL NE*</pattern><template>Il est né à Royan (Charente-Maritime, France).</template></category>
+<category><pattern>OU EST IL BASE</pattern><template>Il est basé près de Limoges (Haute-Vienne, France).</template></category>
+<category><pattern>OU HABITE IL</pattern><template>Il est basé près de Limoges (Haute-Vienne, France).</template></category>
+<category><pattern>OU EST DAVID DAUMAND</pattern><template>Il est basé près de Limoges (Haute-Vienne, France).</template></category>
+<category><pattern>OU EST DAVID DAUMAND *</pattern><template><srai>OU EST DAVID DAUMAND</srai></template></category>
+<category><pattern>OU EST IL *</pattern><template><srai>OU EST DAVID DAUMAND</srai></template></category>
+<category><pattern>OU HABITE DAVID DAUMAND</pattern><template><srai>OU EST DAVID DAUMAND</srai></template></category>
+<category><pattern>OU HABITE DAVID DAUMAND *</pattern><template><srai>OU EST DAVID DAUMAND</srai></template></category>
+
+<category><pattern>MOOBOTEC</pattern><template>Moobotec est sa structure freelance.</template></category>
+<category><pattern>EST IL DISPONIBLE</pattern><template>Oui, il est disponible ASAP, sur devis uniquement.</template></category>
+<category><pattern>DISPONIBLE ASAP</pattern><template>Oui, il est disponible ASAP, sur devis uniquement.</template></category>
+<category><pattern>SUR DEVIS</pattern><template>Il travaille sur devis uniquement.</template></category>
+<category><pattern>DISPONIBILITE</pattern><template><srai>EST IL DISPONIBLE</srai></template></category>
+<category><pattern>EST IL DISPONIBLE *</pattern><template><srai>EST IL DISPONIBLE</srai></template></category>
+
+<category><pattern>COMMENT LE CONTACTER</pattern><template>Tu peux le contacter par email : daumanddavid@hotmail.fr.</template></category>
+<category><pattern>EMAIL</pattern><template>Son email : daumanddavid@hotmail.fr.</template></category>
+<category><pattern>ADRESSE EMAIL</pattern><template>daumanddavid@hotmail.fr.</template></category>
+<category><pattern>LINKEDIN</pattern><template>Son LinkedIn : linkedin.com/in/david-daumand-93829612a.</template></category>
+<category><pattern>GITHUB</pattern><template>Son GitHub : github.com/moobotec.</template></category>
+<category><pattern>INSTAGRAM</pattern><template>Son Instagram : instagram.com/moobotec.</template></category>
+<category><pattern>CONTACT</pattern><template><srai>COMMENT LE CONTACTER</srai></template></category>
+<category><pattern>COMMENT CONTACTER DAVID DAUMAND</pattern><template><srai>COMMENT LE CONTACTER</srai></template></category>
+<category><pattern>COMMENT CONTACTER DAVID DAUMAND *</pattern><template><srai>COMMENT LE CONTACTER</srai></template></category>
+
+<category><pattern>SA METHODE</pattern><template>Sa méthode : comprendre vite, simplifier ce qui peut l’être, livrer proprement.</template></category>
+<category><pattern>COMMENT IL TRAVAILLE</pattern><template>Approche : cadrage clair, architecture propre, instrumentation/logs, documentation utile, focus maintenabilité.</template></category>
+<category><pattern>POURQUOI TRAVAILLER AVEC LUI</pattern><template>Direct, autonome, efficace. Il fait ce qu’il promet et il le documente. Disponible, sans jargon ni chichi.</template></category>
+<category><pattern>SA FACON DE TRAVAILLER</pattern><template><srai>COMMENT IL TRAVAILLE</srai></template></category>
+<category><pattern>METHODE</pattern><template><srai>SA METHODE</srai></template></category>
+
+<category><pattern>DOMAINES D INTERVENTION</pattern><template>R&amp;D &amp; ingénierie système, développement logiciel, tests &amp; validation, qualité &amp; projet.</template></category>
+<category><pattern>SES DOMAINES</pattern><template>R&amp;D &amp; ingénierie système, développement logiciel, tests &amp; validation, qualité &amp; projet.</template></category>
+<category><pattern>DOMAINES</pattern><template><srai>DOMAINES D INTERVENTION</srai></template></category>
+
+<category><pattern>QUELLES COMPETENCES</pattern><template>Architecture, qualité, CI/CD, développement embarqué/temps réel, web/API, 2D/3D, tests &amp; validation.</template></category>
+<category><pattern>QUELLES SONT SES COMPETENCES</pattern><template><srai>QUELLES COMPETENCES</srai></template></category>
+<category><pattern>QUELLES SONT SES COMPETENCES *</pattern><template><srai>QUELLES COMPETENCES</srai></template></category>
+<category><pattern>QUELLES COMPETENCES A T IL</pattern><template><srai>QUELLES COMPETENCES</srai></template></category>
+<category><pattern>COMPETENCES</pattern><template><srai>QUELLES COMPETENCES</srai></template></category>
+<category><pattern>TECHNOS</pattern><template>Langages clés : C/C++, C# (.NET), PHP, JavaScript, Python, SQL. Outils : Qt, Unity, Docker, Git, CI/CD.</template></category>
+<category><pattern>TECHNOLOGIES</pattern><template><srai>TECHNOS</srai></template></category>
+<category><pattern>QUELLES TECHNOLOGIES</pattern><template><srai>TECHNOS</srai></template></category>
+<category><pattern>QUELLES TECHNOLOGIES UTILISE T IL</pattern><template><srai>TECHNOS</srai></template></category>
+<category><pattern>STACK</pattern><template>C/C++, C# (.NET), PHP, JavaScript, Python, SQL, Qt, Unity, Docker, Git, CI/CD.</template></category>
+<category><pattern>QUELLE STACK</pattern><template><srai>STACK</srai></template></category>
+<category><pattern>QUELLE EST SA STACK</pattern><template><srai>STACK</srai></template></category>
+<category><pattern>STACK TECHNIQUE</pattern><template><srai>STACK</srai></template></category>
+<category><pattern>LANGAGES</pattern><template>C/C++, C# (.NET), PHP, JavaScript, Python, SQL.</template></category>
+<category><pattern>QUELS LANGAGES</pattern><template><srai>LANGAGES</srai></template></category>
+<category><pattern>QUELS LANGAGES UTILISE T IL</pattern><template><srai>LANGAGES</srai></template></category>
+<category><pattern>FRAMEWORKS</pattern><template>Qt, Unity 2D/3D, ASP.NET Core, Bootstrap, API REST.</template></category>
+<category><pattern>QUELS FRAMEWORKS</pattern><template><srai>FRAMEWORKS</srai></template></category>
+<category><pattern>QUELS FRAMEWORKS UTILISE T IL</pattern><template><srai>FRAMEWORKS</srai></template></category>
+<category><pattern>SYSTEMES</pattern><template>Linux, Windows, VxWorks, Docker, Git, CI/CD, Jira/Confluence.</template></category>
+<category><pattern>QUELS SYSTEMES</pattern><template><srai>SYSTEMES</srai></template></category>
+<category><pattern>QUELS OS</pattern><template><srai>SYSTEMES</srai></template></category>
+<category><pattern>RESEAUX</pattern><template>UDP/TCP, SIP/SMTP/IMAP/FTP, SFTP, WebRTC.</template></category>
+<category><pattern>PROTOCOLES</pattern><template><srai>RESEAUX</srai></template></category>
+<category><pattern>QUELS RESEAUX</pattern><template><srai>RESEAUX</srai></template></category>
+<category><pattern>COMPETENCES</pattern><template><srai>QUELLES COMPETENCES</srai></template></category>
+<category><pattern>OUTILS</pattern><template><srai>TECHNOS</srai></template></category>
+<category><pattern>QUELS OUTILS</pattern><template><srai>OUTILS</srai></template></category>
+<category><pattern>QUELS OUTILS UTILISE T IL</pattern><template><srai>OUTILS</srai></template></category>
+
+<category><pattern>PASSIONS</pattern><template>Ses passions : course à pied, trail, randonnées et babyfoot.</template></category>
+<category><pattern>QUELLES SONT LES PASSIONS DE DAVID DAUMAND</pattern><template>Ses passions : course à pied, trail, randonnées et babyfoot.</template></category>
+<category><pattern>QUELLES SONT LES PASSIONS DE DAVID DAUMAND *</pattern><template>Ses passions : course à pied, trail, randonnées et babyfoot.</template></category>
+<category><pattern>QUELLES SONT SES PASSIONS</pattern><template>Ses passions : course à pied, trail, randonnées et babyfoot.</template></category>
+<category><pattern>QUELLES SONT SES PASSIONS *</pattern><template>Ses passions : course à pied, trail, randonnées et babyfoot.</template></category>
+<category><pattern>LOISIRS</pattern><template>Ses loisirs : course à pied, trail, randonnées et babyfoot.</template></category>
+<category><pattern>QUELS SONT SES LOISIRS</pattern><template><srai>LOISIRS</srai></template></category>
+<category><pattern>QUELS SONT SES LOISIRS *</pattern><template><srai>LOISIRS</srai></template></category>
+<category><pattern>SPORT</pattern><template>Il pratique la course à pied (route), le trail, la randonnée et le babyfoot.</template></category>
+<category><pattern>COURSE A PIED</pattern><template>Il pratique la course à pied et suit ses performances.</template></category>
+<category><pattern>RUNNING</pattern><template>Il pratique la course à pied (running) et suit ses performances.</template></category>
+<category><pattern>TRAIL</pattern><template>Il fait du trail pour déconnecter et garder la tête froide.</template></category>
+<category><pattern>RANDONNEE</pattern><template>Il fait des randonnées régulières pour l’endurance et la découverte.</template></category>
+<category><pattern>RANDONNEES</pattern><template>Il fait des randonnées régulières pour l’endurance et la découverte.</template></category>
+<category><pattern>BABYFOOT</pattern><template>Il est passionné de babyfoot de compétition, avec précision, stratégie et maîtrise du jeu.</template></category>
+<category><pattern>CLUB DE BABYFOOT</pattern><template>Il est affilié au club Bourges Football de Table.</template></category>
+<category><pattern>ANNEES DE COMPETITION</pattern><template>Il a fait de la compétition en babyfoot de 2014 à 2018.</template></category>
+<category><pattern>GR92</pattern><template>Il a fait le GR92 de Rosas à Cadaqués (juillet 2025), 31.66 km en 7:31:11.</template></category>
+
+<category><pattern>PROJETS</pattern><template><random><li>Life.js — librairie JavaScript de timeline.</li><li>Zelda-like 2D — Unity • C#.</li><li>Checkmat.js — JavaScript.</li><li>CodeInputBuilder.js — JavaScript.</li><li>Timecaps — plateforme web.</li><li>AsDuNumerique — plateforme web.</li><li>Participation / Intéressement — plateforme web.</li><li>Environnement d’entreprise &amp; administration.</li><li>LibKLV — bibliothèque C++.</li><li>LibSysOS — bibliothèque C/C++.</li><li>Montage vidéo — logiciel C++.</li><li>Simulation robotique — logiciel C++.</li><li>Bénévolat — démo Thymio.</li><li>Prototype Terratis — lutte anti-moustiques.</li><li>Startup Battle Alliptic — Wikipedia VR.</li><li>Cube immersif VR — logement adapté virtuel.</li></random></template></category>
+<category><pattern>PROJETS SELECTIONNES</pattern><template><srai>PROJETS</srai></template></category>
+<category><pattern>PROJETS SELECTIONNES *</pattern><template><srai>PROJETS</srai></template></category>
+
+</aiml>

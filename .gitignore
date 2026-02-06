@@ -2,6 +2,7 @@
 admin/.htpasswd
 .env
 .env.*
+scripts/.chatbot_test_cookies.txt
 
 # Logs
 logs/*.log
@@ -13,3 +14,19 @@ cache/*
 
 # Backups
 *.bak
+
+# Node / npm
+node_modules/
+package.json
+package-lock.json
+
+# Tooling configs (local)
+.stylelintrc.json
+.eslintrc.json
+eslint.config.js
+
+# Minified hashed bundles
+js/*.min.*.js
+
+# External libraries
+librairie_externe/

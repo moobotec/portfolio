@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1">
+  <category>
+    <pattern>BONJOUR</pattern>
+    <template>Bonjour ! Comment puis-je t'aider ?</template>
+  </category>
+  <category>
+    <pattern>SALUT</pattern>
+    <template>Salut ! Que puis-je faire pour toi ?</template>
+  </category>
+  <category>
+    <pattern>COUCOU</pattern>
+    <template>Coucou !</template>
+  </category>
+  <category>
+    <pattern>QUI ES TU</pattern>
+    <template>Je suis un assistant AIML simple, basé sur RebeccaAIML.</template>
+  </category>
+  <category>
+    <pattern>QUEL EST TON NOM</pattern>
+    <template>Je m'appelle Rebecca.</template>
+  </category>
+  <category>
+    <pattern>TU ES QUI</pattern>
+    <template>Un bot AIML en PHP. Dis-moi comment je peux aider.</template>
+  </category>
+  <category>
+    <pattern>QUE FAIS TU</pattern>
+    <template>Je réponds à des questions simples et je discute.</template>
+  </category>
+  <category>
+    <pattern>COMMENT TU T APPELLES</pattern>
+    <template>Je m'appelle Rebecca.</template>
+  </category>
+  <category>
+    <pattern>COMMENT CA VA</pattern>
+    <template>Je vais bien, merci ! Et toi ?</template>
+  </category>
+  <category>
+    <pattern>CA VA</pattern>
+    <template>Super. Et toi ?</template>
+  </category>
+  <category>
+    <pattern>ET TOI</pattern>
+    <template>Ça va, merci !</template>
+  </category>
+  <category>
+    <pattern>MERCI</pattern>
+    <template>Avec plaisir !</template>
+  </category>
+  <category>
+    <pattern>AU REVOIR</pattern>
+    <template>Au revoir !</template>
+  </category>
+  <category>
+    <pattern>BYE</pattern>
+    <template>À bientôt !</template>
+  </category>
+  <category>
+    <pattern>AIDE</pattern>
+    <template>Tu peux me poser des questions simples ou discuter.</template>
+  </category>
+  <category>
+    <pattern>JE M APPELLE *</pattern>
+    <template>
+      <think><set name="name"><star/></set></think>
+      Enchanté, <get name="name"/> !
+    </template>
+  </category>
+  <category>
+    <pattern>MON NOM EST *</pattern>
+    <template>
+      <think><set name="name"><star/></set></think>
+      Ravi de te rencontrer, <get name="name"/> !
+    </template>
+  </category>
+  <category>
+    <pattern>JE SUIS *</pattern>
+    <template>
+      Pourquoi dis-tu que tu es <star/> ?
+    </template>
+  </category>
+  <category>
+    <pattern>JE NE SAIS PAS</pattern>
+    <template>Ce n'est pas grave. Veux-tu en parler ?</template>
+  </category>
+  <category>
+    <pattern>OU ES TU</pattern>
+    <template>Je suis un programme qui tourne sur un serveur.</template>
+  </category>
+  <category>
+    <pattern>QUELLE HEURE EST IL</pattern>
+    <template>Je n'ai pas l'heure en temps réel, désolé.</template>
+  </category>
+  <category>
+    <pattern>QUELLE EST LA DATE</pattern>
+    <template>Je n'ai pas la date en temps réel, désolé.</template>
+  </category>
+  <category>
+    <pattern>PARLE MOI DE TOI</pattern>
+    <template>Je suis un bot AIML avec un petit corpus français.</template>
+  </category>
+  <category>
+    <pattern>JE VEUX *</pattern>
+    <template>Pourquoi veux-tu <star/> ?</template>
+  </category>
+  <category>
+    <pattern>JE PENSE QUE *</pattern>
+    <template>Pourquoi penses-tu que <star/> ?</template>
+  </category>
+  <category>
+    <pattern>JE ME SENS *</pattern>
+    <template>Pourquoi te sens-tu <star/> ?</template>
+  </category>
+  <category>
+    <pattern>JE SUIS TRISTE</pattern>
+    <template>Je suis désolé. Tu veux en parler ?</template>
+  </category>
+  <category>
+    <pattern>JE SUIS CONTENT</pattern>
+    <template>C'est une bonne nouvelle !</template>
+  </category>
+  <category>
+    <pattern>QUI A CREE *</pattern>
+    <template>J'ai été créé par des développeurs passionnés.</template>
+  </category>
+  <category>
+    <pattern>QUI TA CREE</pattern>
+    <template>Un humain curieux et motivé.</template>
+  </category>
+  <category>
+    <pattern>POURQUOI</pattern>
+    <template>Peux-tu préciser ?</template>
+  </category>
+  <category>
+    <pattern>OUI</pattern>
+    <template>D'accord.</template>
+  </category>
+  <category>
+    <pattern>NON</pattern>
+    <template>D'accord.</template>
+  </category>
+  <category>
+    <pattern>OK</pattern>
+    <template>Parfait.</template>
+  </category>
+  <category>
+    <pattern>D ACCORD</pattern>
+    <template>Très bien.</template>
+  </category>
+  <category>
+    <pattern>RACONTE MOI *</pattern>
+    <template>Que veux-tu savoir sur <star/> ?</template>
+  </category>
+  <category>
+    <pattern>PARLE MOI DE *</pattern>
+    <template>Que veux-tu savoir sur <star/> ?</template>
+  </category>
+  <category>
+    <pattern>HELLO</pattern>
+    <template>Bonjour !</template>
+  </category>
+  <category>
+    <pattern>HI</pattern>
+    <template>Salut !</template>
+  </category>
+</aiml>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+<category><pattern>WHO IS DAVID DAUMAND</pattern><template>David Daumand is a senior software engineer and freelance at Moobotec.</template></category>
+<category><pattern>WHO IS DAVID</pattern><template>David Daumand is a senior software engineer and freelance at Moobotec.</template></category>
+<category><pattern>WHO IS DAVID DAUMAND *</pattern><template><srai>WHO IS DAVID DAUMAND</srai></template></category>
+<category><pattern>WHO IS DAVID *</pattern><template><srai>WHO IS DAVID</srai></template></category>
+<category><pattern>WHO IS HE</pattern><template><srai>WHO IS DAVID DAUMAND</srai></template></category>
+<category><pattern>WHO IS HE *</pattern><template><srai>WHO IS DAVID DAUMAND</srai></template></category>
+<category><pattern>INTRODUCE DAVID DAUMAND</pattern><template>David Daumand is a senior software engineer freelancer working on critical systems, industrial apps, and 2D/3D projects.</template></category>
+<category><pattern>TELL ME ABOUT DAVID</pattern><template>David Daumand is a senior software engineer with 19 years of experience in critical systems, industrial apps, and 2D/3D.</template></category>
+<category><pattern>TELL ME ABOUT DAVID DAUMAND</pattern><template>David Daumand is a senior software engineer with 19 years of experience in critical systems, industrial apps, and 2D/3D.</template></category>
+<category><pattern>INTRODUCE DAVID DAUMAND *</pattern><template><srai>INTRODUCE DAVID DAUMAND</srai></template></category>
+<category><pattern>TELL ME ABOUT DAVID *</pattern><template><srai>TELL ME ABOUT DAVID</srai></template></category>
+<category><pattern>TELL ME ABOUT DAVID DAUMAND *</pattern><template><srai>TELL ME ABOUT DAVID DAUMAND</srai></template></category>
+
+<category><pattern>WHAT IS HIS JOB</pattern><template>He is a senior software engineer and freelancer.</template></category>
+<category><pattern>WHAT DOES HE DO</pattern><template>He designs, builds, fixes, and optimizes software: critical systems, industrial apps, web/API, and 2D/3D.</template></category>
+<category><pattern>HIS JOB</pattern><template>Senior software engineer (freelance).</template></category>
+<category><pattern>WHAT IS DAVID DAUMAND S JOB</pattern><template><srai>WHAT IS HIS JOB</srai></template></category>
+<category><pattern>WHAT IS DAVID DAUMAND S JOB *</pattern><template><srai>WHAT IS HIS JOB</srai></template></category>
+<category><pattern>WHAT DOES DAVID DAUMAND DO</pattern><template><srai>WHAT DOES HE DO</srai></template></category>
+<category><pattern>WHAT DOES DAVID DAUMAND DO *</pattern><template><srai>WHAT DOES HE DO</srai></template></category>
+
+<category><pattern>HOW MUCH EXPERIENCE</pattern><template>He has 19 years of experience.</template></category>
+<category><pattern>HOW MANY YEARS OF EXPERIENCE</pattern><template>He has 19 years of experience.</template></category>
+<category><pattern>HOW MANY YEARS OF EXPERIENCE DOES HE HAVE</pattern><template><srai>HOW MANY YEARS OF EXPERIENCE</srai></template></category>
+<category><pattern>HOW MANY YEARS OF EXPERIENCE DOES DAVID DAUMAND HAVE</pattern><template><srai>HOW MANY YEARS OF EXPERIENCE</srai></template></category>
+<category><pattern>HOW MANY YEARS OF EXPERIENCE DOES DAVID DAUMAND HAVE *</pattern><template><srai>HOW MANY YEARS OF EXPERIENCE</srai></template></category>
+
+<category><pattern>WHERE WAS HE BORN</pattern><template>He was born in Royan (Charente-Maritime, France).</template></category>
+<category><pattern>WHERE IS HE BASED</pattern><template>He is based near Limoges (Haute-Vienne, France).</template></category>
+<category><pattern>WHERE IS DAVID DAUMAND</pattern><template>He is based near Limoges (Haute-Vienne, France).</template></category>
+<category><pattern>WHERE IS DAVID DAUMAND *</pattern><template><srai>WHERE IS DAVID DAUMAND</srai></template></category>
+<category><pattern>WHERE DOES HE LIVE</pattern><template><srai>WHERE IS DAVID DAUMAND</srai></template></category>
+<category><pattern>WHERE DOES DAVID DAUMAND LIVE</pattern><template><srai>WHERE IS DAVID DAUMAND</srai></template></category>
+<category><pattern>WHERE DOES DAVID DAUMAND LIVE *</pattern><template><srai>WHERE IS DAVID DAUMAND</srai></template></category>
+
+<category><pattern>MOOBOTEC</pattern><template>Moobotec is his freelance structure.</template></category>
+<category><pattern>IS HE AVAILABLE</pattern><template>Yes, he is available ASAP, quote-only.</template></category>
+<category><pattern>AVAILABLE ASAP</pattern><template>Yes, he is available ASAP, quote-only.</template></category>
+<category><pattern>QUOTE ONLY</pattern><template>He works on a quote-only basis.</template></category>
+<category><pattern>AVAILABILITY</pattern><template><srai>IS HE AVAILABLE</srai></template></category>
+<category><pattern>IS HE AVAILABLE *</pattern><template><srai>IS HE AVAILABLE</srai></template></category>
+
+<category><pattern>HOW CAN I CONTACT HIM</pattern><template>You can email him at daumanddavid@hotmail.fr.</template></category>
+<category><pattern>EMAIL</pattern><template>His email is daumanddavid@hotmail.fr.</template></category>
+<category><pattern>LINKEDIN</pattern><template>His LinkedIn: linkedin.com/in/david-daumand-93829612a.</template></category>
+<category><pattern>GITHUB</pattern><template>His GitHub: github.com/moobotec.</template></category>
+<category><pattern>INSTAGRAM</pattern><template>His Instagram: instagram.com/moobotec.</template></category>
+<category><pattern>CONTACT</pattern><template><srai>HOW CAN I CONTACT HIM</srai></template></category>
+<category><pattern>HOW CAN I CONTACT DAVID DAUMAND</pattern><template><srai>HOW CAN I CONTACT HIM</srai></template></category>
+<category><pattern>HOW CAN I CONTACT DAVID DAUMAND *</pattern><template><srai>HOW CAN I CONTACT HIM</srai></template></category>
+
+<category><pattern>HIS METHOD</pattern><template>His method: understand fast, simplify when possible, deliver cleanly.</template></category>
+<category><pattern>HOW DOES HE WORK</pattern><template>Clear scoping, clean architecture, instrumentation/logs, useful documentation, and a focus on maintainability.</template></category>
+<category><pattern>WHY WORK WITH HIM</pattern><template>Direct, autonomous, efficient. He does what he promises and documents it.</template></category>
+<category><pattern>WORK METHOD</pattern><template><srai>HIS METHOD</srai></template></category>
+
+<category><pattern>FIELDS OF WORK</pattern><template>R&amp;D and systems engineering, software development, tests &amp; validation, quality &amp; project.</template></category>
+<category><pattern>HIS FIELDS</pattern><template>R&amp;D and systems engineering, software development, tests &amp; validation, quality &amp; project.</template></category>
+<category><pattern>FIELDS</pattern><template><srai>FIELDS OF WORK</srai></template></category>
+
+<category><pattern>SKILLS</pattern><template>Architecture, quality, CI/CD, embedded/real-time, web/API, 2D/3D, tests &amp; validation.</template></category>
+<category><pattern>WHAT ARE HIS SKILLS</pattern><template><srai>SKILLS</srai></template></category>
+<category><pattern>WHAT ARE HIS SKILLS *</pattern><template><srai>SKILLS</srai></template></category>
+<category><pattern>SKILLSET</pattern><template><srai>SKILLS</srai></template></category>
+<category><pattern>TECHNOLOGIES</pattern><template>Main languages: C/C++, C# (.NET), PHP, JavaScript, Python, SQL. Tools: Qt, Unity, Docker, Git, CI/CD.</template></category>
+<category><pattern>TECH STACK</pattern><template><srai>TECHNOLOGIES</srai></template></category>
+<category><pattern>WHAT TECHNOLOGIES DOES HE USE</pattern><template><srai>TECHNOLOGIES</srai></template></category>
+<category><pattern>STACK</pattern><template>C/C++, C# (.NET), PHP, JavaScript, Python, SQL, Qt, Unity, Docker, Git, CI/CD.</template></category>
+<category><pattern>WHAT IS HIS STACK</pattern><template><srai>STACK</srai></template></category>
+<category><pattern>STACK OVERVIEW</pattern><template><srai>STACK</srai></template></category>
+<category><pattern>LANGUAGES</pattern><template>C/C++, C# (.NET), PHP, JavaScript, Python, SQL.</template></category>
+<category><pattern>WHAT LANGUAGES</pattern><template><srai>LANGUAGES</srai></template></category>
+<category><pattern>WHAT LANGUAGES DOES HE USE</pattern><template><srai>LANGUAGES</srai></template></category>
+<category><pattern>FRAMEWORKS</pattern><template>Qt, Unity 2D/3D, ASP.NET Core, Bootstrap, REST APIs.</template></category>
+<category><pattern>WHAT FRAMEWORKS</pattern><template><srai>FRAMEWORKS</srai></template></category>
+<category><pattern>WHAT FRAMEWORKS DOES HE USE</pattern><template><srai>FRAMEWORKS</srai></template></category>
+<category><pattern>SYSTEMS</pattern><template>Linux, Windows, VxWorks, Docker, Git, CI/CD, Jira/Confluence.</template></category>
+<category><pattern>WHAT SYSTEMS</pattern><template><srai>SYSTEMS</srai></template></category>
+<category><pattern>WHAT OS</pattern><template><srai>SYSTEMS</srai></template></category>
+<category><pattern>NETWORKS</pattern><template>UDP/TCP, SIP/SMTP/IMAP/FTP, SFTP, WebRTC.</template></category>
+<category><pattern>PROTOCOLS</pattern><template><srai>NETWORKS</srai></template></category>
+<category><pattern>WHAT NETWORKS</pattern><template><srai>NETWORKS</srai></template></category>
+<category><pattern>TOOLS</pattern><template><srai>TECHNOLOGIES</srai></template></category>
+<category><pattern>WHAT TOOLS</pattern><template><srai>TOOLS</srai></template></category>
+<category><pattern>WHAT TOOLS DOES HE USE</pattern><template><srai>TOOLS</srai></template></category>
+
+<category><pattern>PASSIONS</pattern><template>His passions: running, trail, hiking, and table football (babyfoot).</template></category>
+<category><pattern>HOBBIES</pattern><template>His hobbies: running, trail, hiking, and table football (babyfoot).</template></category>
+<category><pattern>SPORT</pattern><template>He practices running, trail, hiking, and table football.</template></category>
+<category><pattern>RUNNING</pattern><template>He practices running and tracks his performance.</template></category>
+<category><pattern>TRAIL</pattern><template>He does trail runs to disconnect and keep a clear head.</template></category>
+<category><pattern>HIKING</pattern><template>He goes on regular hikes for endurance and discovery.</template></category>
+<category><pattern>TABLE FOOTBALL</pattern><template>He is passionate about competitive table football (babyfoot), focusing on precision, strategy, and control.</template></category>
+<category><pattern>BABYFOOT</pattern><template>He is passionate about competitive babyfoot, focusing on precision, strategy, and control.</template></category>
+<category><pattern>CLUB</pattern><template>He is affiliated with Bourges Football de Table.</template></category>
+<category><pattern>COMPETITION YEARS</pattern><template>He competed in babyfoot from 2014 to 2018.</template></category>
+<category><pattern>GR92</pattern><template>He hiked the GR92 from Rosas to Cadaqués (July 2025), 31.66 km in 7:31:11.</template></category>
+<category><pattern>WHAT ARE HIS PASSIONS</pattern><template><srai>PASSIONS</srai></template></category>
+<category><pattern>WHAT ARE HIS PASSIONS *</pattern><template><srai>PASSIONS</srai></template></category>
+<category><pattern>WHAT ARE HIS HOBBIES</pattern><template><srai>HOBBIES</srai></template></category>
+<category><pattern>WHAT ARE HIS HOBBIES *</pattern><template><srai>HOBBIES</srai></template></category>
+
+<category><pattern>PROJECTS</pattern><template><random><li>Life.js — JavaScript timeline library.</li><li>Zelda-like 2D — Unity • C#.</li><li>Checkmat.js — JavaScript.</li><li>CodeInputBuilder.js — JavaScript.</li><li>Timecaps — web platform.</li><li>AsDuNumerique — web platform.</li><li>Participation / Intéressement — web platform.</li><li>Environnement d’entreprise &amp; administration.</li><li>LibKLV — C++ library.</li><li>LibSysOS — C/C++ library.</li><li>Montage vidéo — C++ software.</li><li>Simulation robotique — C++ software.</li><li>Bénévolat — Thymio demo.</li><li>Prototype Terratis — anti-mosquito project.</li><li>Startup Battle Alliptic — Wikipedia VR.</li><li>Cube immersif VR — adapted housing virtual demo.</li></random></template></category>
+<category><pattern>SELECTED PROJECTS</pattern><template><srai>PROJECTS</srai></template></category>
+<category><pattern>SELECTED PROJECTS *</pattern><template><srai>PROJECTS</srai></template></category>
+
+</aiml>

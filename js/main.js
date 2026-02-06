@@ -108,7 +108,7 @@
     const yearEl = qs("#year");
     const lastUpdatedEl = qs("#lastUpdated");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-    if (lastUpdatedEl) lastUpdatedEl.textContent = "03/02/2026";
+    if (lastUpdatedEl) lastUpdatedEl.textContent = "06/02/2026";
 
     // GDPR consent modal (analytics)
     const consentModalEl = qs("#consentModal");
@@ -159,6 +159,76 @@
         });
       }
     }
+
+    // Auto-play/pause videos in modals (lazy-load src on open)
+    const setupModalVideo = (modalId) => {
+      const modalEl = qs(modalId);
+      if (!modalEl) return;
+      const videoEl = modalEl.querySelector("video");
+      if (!videoEl) return;
+      const sourceEl = videoEl.querySelector("source");
+      const dataSrc = sourceEl?.getAttribute("data-src");
+      modalEl.addEventListener("shown.bs.modal", () => {
+        if (sourceEl && dataSrc && !sourceEl.getAttribute("src")) {
+          sourceEl.setAttribute("src", dataSrc);
+          videoEl.load();
+        }
+        videoEl.play().catch(() => {});
+      });
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        videoEl.pause();
+        videoEl.currentTime = 0;
+        if (sourceEl && sourceEl.getAttribute("src")) {
+          sourceEl.removeAttribute("src");
+          videoEl.load();
+        }
+      });
+    };
+    setupModalVideo("#vStreamingVideoModal");
+    setupModalVideo("#robotxVideoModal");
+
+    // Easter egg: key combo sequence (game-style)
+    const easterEggSequence = [
+      "arrowup","arrowup","arrowdown","arrowdown",
+      "arrowleft","arrowright","arrowleft","arrowright",
+      "b","a"
+    ];
+    let easterEggIndex = 0;
+    const trackEasterEgg = () => {
+      try {
+        if (localStorage.getItem("analyticsConsent") !== "granted") return;
+        const now = new Date();
+        fetch("/track.php", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            event: "easter_egg",
+            label: "starter_pack",
+            page: location.pathname + location.search,
+            client_ts: now.toISOString(),
+            client_tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+            client_hour: now.getHours()
+          }),
+          keepalive: true
+        }).catch(() => {});
+      } catch (_) {}
+    };
+    document.addEventListener("keydown", (event) => {
+      const key = event.key.toLowerCase();
+      if (key === easterEggSequence[easterEggIndex]) {
+        easterEggIndex += 1;
+        if (easterEggIndex === easterEggSequence.length) {
+          easterEggIndex = 0;
+          const modalEl = qs("#starterPackModal");
+          if (modalEl && window.bootstrap?.Modal) {
+            window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+          }
+          trackEasterEgg();
+        }
+      } else {
+        easterEggIndex = 0;
+      }
+    });
 
     // Show/hide "to top"
     const toTopBtn = qs("#toTopBtn");
@@ -555,12 +625,12 @@ Bonne journée,`
     }
 
     // CodeInputBuilder init (min/max dates)
-    const codeInputDateMinLimit = new Date(Date.UTC(2006, 5, 1)); // TODO: ajuste ta date min
+    const codeInputDateMinLimit = new Date(Date.UTC(1998, 4, 1)); // TODO: ajuste ta date min
     const codeInputDateMaxLimit = new Date();
     const codeInputDateMinLimitSec = codeInputDateMinLimit.getTime() / 1000;
     const codeInputDateMaxLimitSec = codeInputDateMaxLimit.getTime() / 1000;
 
-    const codeInputMinDefault = "06/2006";
+    const codeInputMinDefault = "05/1998";
     const codeInputMaxDefault = new Date();
     window.codeInputDefaults = { min: codeInputMinDefault, max: codeInputMaxDefault };
 
