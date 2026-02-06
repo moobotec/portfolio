@@ -4,7 +4,7 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 
 $settings = [
-    'api_key' => '704ff500e497dc0a45ac029d5f43f3aa',
+    'api_key' => 'sk_live_123456',
     'weather_url' => 'https://api.openweathermap.org/data/2.5/weather',
     'forecast_url' => 'https://api.openweathermap.org/data/2.5/forecast',
     'units' => 'metric',
