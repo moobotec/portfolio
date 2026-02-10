@@ -108,7 +108,7 @@
     const yearEl = qs("#year");
     const lastUpdatedEl = qs("#lastUpdated");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-    if (lastUpdatedEl) lastUpdatedEl.textContent = "06/02/2026";
+    if (lastUpdatedEl) lastUpdatedEl.textContent = "10/02/2026";
 
     // GDPR consent modal (analytics)
     const consentModalEl = qs("#consentModal");

@@ -7,6 +7,7 @@ Site portfolio statique. Version en ligne: https://daumand.timecaps.fr/
 - Theme jour/nuit, bouton retour en haut, formulaire de contact qui genere un email (mailto).
 - Grille de competences, carrousel de logos, cartes projets.
 - Widget chatbot AIML (FR/EN) avec bouton flottant, fenetre de chat et gestion du reset.
+- Projet public "AIML Rebecca" (portage C++ -> PHP) avec carrousel d'images optimisees (AVIF/WEBP/PNG).
 - Parcours pro avec timeline, dates a gauche et separateur horizontal par experience + nouveaux stages/activites et jobs etudiants regroupes.
 - Filtres avances (periode + themes + type de client) avec bouton Masquer/Derouler.
 - Section "Activites publiques" (ex-Posts) avec cartes d'interventions, liens et medias.

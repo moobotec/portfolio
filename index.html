@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>David Daumand — Ingénieur Logiciel Sénior | Portfolio &amp; Assistant AIML</title>
+<title>David Daumand — Ingénieur Logiciel Sénior | Portfolio</title>
 <link href="https://daumand.timecaps.fr/" rel="canonical">
 <link href="assets/Clock.png" rel="icon" type="image/png">
 <meta content="Ingénieur logiciel sénior : systèmes critiques, embarqué/temps réel, web/API, 2D/3D (Unity), robotique, architecture logicielle. Portfolio, expériences, projets et assistant AIML." name="description">
@@ -13,7 +13,7 @@
 <meta content="website" property="og:type">
 <meta content="fr_FR" property="og:locale">
 <meta content="David Daumand — Portfolio" property="og:site_name">
-<meta content="David Daumand — Ingénieur Logiciel Sénior | Portfolio &amp; Assistant AIML" property="og:title">
+<meta content="David Daumand — Ingénieur Logiciel Sénior | Portfolio" property="og:title">
 <meta content="Ingénieur logiciel sénior : systèmes critiques, embarqué/temps réel, web/API, 2D/3D (Unity), robotique, architecture logicielle. Portfolio, expériences, projets et assistant AIML." property="og:description">
 <meta content="https://daumand.timecaps.fr/" property="og:url">
 <meta content="https://daumand.timecaps.fr/assets/preview.png" property="og:image">
@@ -673,6 +673,12 @@
     #lifeMiniCarousel .carousel-item img{
       width: 100%;
       height: clamp(240px, 34vw, 360px);
+      object-fit: contain;
+      background: rgba(10,16,28,.45);
+    }
+    #rebeccaMiniCarousel .carousel-item img{
+      width: 100%;
+      height: clamp(220px, 32vw, 360px);
       object-fit: contain;
       background: rgba(10,16,28,.45);
     }
@@ -2007,6 +2013,71 @@
 </div>
 </div>
 <div class="row g-4">
+<!-- Project 0 -->
+<div class="col-lg-6">
+<div class="glass p-4 h-100">
+<div class="d-flex align-items-start gap-2">
+<div>
+<h3 class="h5 fw-bold mb-1">AIML Rebecca — Portage C++ → PHP</h3>
+<div class="text-white-50">Assistant IA • Portage automatisé • Interface de test</div>
+</div>
+<div class="project-badges">
+<span class="badge rounded-pill text-bg-light" style="background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.85)!important;border:1px solid rgba(255,255,255,.18);">
+                  Moobotec • 2026
+                </span>
+<span class="badge rounded-pill" style="background:rgba(40, 167, 69, .35)!important;
+                        color:#eafff0!important;
+                        border:1px solid rgba(40, 167, 69, .55);">
+                  Public
+                </span>
+</div>
+</div>
+<p class="mt-3 mb-3 text-white-75">
+              Projet public de portage d’un assistant AIML “Rebecca” : migration de code C++
+              vers PHP avec assistance IA pour accélérer l’analyse, la traduction des patterns et la
+              vérification fonctionnelle. Une interface de test est disponible en bas à droite de la page
+              pour poser des questions sur le créateur du site et le projet.
+            </p>
+<div class="carousel slide" data-bs-interval="4000" data-bs-ride="carousel" id="rebeccaMiniCarousel">
+<div class="carousel-inner rounded-4 shadow my-4">
+<div class="carousel-item active">
+<picture>
+<source sizes="(max-width: 992px) 100vw, 1200px" srcset="assets/rebecca-1200.avif 1200w, assets/rebecca-600.avif 600w, assets/rebecca-300.avif 300w" type="image/avif">
+<source sizes="(max-width: 992px) 100vw, 1200px" srcset="assets/rebecca-1200.webp 1200w, assets/rebecca-600.webp 600w, assets/rebecca-300.webp 300w" type="image/webp">
+<img alt="AIML Rebecca" class="d-block w-100 project-media img-fluid rounded-4" decoding="async" height="524" loading="lazy" sizes="(max-width: 992px) 100vw, 1200px" src="assets/rebecca.png" width="385">
+</picture>
+</div>
+<div class="carousel-item">
+<picture>
+<source sizes="(max-width: 992px) 100vw, 1200px" srcset="assets/rebecca_1-1200.avif 1200w, assets/rebecca_1-600.avif 600w, assets/rebecca_1-300.avif 300w" type="image/avif">
+<source sizes="(max-width: 992px) 100vw, 1200px" srcset="assets/rebecca_1-1200.webp 1200w, assets/rebecca_1-600.webp 600w, assets/rebecca_1-300.webp 300w" type="image/webp">
+<img alt="AIML Rebecca 1" class="d-block w-100 project-media img-fluid rounded-4" decoding="async" height="961" loading="lazy" sizes="(max-width: 992px) 100vw, 1200px" src="assets/rebecca_1.png" width="1210">
+</picture>
+</div>
+</div>
+<button aria-label="Image précédente" class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#rebeccaMiniCarousel" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon"></span>
+</button>
+<button aria-label="Image suivante" class="carousel-control-next" data-bs-slide="next" data-bs-target="#rebeccaMiniCarousel" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon"></span>
+</button>
+</div>
+<div class="text-center mb-3">
+<a class="btn btn-outline-light btn-sm d-inline-flex align-items-center gap-2" data-track="projects-voir-le-projet-sur-github" href="https://github.com/moobotec/chatbot" rel="noopener" style="border-color: rgba(255,255,255,.25);" target="_blank">
+<i class="bi bi-github"></i>
+              Voir le projet sur GitHub
+            </a>
+</div>
+<div class="d-flex flex-wrap pt-2">
+<span class="chip">AIML</span>
+<span class="chip">PHP</span>
+<span class="chip">C++</span>
+<span class="chip">IA assistée</span>
+<span class="chip">Portage</span>
+<span class="chip">Web UI</span>
+</div>
+</div>
+</div>
 <!-- Project 1 -->
 <div class="col-lg-6">
 <div class="glass p-4 h-100">
@@ -4263,8 +4334,8 @@
     <div class="d-flex align-items-center gap-2">
       <span class="dot"></span>
       <div>
-        <div id="chatTitle" class="fw-semibold">Assistant nostalgie</div>
-        <div id="chatSubtitle" class="small opacity-75" style="margin-top:-2px;">AIML / mode démo</div>
+        <div id="chatTitle" class="fw-semibold">AIML Rebecca</div>
+        <div id="chatSubtitle" class="small opacity-75" style="margin-top:-2px;">Interface de test</div>
       </div>
     </div>
     <div class="d-flex align-items-center gap-2">
@@ -4278,9 +4349,9 @@
   </div>
   <!-- Messages -->
   <div id="chatBody" class="chat-body">
-    <div id="chatHint" class="chat-hint">Connecté au backend AIML (PHP)</div>
+    <div id="chatHint" class="chat-hint">Interface de test en bas à droite : pose des questions sur le créateur et le projet.</div>
     <div class="msg bot">
-      <div id="chatWelcome" class="bubble">Salut 👋 Je suis ton petit agent “à l’ancienne”. Écris-moi un message !</div>
+      <div id="chatWelcome" class="bubble">Salut ! Je suis Rebecca (AIML). Tu peux me demander des infos sur le créateur du site et sur le projet de portage C++ → PHP.</div>
     </div>
   </div>
   <!-- FOOTER -->
