@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/auth.php';
+
+admin_require_basic_auth();
+
 $logDir = __DIR__ . '/../logs';
 $files = glob($logDir . '/visits-*.log') ?: [];
 rsort($files, SORT_STRING);

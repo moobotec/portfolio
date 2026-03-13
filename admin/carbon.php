@@ -1,5 +1,8 @@
 <?php
+require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/../carbon_service.php';
+
+admin_require_basic_auth();
 
 $errors = [];
 $success = false;

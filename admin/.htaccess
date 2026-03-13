@@ -1,14 +1,6 @@
-# Protect admin pages
+# Protect the whole admin directory.
 # Update AuthUserFile to the absolute path on your server if different.
-<Files "live.php">
-  AuthType Basic
-  AuthName "Admin Area"
-  AuthUserFile "/home/ouulssh-timecaps/daumand/admin/.htpasswd"
-  Require valid-user
-</Files>
-<Files "carbon.php">
-  AuthType Basic
-  AuthName "Admin Area"
-  AuthUserFile "/home/ouulssh-timecaps/daumand/admin/.htpasswd"
-  Require valid-user
-</Files>
+AuthType Basic
+AuthName "Admin Area"
+AuthUserFile "/home/ouulssh-timecaps/daumand/admin/.htpasswd"
+Require valid-user
