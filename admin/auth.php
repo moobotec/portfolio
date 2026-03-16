@@ -79,11 +79,11 @@ function admin_require_basic_auth(): void
         return;
     }
 
-    admin_parse_basic_auth();
-
-    if (!empty($_SERVER['REMOTE_USER']) && !empty($_SERVER['PHP_AUTH_USER'])) {
+    if (!empty($_SERVER['REMOTE_USER'])) {
         return;
     }
+
+    admin_parse_basic_auth();
 
     $config = admin_auth_config();
     $user = $_SERVER['PHP_AUTH_USER'] ?? '';
